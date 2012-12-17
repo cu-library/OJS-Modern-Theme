@@ -1,0 +1,106 @@
+/*Definitions from commom.css we still need*/
+   
+/*
+ * Notifications
+ * FIXME: (Re)move once OJS styles are consolidated with new styles and themes
+ */
+@import url("../lib/pkp/styles/themes/default/pnotify.css");
+
+.ui-pnotify-title {
+    font-size: 0.8em;
+}
+
+.ui-pnotify-text {
+    font-size: 0.6em;
+}
+
+.ui-pnotify-history-container .ui-pnotify-history-header {
+    font-size: 0.8em;
+}
+
+/**
+ * Other organizational elements
+ */
+
+div.progressbar {
+    background-image: url(../templates/images/progbg.gif);
+    background-repeat: no-repeat;
+    height: 27px;
+    width: 505px;
+    index:1;
+}
+
+.throbber {
+    display: none;
+    background: url(../../../../lib/pkp/templates/images/throbber.gif) no-repeat;
+    width: 25px;
+    height: 25px;
+    margin-left: 50%;
+    margin-top: 5%;
+}
+
+
+/* @group Tag-it */
+
+ul.tagit {
+        padding: 1px 5px;
+        overflow: auto;
+    margin-left: inherit; /* usually we don't want the regular ul margins. */
+    margin-right: inherit;
+}
+
+.hidden {
+        display: none;
+}
+
+ul.tagit li {
+        display: block;
+        float: left;
+        margin: 2px 5px 2px 0;
+}
+
+ul.tagit li.tagit-choice {
+        padding: .2em 18px .2em .5em;
+    position: relative;
+    line-height: inherit;
+}
+ul.tagit li.tagit-new {
+        padding: .25em 4px .25em 0;
+}
+
+ul.tagit li.tagit-choice a.tagit-label {
+        cursor: pointer;
+        text-decoration: none;
+}
+ul.tagit li.tagit-choice .tagit-close {
+        cursor: pointer;
+    position: absolute;
+    right: .1em;
+    top: 50%;
+    margin-top: -8px;
+}
+
+/* used for some custom themes that don't need image icons */
+ul.tagit li.tagit-choice .tagit-close .text-icon {
+    display: none;
+}
+.ui-autocomplete .ui-menu-item a {
+        font-size: .6em;
+}
+ul.tagit li.tagit-choice input {
+        display: block;
+        float: left;
+        margin: 2px 5px 2px 0;
+}
+ul.tagit input[type="text"] {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+
+    border: none;
+        margin: 0;
+        padding: 0;
+        width: inherit;
+        background-color: inherit;
+    outline: none;
+}

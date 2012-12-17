@@ -1,11 +1,7 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
-  
+   
   body {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -18,8 +14,16 @@
   
   ul.plain {
     list-style-type: none;
+    margin: 0px;
   }
-
+  
+  form {
+    margin-bottom: 0px;
+  }
+  
+  #sizer a{
+    display: block;
+  }
 
 
 
