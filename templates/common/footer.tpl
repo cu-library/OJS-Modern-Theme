@@ -1,9 +1,13 @@
-        <hr>
-
-            <footer>
-                <p>&copy; Company 2012</p>
-            </footer>
-
+</div><!--content-->
+</div><!--main-->
+{call_hook|assign:"rightSidebarCode" name="Templates::Common::RightSidebar"}
+      {if $rightSidebarCode}
+         <div id="rightSidebar" class="span3">
+           {$rightSidebarCode}
+         </div>
+      {/if}
+      </div>
+      
         </div> <!-- /container -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

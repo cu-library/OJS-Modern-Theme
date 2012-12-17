@@ -5,9 +5,20 @@
    ========================================================================== */
 
 
+  
+  body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 
-
-
+  .breadcrumb {
+    margin-top: 20px;
+  
+  }
+  
+  ul.plain {
+    list-style-type: none;
+  }
 
 
 
