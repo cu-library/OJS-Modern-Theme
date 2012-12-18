@@ -30,8 +30,6 @@
     {/if}
     
     <link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/pkp.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" /> -->
-    <!-- <link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" /> -->
     
     <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/bootstrap.min.css">
     <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/from-common.css">
@@ -44,11 +42,7 @@
     {/foreach}
 
     <script src="{$baseUrl}/plugins/themes/modern/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    
-    <script type="text/javascript">
-    var new_jQuery = $.noConflict();
-    </script>
-    
+       
     <!-- Base Jquery -->
     {if $allowCDN}<script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">{literal}
@@ -97,6 +91,10 @@
         {/literal}
     </script>
     {$additionalHeadData}
+    
+    <script type="text/javascript">
+    var old_jQuery = $.noConflict();
+    </script>
     
   </head>
   <body>
