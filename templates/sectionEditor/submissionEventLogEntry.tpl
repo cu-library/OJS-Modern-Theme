@@ -34,23 +34,23 @@
 <h3>{translate key="submission.history.submissionEventLog"}</h3>
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="20%" class="label">{translate key="common.id"}</td>
+		<td width="20%" >{translate key="common.id"}</td>
 		<td width="80%" class="value">{$logEntry->getId()}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="common.date"}</td>
+		<td >{translate key="common.date"}</td>
 		<td class="value">{$logEntry->getDateLogged()|date_format:$datetimeFormatLong}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="submission.event.logLevel"}</td>
+		<td >{translate key="submission.event.logLevel"}</td>
 		<td class="value">{translate key=$logEntry->getLogLevelString()}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="common.type"}</td>
+		<td >{translate key="common.type"}</td>
 		<td class="value">{translate key=$logEntry->getAssocTypeLongString()}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="common.user"}</td>
+		<td >{translate key="common.user"}</td>
 		<td class="value">
 			{assign var=emailString value=$logEntry->getUserFullName()|concat:" <":$logEntry->getUserEmail():">"}
 			{url|assign:"url" page="user" op="email" to=$emailString|to_array redirectUrl=$currentUrl subject=$logEntry->getEventTitle()|translate articleId=$submission->getArticleId()}
@@ -58,7 +58,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="common.event"}</td>
+		<td >{translate key="common.event"}</td>
 		<td class="value">
 			<strong>{translate key=$logEntry->getEventTitle()}</strong>
 			<br /><br />

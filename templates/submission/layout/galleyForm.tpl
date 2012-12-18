@@ -23,13 +23,13 @@
 <p>{translate key="submission.layout.galleyFileData"}</p>
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="label" required="true" key="submission.layout.galleyLabel"}</td>
+	<td width="20%" >{fieldLabel name="label" required="true" key="submission.layout.galleyLabel"}</td>
 	<td width="80%" class="value"><input type="text" id="label" name="label" value="{$label|escape}" size="40" maxlength="32" class="textField" /></td>
 </tr>
 
 {if $enablePublicGalleyId}
 	<tr valign="top">
-		<td class="label">{fieldLabel name="publicGalleyId" key="submission.layout.publicGalleyId"}</td>
+		<td >{fieldLabel name="publicGalleyId" key="submission.layout.publicGalleyId"}</td>
 		<td class="value"><input type="text" name="publicGalleyId" id="publicGalleyId" value="{$publicGalleyId|escape}" size="20" maxlength="255" class="textField" /></td>
 	</tr>
 {/if}{* $enablePublicGalleyId *}
@@ -40,7 +40,7 @@
 </tr>
 
 <tr valign="top">
-	<td class="label">{fieldLabel name="galleyLocale" required="true" key="common.language"}</td>
+	<td >{fieldLabel name="galleyLocale" required="true" key="common.language"}</td>
 	<td class="value">
 		<select name="galleyLocale" id="galleyLocale" class="selectMenu">
 		{html_options options=$supportedSubmissionLocales selected=$galleyLocale|default:$formLocale}
@@ -49,28 +49,28 @@
 </tr>
 
 <tr valign="top">
-	<td class="label">{translate key="common.fileName"}</td>
+	<td >{translate key="common.fileName"}</td>
 	<td class="value"><a class="action" href="{url op="downloadFile" path=$articleId|to_array:$galley->getFileId()}">{$galley->getFileName()|escape}</a></td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="common.originalFileName"}</td>
+	<td >{translate key="common.originalFileName"}</td>
 	<td class="value">{$galley->getOriginalFileName()|escape}</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="common.fileType"}</td>
+	<td >{translate key="common.fileType"}</td>
 	<td class="value">{$galley->getFileType()|escape}</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="common.fileSize"}</td>
+	<td >{translate key="common.fileSize"}</td>
 	<td class="value">{$galley->getNiceFileSize()}</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="common.dateUploaded"}</td>
+	<td >{translate key="common.dateUploaded"}</td>
 	<td class="value">{$galley->getDateUploaded()|date_format:$dateFormatShort}</td>
 </tr>
 
 <tr valign="top">
-	<td class="label">{if $galleyId}{fieldLabel name="galleyFile" key="layoutEditor.galley.replaceGalley"}{else}{fieldLabel name="galleyFile" key="common.upload"}{/if}</td>
+	<td >{if $galleyId}{fieldLabel name="galleyFile" key="layoutEditor.galley.replaceGalley"}{else}{fieldLabel name="galleyFile" key="common.upload"}{/if}</td>
 	<td class="value">
 		<input type="file" name="galleyFile" id="galleyFile" class="uploadField" />&nbsp;&nbsp;{translate key="form.saveToUpload"}
 	</td>
@@ -89,15 +89,15 @@
 <table class="data" width="100%">
 {if $styleFile}
 <tr valign="top">
-	<td width="20%" class="label">{translate key="common.fileName"}</td>
+	<td width="20%" >{translate key="common.fileName"}</td>
 	<td width="80%" class="value"><a class="action" href="{url op="downloadFile" path=$articleId|to_array:$styleFile->getFileId()}">{$styleFile->getFileName()|escape}</a></td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="common.fileSize"}</td>
+	<td >{translate key="common.fileSize"}</td>
 	<td class="value">{$styleFile->getNiceFileSize()}</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="common.dateUploaded"}</td>
+	<td >{translate key="common.dateUploaded"}</td>
 	<td class="value">{$styleFile->getDateUploaded()|date_format:$dateFormatShort}</td>
 </tr>
 <tr valign="top">
@@ -116,7 +116,7 @@
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="styleFile" key="common.upload"}</td>
+	<td width="20%" >{fieldLabel name="styleFile" key="common.upload"}</td>
 	<td class="value">
 		<input type="file" name="styleFile" id="styleFile" class="uploadField" />&nbsp;&nbsp;{translate key="form.saveToUpload"}
 	</td>

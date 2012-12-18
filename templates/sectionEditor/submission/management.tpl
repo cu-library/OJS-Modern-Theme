@@ -16,18 +16,18 @@
 
 <table width="100%" class="data">
 	<tr>
-		<td width="20%" class="label">{translate key="article.authors"}</td>
+		<td width="20%" >{translate key="article.authors"}</td>
 		<td width="80%" colspan="2" class="value">
 			{url|assign:"url" page="user" op="email" redirectUrl=$currentUrl to=$submission->getAuthorEmails() subject=$submission->getLocalizedTitle() articleId=$submission->getId()}
 			{$submission->getAuthorString()|escape} {icon name="mail" url=$url}
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="article.title"}</td>
+		<td >{translate key="article.title"}</td>
 		<td colspan="2" class="value">{$submission->getLocalizedTitle()|strip_unsafe_html}</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="submission.originalFile"}</td>
+		<td >{translate key="submission.originalFile"}</td>
 		<td colspan="2" class="value">
 			{if $submissionFile}
 				<a href="{url op="downloadFile" path=$submission->getId()|to_array:$submissionFile->getFileId()}" class="file">{$submissionFile->getFileName()|escape}</a>&nbsp;&nbsp;{$submissionFile->getDateModified()|date_format:$dateFormatShort}
@@ -37,7 +37,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="article.suppFilesAbbrev"}</td>
+		<td >{translate key="article.suppFilesAbbrev"}</td>
 		<td colspan="2" class="value">
 			{foreach name="suppFiles" from=$suppFiles item=suppFile}
 				{if $suppFile->getFileId()}
@@ -64,7 +64,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="submission.submitter"}</td>
+		<td >{translate key="submission.submitter"}</td>
 		<td colspan="2" class="value">
 			{assign var="submitter" value=$submission->getUser()}
 			{assign var=emailString value=$submitter->getFullName()|concat:" <":$submitter->getEmail():">"}
@@ -73,23 +73,23 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="common.dateSubmitted"}</td>
+		<td >{translate key="common.dateSubmitted"}</td>
 		<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="section.section"}</td>
+		<td >{translate key="section.section"}</td>
 		<td class="value">{$submission->getSectionTitle()|escape}</td>
 		<td class="value"><form action="{url op="updateSection" path=$submission->getId()}" method="post">{translate key="submission.changeSection"} <select name="section" size="1" class="selectMenu">{html_options options=$sections selected=$submission->getSectionId()}</select> <input type="submit" value="{translate key="common.record"}" class="button" /></form></td>
 	</tr>
 	{if $submission->getCommentsToEditor()}
 	<tr valign="top">
-		<td width="20%" class="label">{translate key="article.commentsToEditor"}</td>
+		<td width="20%" >{translate key="article.commentsToEditor"}</td>
 		<td width="80%" colspan="2" class="data">{$submission->getCommentsToEditor()|strip_unsafe_html|nl2br}</td>
 	</tr>
 	{/if}
 	{if $publishedArticle}
 	<tr>
-		<td class="label">{translate key="submission.abstractViews"}</td>
+		<td >{translate key="submission.abstractViews"}</td>
 		<td>{$publishedArticle->getViews()}</td>
 	</tr>
 	{/if}

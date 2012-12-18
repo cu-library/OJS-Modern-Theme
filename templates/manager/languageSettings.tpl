@@ -22,7 +22,7 @@
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" rowspan="2" class="label">{fieldLabel name="primaryLocale" required="true" key="locale.primary"}</td>
+	<td width="20%" rowspan="2" >{fieldLabel name="primaryLocale" required="true" key="locale.primary"}</td>
 	<td width="80%" colspan="3" class="value">
 		<select id="primaryLocale" name="primaryLocale" size="1" class="selectMenu">
 			{html_options options=$availableLocales selected=$primaryLocale}
@@ -33,7 +33,7 @@
 	<td colspan="3" class="value"><span class="instruct">{translate key="manager.languages.primaryLocaleInstructions"}</span></td>
 </tr>
 <tr valign="top">
-	<td class="label" rowspan="2">{fieldLabel suppressId="true" name="supportedLocales" key="locale.supported"}</td>
+	<td  rowspan="2">{fieldLabel suppressId="true" name="supportedLocales" key="locale.supported"}</td>
 	<td colspan="3" class="value">
 		<table class="data" width="100%">
 		<tr valign="top">

@@ -16,7 +16,7 @@
 <div id="locale">
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{url|assign:"setupFormUrl" op="setup" path="3" escape=false}
 			{form_language_chooser form="setupForm" url=$setupFormUrl}
@@ -54,7 +54,7 @@
 	{/if}
 
 	<tr valign="top">
-		<td width="5%" class="label"><input type="text" name="submissionChecklist[{$formLocale|escape}][{$checklistId|escape}][order]" value="{$checklistItem.order|escape}" size="3" maxlength="2" class="textField" /></td>
+		<td width="5%" ><input type="text" name="submissionChecklist[{$formLocale|escape}][{$checklistId|escape}][order]" value="{$checklistItem.order|escape}" size="3" maxlength="2" class="textField" /></td>
 		<td class="value"><textarea name="submissionChecklist[{$formLocale|escape}][{$checklistId|escape}][content]" id="submissionChecklist-{$checklistId|escape}" rows="3" cols="40" class="textArea">{$checklistItem.content|escape}</textarea></td>
 		<td width="100%"><input type="submit" name="delChecklist[{$checklistId|escape}]" value="{translate key="common.delete"}" class="button" /></td>
 	</tr>
@@ -79,14 +79,14 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="5%" class="label">
+		<td width="5%" >
 			<input type="checkbox" name="copyrightNoticeAgree" id="copyrightNoticeAgree" value="1"{if $copyrightNoticeAgree} checked="checked"{/if} />
 		</td>
 		<td width="95%" class="value"><label for="copyrightNoticeAgree">{translate key="manager.setup.authorCopyrightNoticeAgree"}</label>
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">
+		<td >
 			<input type="checkbox" name="includeCreativeCommons" id="includeCreativeCommons" value="1"{if $includeCreativeCommons} checked="checked"{/if} />
 		</td>
 		<td class="value">
@@ -104,7 +104,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td class="label" width="5%">
+		<td  width="5%">
 			<input type="checkbox" name="requireAuthorCompetingInterests" id="requireAuthorCompetingInterests" value="1"{if $requireAuthorCompetingInterests} checked="checked"{/if} />
 		</td>
 		<td class="value" width="95%">
@@ -112,7 +112,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">
+		<td >
 			<input type="checkbox" name="requireReviewerCompetingInterests" id="requireReviewerCompetingInterests" value="1"{if $requireReviewerCompetingInterests} checked="checked"{/if} />
 		</td>
 		<td class="value">
@@ -134,7 +134,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaDiscipline" id="metaDiscipline" value="1"{if $metaDiscipline} checked="checked"{/if} /></td>
+		<td width="5%"  valign="bottom"><input type="checkbox" name="metaDiscipline" id="metaDiscipline" value="1"{if $metaDiscipline} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaDiscipline" key="manager.setup.discipline"}</h4>
 		</td>
@@ -156,7 +156,7 @@
 	</tr>
 	
 	<tr valign="top">
-		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaSubjectClass" id="metaSubjectClass" value="1"{if $metaSubjectClass} checked="checked"{/if} /></td>
+		<td width="5%"  valign="bottom"><input type="checkbox" name="metaSubjectClass" id="metaSubjectClass" value="1"{if $metaSubjectClass} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaSubjectClass" key="manager.setup.subjectClassification"}</h4>
 		</td>
@@ -183,7 +183,7 @@
 	</tr>
 	
 	<tr valign="top">
-		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaSubject" id="metaSubject" value="1"{if $metaSubject} checked="checked"{/if} /></td>
+		<td width="5%"  valign="bottom"><input type="checkbox" name="metaSubject" id="metaSubject" value="1"{if $metaSubject} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaSubject" key="manager.setup.subjectKeywordTopic"}</h4>
 		</td>
@@ -204,7 +204,7 @@
 	</tr>
 	
 	<tr valign="top">
-		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaCoverage" id="metaCoverage" value="1"{if $metaCoverage} checked="checked"{/if} /></td>
+		<td width="5%"  valign="bottom"><input type="checkbox" name="metaCoverage" id="metaCoverage" value="1"{if $metaCoverage} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaCoverage" key="manager.setup.coverage"}</h4>
 		</td>
@@ -255,7 +255,7 @@
 	</tr>
 	
 	<tr valign="top">
-		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaType" id="metaType" value="1"{if $metaType} checked="checked"{/if} /></td>
+		<td width="5%"  valign="bottom"><input type="checkbox" name="metaType" id="metaType" value="1"{if $metaType} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaType" key="manager.setup.typeMethodApproach"}</h4>
 		</td>
@@ -291,11 +291,11 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td class="label"><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckPrimaryContact" id="copySubmissionAckPrimaryContact" value="true" {if $copySubmissionAckPrimaryContact}checked="checked"{/if}/></td>
+		<td ><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckPrimaryContact" id="copySubmissionAckPrimaryContact" value="true" {if $copySubmissionAckPrimaryContact}checked="checked"{/if}/></td>
 		<td class="value">{fieldLabel name="copySubmissionAckPrimaryContact" key="manager.setup.notifications.copyPrimaryContact"}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckSpecified" id="copySubmissionAckSpecified" value="true" {if $copySubmissionAckSpecified}checked="checked"{/if}/></td>
+		<td ><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckSpecified" id="copySubmissionAckSpecified" value="true" {if $copySubmissionAckSpecified}checked="checked"{/if}/></td>
 		<td class="value">{fieldLabel name="copySubmissionAckAddress" key="manager.setup.notifications.copySpecifiedAddress"}&nbsp;&nbsp;<input {if !$submissionAckEnabled}disabled="disabled" {/if}type="text" class="textField" id="copySubmissionAckAddress" name="copySubmissionAckAddress" value="{$copySubmissionAckAddress|escape}"/></td>
 	</tr>
 	{if !$submissionAckEnabled}
@@ -320,7 +320,7 @@
 	<p>{translate key="manager.setup.metaCitationsDescription"}</p>
 	<table width="100%" class="data">
 		<tr valign="top">
-			<td width="5%" class="label">
+			<td width="5%" >
 				<input type="checkbox" name="metaCitations" id="metaCitations" value="1"{if $metaCitations} checked="checked"{/if} />
 			</td>
 			<td width="95%" class="value"><label for="metaCitations">{translate key="manager.setup.citations"}</label>

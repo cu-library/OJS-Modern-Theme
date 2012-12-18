@@ -63,7 +63,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="submission.reviewVersion"}</td>
+		<td  width="20%">{translate key="submission.reviewVersion"}</td>
 		<td class="value" width="80%">
 			{assign var="reviewFile" value=$reviewFilesByRound[$roundPlusOne]}
 			{if $reviewFile}
@@ -137,14 +137,14 @@
 	</tr>
 	{if $reviewFormResponses[$reviewId]}
 		<tr valign="top">
-			<td class="label">{translate key="submission.reviewFormResponse"}</td>
+			<td >{translate key="submission.reviewFormResponse"}</td>
 			<td>
 				<a href="javascript:openComments('{url op="viewReviewFormResponse" path=$submission->getArticleId()|to_array:$reviewAssignment->getId()}');" class="icon">{icon name="letter"}</a>
 			</td>
 		</tr>
 	{/if}
 	<tr valign="top">
-		<td class="label">{translate key="reviewer.article.reviewerComments"}</td>
+		<td >{translate key="reviewer.article.reviewerComments"}</td>
 		<td colspan="4">
 			{if $reviewAssignment->getMostRecentPeerReviewComment()}
 				{assign var="comment" value=$reviewAssignment->getMostRecentPeerReviewComment()}
@@ -155,7 +155,7 @@
 		</td>
 	</tr>
  	<tr valign="top">
-		<td class="label">{translate key="reviewer.article.uploadedFile"}</td>
+		<td >{translate key="reviewer.article.uploadedFile"}</td>
 		<td colspan="4">
 			<table width="100%" class="data">
 				{foreach from=$reviewAssignment->getReviewerFileRevisions() item=reviewerFile key=key}
@@ -194,7 +194,7 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 
 <table class="data" width="100%">
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="editor.article.decision"}</td>
+		<td  width="20%">{translate key="editor.article.decision"}</td>
 		<td class="value" width="80%">
 			{foreach from=$roundDecisions item=editorDecision key=decisionKey}
 				{if $decisionKey neq 0} | {/if}
@@ -206,7 +206,7 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="submission.notifyAuthor"}</td>
+		<td  width="20%">{translate key="submission.notifyAuthor"}</td>
 		<td class="value" width="80%">
 			{translate key="submission.editorAuthorRecord"}
 			{if $submission->getMostRecentEditorDecisionComment()}
@@ -221,13 +221,13 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 		<tr valign="top">
 			{if !$authorRevisionExists}
 				{assign var="authorRevisionExists" value=true}
-				<td width="20%" class="label" rowspan="{$authorFiles|@count}" class="label">{translate key="submission.authorVersion"}</td>
+				<td width="20%"  rowspan="{$authorFiles|@count}" >{translate key="submission.authorVersion"}</td>
 			{/if}
 			<td width="80%" class="value"><a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$authorFile->getFileId():$authorFile->getRevision()}" class="file">{$authorFile->getFileName()|escape}</a>&nbsp;&nbsp;{$authorFile->getDateModified()|date_format:$dateFormatShort}</td>
 		</tr>
 	{foreachelse}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="submission.authorVersion"}</td>
+			<td width="20%" >{translate key="submission.authorVersion"}</td>
 			<td width="80%" colspan="4" class="nodata">{translate key="common.none"}</td>
 		</tr>
 	{/foreach}
@@ -235,14 +235,14 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 		<tr valign="top">
 			{if !$editorRevisionExists}
 				{assign var="editorRevisionExists" value=true}
-				<td width="20%" class="label" rowspan="{$editorFiles|@count}" class="label">{translate key="submission.editorVersion"}</td>
+				<td width="20%"  rowspan="{$editorFiles|@count}" >{translate key="submission.editorVersion"}</td>
 			{/if}
 
 			<td width="30%"><a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$editorFile->getFileId():$editorFile->getRevision()}" class="file">{$editorFile->getFileName()|escape}</a>&nbsp;&nbsp;{$editorFile->getDateModified()|date_format:$dateFormatShort}</td>
 		</tr>
 	{foreachelse}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="submission.editorVersion"}</td>
+			<td width="20%" >{translate key="submission.editorVersion"}</td>
 			<td width="80%" colspan="4" class="nodata">{translate key="common.none"}</td>
 		</tr>
 	{/foreach}

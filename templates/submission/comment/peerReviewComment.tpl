@@ -81,15 +81,15 @@ window.opener.location.reload();
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td class="label">{fieldLabel name="commentTitle" key="submission.comments.subject"}</td>
+	<td >{fieldLabel name="commentTitle" key="submission.comments.subject"}</td>
 	<td class="value"><input type="text" name="commentTitle" id="commentTitle" value="{$commentTitle|escape}" size="50" maxlength="255" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="authorComments"}{translate key="submission.comments.forAuthorEditor"}</td>
+	<td >{fieldLabel name="authorComments"}{translate key="submission.comments.forAuthorEditor"}</td>
 	<td class="value"><textarea id="authorComments" name="authorComments" rows="10" cols="50" class="textArea">{$authorComments|escape}</textarea></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="comments"}{translate key="submission.comments.forEditor"}</td>
+	<td >{fieldLabel name="comments"}{translate key="submission.comments.forEditor"}</td>
 	<td class="value"><textarea id="comments" name="comments" rows="10" cols="50" class="textArea">{$comments|escape}</textarea></td>
 </tr>
 </table>

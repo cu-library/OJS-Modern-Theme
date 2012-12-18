@@ -20,11 +20,11 @@
 <form method="post" action="{url op=$actionHandler path=$articleId|to_array:$reviewId}">
 	<table class="data" width="100%">
 		<tr valign="top">
-			<td class="label" width="20%">{translate key="editor.article.todaysDate"}</td>
+			<td  width="20%">{translate key="editor.article.todaysDate"}</td>
 			<td class="value" width="80%">{$todaysDate|escape}</td>
 		</tr>
 		<tr valign="top">
-			<td class="label">{translate key="editor.article.requestedByDate"}</td>
+			<td >{translate key="editor.article.requestedByDate"}</td>
 			<td class="value">
 				<input type="text" size="11" maxlength="10" name="dueDate" value="{if $dueDate}{$dueDate|date_format:"%Y-%m-%d"}{/if}" class="textField" onfocus="this.form.numWeeks.value=''" />
 				<span class="instruct">{translate key="editor.article.dueDateFormat"}</span>
@@ -35,7 +35,7 @@
 			<td class="value"><span class="instruct">{translate key="common.or"}</span></td>
 		</tr>
 		<tr valign="top">
-			<td class="label">{translate key="editor.article.numberOfWeeks"}</td>
+			<td >{translate key="editor.article.numberOfWeeks"}</td>
 			<td class="value"><input type="text" name="numWeeks" value="{if not $dueDate}{$numWeeksPerReview|escape}{/if}" size="3" maxlength="2" class="textField" onfocus="this.form.dueDate.value=''" /></td>
 		</tr>
 	</table>

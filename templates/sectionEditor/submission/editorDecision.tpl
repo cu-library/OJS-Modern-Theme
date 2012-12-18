@@ -13,7 +13,7 @@
 
 <table id="table1" width="100%" class="data">
 <tr valign="top">
-	<td class="label" width="20%">{translate key="editor.article.selectDecision"}</td>
+	<td  width="20%">{translate key="editor.article.selectDecision"}</td>
 	<td width="80%" class="value">
 		<form method="post" action="{url op="recordDecision"}">
 			<input type="hidden" name="articleId" value="{$submission->getId()}" />
@@ -26,7 +26,7 @@
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="editor.article.decision"}</td>
+	<td >{translate key="editor.article.decision"}</td>
 	<td class="value">
 		{foreach from=$submission->getDecisions($round) item=editorDecision key=decisionKey}
 			{if $decisionKey neq 0} | {/if}
@@ -38,7 +38,7 @@
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="submission.notifyAuthor"}</td>
+	<td >{translate key="submission.notifyAuthor"}</td>
 	<td class="value">
 		{url|assign:"notifyAuthorUrl" op="emailEditorDecisionComment" articleId=$submission->getId()}
 
@@ -105,7 +105,7 @@
 
 	{if $reviewFile}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="submission.reviewVersion"}</td>
+			<td width="20%" >{translate key="submission.reviewVersion"}</td>
 			<td width="50%" class="value">
 				{if $lastDecision == SUBMISSION_EDITOR_DECISION_ACCEPT || $lastDecision == SUBMISSION_EDITOR_DECISION_RESUBMIT}
 					<input type="radio" name="editorDecisionFile" value="{$reviewFile->getFileId()},{$reviewFile->getRevision()}" />
@@ -123,7 +123,7 @@
 		<tr valign="top">
 			{if $firstItem}
 				{assign var="firstItem" value=false}
-				<td width="20%" rowspan="{$authorFiles|@count}" class="label">{translate key="submission.authorVersion"}</td>
+				<td width="20%" rowspan="{$authorFiles|@count}" >{translate key="submission.authorVersion"}</td>
 			{/if}
 			<td width="80%" class="value">
 				{if $lastDecision == SUBMISSION_EDITOR_DECISION_ACCEPT || $lastDecision == SUBMISSION_EDITOR_DECISION_RESUBMIT}<input type="radio" name="editorDecisionFile" value="{$authorFile->getFileId()},{$authorFile->getRevision()}" /> {/if}<a href="{url op="downloadFile" path=$submission->getId()|to_array:$authorFile->getFileId():$authorFile->getRevision()}" class="file">{$authorFile->getFileName()|escape}</a>&nbsp;&nbsp;
@@ -135,7 +135,7 @@
 		</tr>
 	{foreachelse}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="submission.authorVersion"}</td>
+			<td width="20%" >{translate key="submission.authorVersion"}</td>
 			<td width="80%" class="nodata">{translate key="common.none"}</td>
 		</tr>
 	{/foreach}
@@ -144,7 +144,7 @@
 		<tr valign="top">
 			{if $firstItem}
 				{assign var="firstItem" value=false}
-				<td width="20%" rowspan="{$editorFiles|@count}" class="label">{translate key="submission.editorVersion"}</td>
+				<td width="20%" rowspan="{$editorFiles|@count}" >{translate key="submission.editorVersion"}</td>
 			{/if}
 			<td width="80%" class="value">
 				{if $lastDecision == SUBMISSION_EDITOR_DECISION_ACCEPT || $lastDecision == SUBMISSION_EDITOR_DECISION_RESUBMIT}<input type="radio" name="editorDecisionFile" value="{$editorFile->getFileId()},{$editorFile->getRevision()}" /> {/if}<a href="{url op="downloadFile" path=$submission->getId()|to_array:$editorFile->getFileId():$editorFile->getRevision()}" class="file">{$editorFile->getFileName()|escape}</a>&nbsp;&nbsp;
@@ -157,12 +157,12 @@
 		</tr>
 	{foreachelse}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="submission.editorVersion"}</td>
+			<td width="20%" >{translate key="submission.editorVersion"}</td>
 			<td width="80%" class="nodata">{translate key="common.none"}</td>
 		</tr>
 	{/foreach}
 	<tr valign="top">
-		<td class="label">&nbsp;</td>
+		<td >&nbsp;</td>
 		<td class="value">
 			<input type="file" name="upload" class="uploadField" />
 			<input type="submit" name="submit" value="{translate key="common.upload"}" class="button" />

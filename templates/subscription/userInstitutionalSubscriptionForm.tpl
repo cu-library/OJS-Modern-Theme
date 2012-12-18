@@ -26,7 +26,7 @@
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="typeId" required="true" key="user.subscriptions.form.typeId"}</td>
+	<td width="20%" >{fieldLabel name="typeId" required="true" key="user.subscriptions.form.typeId"}</td>
 	<td width="80%" class="value"><select name="typeId" id="typeId" class="selectMenu">
 		{foreach from=$subscriptionTypes item=subscriptionType}
 			<option value="{$subscriptionType->getTypeId()}"{if $typeId == $subscriptionType->getTypeId()} selected="selected"{/if}>{$subscriptionType->getSummaryString()|escape}</option>
@@ -34,7 +34,7 @@
 	</select></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="membership" key="user.subscriptions.form.membership"}</td>
+	<td >{fieldLabel name="membership" key="user.subscriptions.form.membership"}</td>
 	<td class="value">
 		<input type="text" name="membership" value="{$membership|escape}" id="membership" size="30" maxlength="40" class="textField" />
 	</td>
@@ -44,15 +44,15 @@
 	<td><span class="instruct">{translate key="user.subscriptions.form.membershipInstructions"}</span></td>
 </tr>
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="institutionName" required="true" key="user.subscriptions.form.institutionName"}</td>
+	<td width="20%" >{fieldLabel name="institutionName" required="true" key="user.subscriptions.form.institutionName"}</td>
 	<td width="80%" class="value"><input type="text" name="institutionName" id="institutionName" value="{if $institutionName}{$institutionName|escape}{/if}" size="30" maxlength="90" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="institutionMailingAddress" key="user.subscriptions.form.institutionMailingAddress"}</td>
+	<td >{fieldLabel name="institutionMailingAddress" key="user.subscriptions.form.institutionMailingAddress"}</td>
 	<td class="value"><textarea name="institutionMailingAddress" id="institutionMailingAddress" rows="3" cols="40" class="textArea">{$institutionMailingAddress|escape}</textarea></td>
 </tr>
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="domain" key="user.subscriptions.form.domain"}</td>
+	<td width="20%" >{fieldLabel name="domain" key="user.subscriptions.form.domain"}</td>
 	<td width="80%" class="value"><input type="text" name="domain" id="domain" value="{if $domain}{$domain|escape}{/if}" size="30" maxlength="90" class="textField" /></td>
 </tr>
 <tr valign="top">
@@ -65,11 +65,11 @@
 	{foreach name=ipRanges from=$ipRanges key=ipRangeIndex item=ipRange}
 	<tr valign="top">
 		{if $ipRangeIndex == 0}
-		<td width="15%" class="label">{fieldLabel name="ipRanges" key="user.subscriptions.form.ipRange"}</td>
+		<td width="15%" >{fieldLabel name="ipRanges" key="user.subscriptions.form.ipRange"}</td>
 		{else}
 		<td width="15%">&nbsp;</td>	
 		{/if}
-		<td width="5%" class="label">{fieldLabel name="ipRanges[$ipRangeIndex]" key="user.subscriptions.form.ipRangeItem}</td>
+		<td width="5%" >{fieldLabel name="ipRanges[$ipRangeIndex]" key="user.subscriptions.form.ipRangeItem}</td>
 		<td width="80%" class="value"><input type="text" name="ipRanges[{$ipRangeIndex|escape}]" id="ipRanges-{$ipRangeIndex|escape}" value="{$ipRange|escape}" size="30" maxlength="40" class="textField" />
 		{if $smarty.foreach.ipRanges.total > 1}
 		<input type="submit" name="delIpRange[{$ipRangeIndex|escape}]" value="{translate key="user.subscriptions.form.deleteIpRange"}" class="button" /></td>
@@ -79,8 +79,8 @@
 	</tr>
 	{foreachelse}
 	<tr valign="top">
-		<td width="15%" class="label">{fieldLabel name="ipRanges" key="user.subscriptions.form.ipRange"}</td>
-		<td width="5%" class="label">{fieldLabel name="ipRanges[0]" key="user.subscriptions.form.ipRangeItem}</td>
+		<td width="15%" >{fieldLabel name="ipRanges" key="user.subscriptions.form.ipRange"}</td>
+		<td width="5%" >{fieldLabel name="ipRanges[0]" key="user.subscriptions.form.ipRangeItem}</td>
 		<td width="80%" class="value"><input type="text" name="ipRanges[0]" id="ipRanges-0" size="30" maxlength="40" class="textField" /></td>
 	</tr>
 	{/foreach}

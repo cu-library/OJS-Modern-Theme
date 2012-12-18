@@ -14,8 +14,8 @@
 {if $useCopyeditors}
 <table class="data" width="100%">
 	<tr>
-		<td class="label" width="20%">{translate key="user.role.copyeditor"}</td>
-		<td class="label" width="80%">{if $submission->getUserIdBySignoffType('SIGNOFF_COPYEDITING_INITIAL')}{$copyeditor->getFullName()|escape}{else}{translate key="common.none"}{/if}</td>
+		<td  width="20%">{translate key="user.role.copyeditor"}</td>
+		<td  width="80%">{if $submission->getUserIdBySignoffType('SIGNOFF_COPYEDITING_INITIAL')}{$copyeditor->getFullName()|escape}{else}{translate key="common.none"}{/if}</td>
 	</tr>
 </table>
 {/if}

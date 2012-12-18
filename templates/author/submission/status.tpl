@@ -14,7 +14,7 @@
 <table width="100%" class="data">
 	<tr>
 		{assign var="status" value=$submission->getSubmissionStatus()}
-		<td width="20%" class="label">{translate key="common.status"}</td>
+		<td width="20%" >{translate key="common.status"}</td>
 		<td width="80%" class="value">
 			{if $status == STATUS_ARCHIVED}{translate key="submissions.archived"}
 			{elseif $status==STATUS_QUEUED_UNASSIGNED}{translate key="submissions.queuedUnassigned"}
@@ -26,11 +26,11 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="submission.initiated"}</td>
+		<td >{translate key="submission.initiated"}</td>
 		<td colspan="2" class="value">{$submission->getDateStatusModified()|date_format:$dateFormatShort}</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="submission.lastModified"}</td>
+		<td >{translate key="submission.lastModified"}</td>
 		<td colspan="2" class="value">{$submission->getLastModified()|date_format:$dateFormatShort}</td>
 	</tr>
 </table>

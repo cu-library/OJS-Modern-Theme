@@ -26,11 +26,11 @@
 <form id="notificationSettings" method="post" action="{url op="unsubscribeMailList"}">
 <table class="data" width="100%">
 	<tr valign="top">
-		<td class="label" width="5%">{translate key="email.email"}</td>
+		<td  width="5%">{translate key="email.email"}</td>
 		<td class="value" width="45%"><input type="text" name="email" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="5%">{translate key="user.password"}</td>
+		<td  width="5%">{translate key="user.password"}</td>
 		<td class="value" width="45%"><input type="text" name="password" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">

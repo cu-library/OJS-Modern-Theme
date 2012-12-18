@@ -73,23 +73,23 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="common.dateModified"}</td>
+		<td  width="20%">{translate key="common.dateModified"}</td>
 		<td class="value" width="80%">{$articleNote->getDateModified()|date_format:$datetimeFormatShort}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="common.title"}</td>
+		<td  width="20%">{translate key="common.title"}</td>
 		<td class="value" width="80%"><input type="text" name="title" id="title" value="{$articleNote->getTitle()|escape}" size="50" maxlength="120" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="common.note"}</td>
+		<td  width="20%">{translate key="common.note"}</td>
 		<td class="value" width="80%"><textarea name="note" id="note" rows="10" cols="50" class="textArea">{$articleNote->getNote()|strip_unsafe_html|escape}</textarea></td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="common.file"}</td>
+		<td  width="20%">{translate key="common.file"}</td>
 		<td class="value" width="80%"><input type="file" id="upload" name="upload" class="uploadField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="common.uploadedFile"}</td>
+		<td  width="20%">{translate key="common.uploadedFile"}</td>
 		<td class="value" width="80%">{if $articleNote->getFileId()}<a href="{url op="downloadFile" path=$articleId|to_array:$articleNote->getFileId()}">{$articleNote->getOriginalFileName()|escape}</a><br /><input type="checkbox" name="removeUploadedFile" value="1" />&nbsp;{translate key="submission.notes.removeUploadedFile"}{else}&mdash;{/if}</td>
 	</tr>
 </table>
@@ -103,15 +103,15 @@
 	<input type="hidden" name="articleId" value="{$articleId|escape}" />
 	<table width="100%" class="data">
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="common.title"}</td>
+		<td  width="20%">{translate key="common.title"}</td>
 		<td class="value" width="80%"><input type="text" id="title" name="title" size="50" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="common.note"}</td>
+		<td >{translate key="common.note"}</td>
 		<td class="value"><textarea name="note" id="note" rows="10" cols="50" class="textArea"></textarea></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{translate key="common.file"}</td>
+		<td >{translate key="common.file"}</td>
 		<td class="value"><input type="file" name="upload" class="uploadField" /></td>
 	</tr>
 	</table>

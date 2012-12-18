@@ -65,7 +65,7 @@ function deleteAttachment(fileId) {
 <table class="data" width="100%">
 {if $addressFieldsEnabled}
 <tr valign="top">
-	<td class="label" width="20%">{fieldLabel name="to" key="email.to"}</td>
+	<td  width="20%">{fieldLabel name="to" key="email.to"}</td>
 	<td width="80%" class="value">
 		{foreach from=$to item=toAddress}
 			<input type="text" name="to[]" id="to" value="{if $toAddress.name != ''}{$toAddress.name|escape} &lt;{$toAddress.email|escape}&gt;{else}{$toAddress.email|escape}{/if}" size="40" maxlength="120" class="textField" /><br/>
@@ -79,7 +79,7 @@ function deleteAttachment(fileId) {
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="cc" key="email.cc"}</td>
+	<td >{fieldLabel name="cc" key="email.cc"}</td>
 	<td class="value">
 		{foreach from=$cc item=ccAddress}
 			<input type="text" name="cc[]" id="cc" value="{if $ccAddress.name != ''}{$ccAddress.name|escape} &lt;{$ccAddress.email|escape}&gt;{else}{$ccAddress.email|escape}{/if}" size="40" maxlength="120" class="textField" /><br/>
@@ -93,7 +93,7 @@ function deleteAttachment(fileId) {
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="bcc" key="email.bcc"}</td>
+	<td >{fieldLabel name="bcc" key="email.bcc"}</td>
 	<td class="value">
 		{foreach from=$bcc item=bccAddress}
 			<input type="text" name="bcc[]" id="bcc" value="{if $bccAddress.name != ''}{$bccAddress.name|escape} &lt;{$bccAddress.email|escape}&gt;{else}{$bccAddress.email|escape}{/if}" size="40" maxlength="120" class="textField" /><br/>
@@ -125,7 +125,7 @@ function deleteAttachment(fileId) {
 	<td colspan="2">&nbsp;</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="email.attachments"}</td>
+	<td >{translate key="email.attachments"}</td>
 	<td class="value">
 		{assign var=attachmentNum value=1}
 		{foreach from=$persistAttachments item=temporaryFile}
@@ -146,15 +146,15 @@ function deleteAttachment(fileId) {
 	<td colspan="2">&nbsp;</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="email.from"}</td>
+	<td >{translate key="email.from"}</td>
 	<td class="value">{$from|escape}</td>
 </tr>
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="subject" key="email.subject"}</td>
+	<td width="20%" >{fieldLabel name="subject" key="email.subject"}</td>
 	<td width="80%" class="value"><input type="text" id="subject" name="subject" value="{$subject|escape}" size="50" maxlength="120" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="body" key="email.body"}</td>
+	<td >{fieldLabel name="body" key="email.body"}</td>
 	<td class="value"><textarea name="body" cols="50" rows="15" class="textArea">{$body|escape}</textarea></td>
 </tr>
 </table>

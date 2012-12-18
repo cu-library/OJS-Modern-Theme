@@ -42,16 +42,16 @@ function handleAnonymousCheckbox(theBox) {
 <form name="submit" action="{if $commentId}{url op="edit" path=$articleId|to_array:$galleyId:$commentId}{else}{url op="add" path=$articleId|to_array:$galleyId:$parentId:"save"}{/if}" method="post">
 <table class="data" width="100%">
 	<tr valign="top">
-		<td class="label" width="20%"><label for="posterName">{translate key="comments.name"}</label></td>
+		<td  width="20%"><label for="posterName">{translate key="comments.name"}</label></td>
 		<td class="value" width="80%"><input type="text" class="textField" name="posterName" id="posterName" value="{$posterName|escape}" size="40" maxlength="90" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><label for="posterEmail">{translate key="comments.email"}</label></td>
+		<td ><label for="posterEmail">{translate key="comments.email"}</label></td>
 		<td class="value"><input type="text" class="textField" name="posterEmail" id="posterEmail" value="{$posterEmail|escape}" size="40" maxlength="90" /></td>
 	</tr>
 	{if $isUserLoggedIn && ($enableComments == COMMENTS_ANONYMOUS || $enableComments == COMMENTS_UNAUTHENTICATED)}
 	<tr valign="top">
-		<td class="label">&nbsp;</td>
+		<td >&nbsp;</td>
 		<td class="value">
 			<input type="checkbox" name="anonymous" id="anonymous" onclick="handleAnonymousCheckbox(this)">
 			<label for="anonymous">{translate key="comments.postAnonymously"}</label>
@@ -59,11 +59,11 @@ function handleAnonymousCheckbox(theBox) {
 	</tr>
 	{/if}
 	<tr valign="top">
-		<td class="label"><label for="title">{translate key="comments.title"}</label></td>
+		<td ><label for="title">{translate key="comments.title"}</label></td>
 		<td class="value"><input type="text" class="textField" name="title" id="title" value="{$title|escape}" size="60" maxlength="255" /></td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" class="label"><label for="commentBody">{translate key="comments.body"}</label></td>
+		<td width="20%" ><label for="commentBody">{translate key="comments.body"}</label></td>
 		<td width="80%" class="value">
 			<textarea class="textArea" name="body" id="commentBody" rows="5" cols="60">{$commentBody|escape}</textarea>
 		</td>
@@ -71,7 +71,7 @@ function handleAnonymousCheckbox(theBox) {
 
 {if $captchaEnabled}
 	<tr valign="top">
-		<td class="label" valign="top">{fieldLabel name="captcha" required="true" key="common.captchaField"}</td>
+		<td  valign="top">{fieldLabel name="captcha" required="true" key="common.captchaField"}</td>
 		<td class="value">
 			<img src="{url page="user" op="viewCaptcha" path=$captchaId}" alt="{translate key="common.captchaField.altText"}" /><br />
 			<span class="instruct">{translate key="common.captchaField.description"}</span><br />

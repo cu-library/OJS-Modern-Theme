@@ -17,7 +17,7 @@
 {if $useProofreaders}
 <table class="data" width="100%">
 	<tr>
-		<td width="20%" class="label">{translate key="user.role.proofreader"}</td>
+		<td width="20%" >{translate key="user.role.proofreader"}</td>
 		{if $proofSignoff->getUserId()}<td class="value" width="20%">{$proofreader->getFullName()|escape}</td>{/if}
 		<td class="value"><a href="{url op="selectProofreader" path=$submission->getId()}" class="action">{translate key="editor.article.selectProofreader"}</a></td>
 	</tr>
