@@ -31,10 +31,10 @@
     
     <link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/pkp.css" type="text/css" />
     
-    <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/bootstrap.css">
     <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/from-common.css">
     <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/main.css">
-    <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/bootstrap-responsive.css">
     <link rel="stylesheet" href="{$baseUrl}/plugins/themes/modern/css/main-afterresponsive.css">
 
     {foreach from=$stylesheets item=cssUrl}
@@ -112,8 +112,10 @@
       
       <div id="body" class="row-fluid">
       {if $leftSidebarCode}
-        <div id="leftSidebar" class="span3">
-          {$leftSidebarCode|regex_replace:'/<\/div>.*?<div/s':'</div><li class="divider"></li><div'|replace:'<br />':''|replace:'<div':'<li'|replace:'div>':'li>'|replace:'ul':'ul class="nav nav-list"'|replace:'span':'li'|replace:'li class="blockTitle"':'li class="nav-header"'|replace:'blockSubtitle':'nav-header sub-header'}
+        <div id="leftSidebar" class="span3 well well-small">
+          <ul class="nav nav-list">
+            {$leftSidebarCode|regex_replace:'/<\/div>.*?<div/s':'</div><li class="divider"></li><div'|replace:'<br />':''|replace:'<div':'<li'|replace:'div>':'li>'|replace:'ul':'ul class="nav nav-list"'|replace:'span':'li'|replace:'li class="blockTitle"':'li class="nav-header"'|replace:'blockSubtitle':'nav-header sub-header'}
+          </ul>
         </div>
       {/if}
       
