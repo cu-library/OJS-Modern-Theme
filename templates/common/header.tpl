@@ -46,14 +46,14 @@
     <!-- Base Jquery -->
     {if $allowCDN}<script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">{literal}
-        // Provide a local fallback if the CDN cannot be reached
-        if (typeof google == 'undefined') {
-            document.write(unescape("%3Cscript src='{/literal}{$baseUrl}{literal}/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
-            document.write(unescape("%3Cscript src='{/literal}{$baseUrl}{literal}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E"));
-        } else {
-            google.load("jquery", "{/literal}{$smarty.const.CDN_JQUERY_VERSION}{literal}");
-            google.load("jqueryui", "{/literal}{$smarty.const.CDN_JQUERY_UI_VERSION}{literal}");
-        }
+      // Provide a local fallback if the CDN cannot be reached
+      if (typeof google == 'undefined') {
+          document.write(unescape("%3Cscript src='{/literal}{$baseUrl}{literal}/lib/pkp/js/lib/jquery/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+          document.write(unescape("%3Cscript src='{/literal}{$baseUrl}{literal}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js' type='text/javascript'%3E%3C/script%3E"));
+      } else {
+          google.load("jquery", "{/literal}{$smarty.const.CDN_JQUERY_VERSION}{literal}");
+          google.load("jqueryui", "{/literal}{$smarty.const.CDN_JQUERY_UI_VERSION}{literal}");
+      }
     {/literal}</script>
     {else}
     <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/jquery.min.js"></script>
@@ -66,34 +66,34 @@
     <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/fontController.js" ></script>
     <script type="text/javascript">{literal}
-        $(function(){
-            fontSize("#sizer", "body", 9, 16, 32, "{/literal}{$basePath|escape:"javascript"}{literal}"); // Initialize the font sizer
-        });
+      $(function(){
+        fontSize("#sizer", "body", 9, 16, 32, "{/literal}{$basePath|escape:"javascript"}{literal}"); // Initialize the font sizer
+      });
     {/literal}</script>
 
     <script type="text/javascript">
-        // initialise plugins
-        {literal}
-        $(function(){
-            {/literal}{if $validateId}{literal}
-            jqueryValidatorI18n("{/literal}{$baseUrl}{literal}", "{/literal}{$currentLocale}{literal}"); // include the appropriate validation localization
-            $("form[name={/literal}{$validateId}{literal}]").validate({
-                errorClass: "error",
-                highlight: function(element, errorClass) {
-                    $(element).parent().parent().addClass(errorClass);
-                },
-                unhighlight: function(element, errorClass) {
-                    $(element).parent().parent().removeClass(errorClass);
-                }
-            });
-            {/literal}{/if}{literal}
-        });
-        {/literal}
+      // initialise plugins
+      {literal}
+      $(function(){
+        {/literal}{if $validateId}{literal}
+        jqueryValidatorI18n("{/literal}{$baseUrl}{literal}", "{/literal}{$currentLocale}{literal}"); // include the appropriate validation localization
+          $("form[name={/literal}{$validateId}{literal}]").validate({
+            errorClass: "error",
+            highlight: function(element, errorClass) {
+              $(element).parent().parent().addClass(errorClass);
+            },
+            unhighlight: function(element, errorClass) {
+              $(element).parent().parent().removeClass(errorClass);
+            }
+          });
+        {/literal}{/if}{literal}
+      });
+      {/literal}
     </script>
     {$additionalHeadData}
     
     <script type="text/javascript">
-    var old_jQuery = $.noConflict();
+      var old_jQuery = $.noConflict();
     </script>
     
   </head>
@@ -113,7 +113,7 @@
       <div id="body" class="row-fluid">
       {if $leftSidebarCode}
         <div id="leftSidebar" class="span3">
-          {$leftSidebarCode}
+          {$leftSidebarCode|regex_replace:'/<\/div>.*?<div/s':'</div><li class="divider"></li><div'|replace:'<br />':''|replace:'<div':'<li'|replace:'div>':'li>'|replace:'ul':'ul class="nav nav-list"'|replace:'span':'li'|replace:'li class="blockTitle"':'li class="nav-header"'|replace:'blockSubtitle':'nav-header sub-header'}
         </div>
       {/if}
       

@@ -18,13 +18,21 @@
   }
   
   form {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   
   #sizer a{
     display: block;
   }
+  
+  .nav-header {
+  padding-left: 10px;
+  }
 
+  .sub-header {
+  padding-left: 20px;
+  }
+  
 
 
 

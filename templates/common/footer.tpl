@@ -2,12 +2,13 @@
 </div><!--main-->
 {call_hook|assign:"rightSidebarCode" name="Templates::Common::RightSidebar"}
       {if $rightSidebarCode}
-         <div id="rightSidebar" class="span3">
-           {$rightSidebarCode}
+         <div id="rightSidebar" class="span3 well">
+           <ul class="nav nav-list">
+           {$rightSidebarCode|regex_replace:'/<\/div>.*?<div/s':'</div><li class="divider"></li><div'|replace:'<br />':''|replace:'<div':'<li'|replace:'div>':'li>'|replace:'ul':'ul class="nav nav-list"'|replace:'span':'li'|replace:'li class="blockTitle"':'li class="nav-header"'|replace:'blockSubtitle':'nav-header sub-header'}
+           </ul>
          </div>
       {/if}
       </div>
-      
         </div> <!-- /container -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
