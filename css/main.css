@@ -5,6 +5,8 @@
   body {
     padding-top: 40px;
     padding-bottom: 40px;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .breadcrumb {
@@ -21,16 +23,25 @@
     margin-bottom: 10px;
   }
   
-  #sizer a{
-    display: block;
-  }
   
   .nav-header {
-  padding-left: 10px;
+    padding-left: 10px;
   }
 
   .sub-header {
-  padding-left: 20px;
+    padding-left: 20px;
+  }
+  
+  .nav-list input[type="text"]{
+    width: 100%;
+  }
+  
+  .nav-list table{
+    width: 100%
+  }
+  
+  .nav-list select{
+    width: 100%;
   }
   
 
