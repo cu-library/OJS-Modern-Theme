@@ -60,7 +60,7 @@ function checkEditorAssignments() {
 <table class="data" width="100%">
 {if count($formLocales) > 1}
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{if $sectionId}{url|assign:"sectionFormUrl" op="editSection" path=$sectionId escape=false}
 			{else}{url|assign:"sectionFormUrl" op="createSection" path=$sectionId escape=false}
@@ -71,19 +71,19 @@ function checkEditorAssignments() {
 	</tr>
 {/if}
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="title" required="true" key="section.title"}</td>
+	<td width="20%" >{fieldLabel name="title" required="true" key="section.title"}</td>
 	<td width="80%" class="value"><input type="text" name="title[{$formLocale|escape}]" value="{$title[$formLocale]|escape}" id="title" size="40" maxlength="120" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="abbrev" required="true" key="section.abbreviation"}</td>
+	<td >{fieldLabel name="abbrev" required="true" key="section.abbreviation"}</td>
 	<td class="value"><input type="text" name="abbrev[{$formLocale|escape}]" id="abbrev" value="{$abbrev[$formLocale]|escape}" size="20" maxlength="20" class="textField" />&nbsp;&nbsp;{translate key="section.abbreviation.example"}</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="policy" key="manager.sections.policy"}</td>
+	<td >{fieldLabel name="policy" key="manager.sections.policy"}</td>
 	<td class="value"><textarea name="policy[{$formLocale|escape}]" rows="4" cols="40" id="policy" class="textArea">{$policy[$formLocale]|escape}</textarea></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="reviewFormId" key="submission.reviewForm"}</td>
+	<td >{fieldLabel name="reviewFormId" key="submission.reviewForm"}</td>
 	<td class="value">
 		<select name="reviewFormId" size="1" id="reviewFormId" class="selectMenu">
 			<option value="">{translate key="manager.reviewForms.noneChosen"}</option>
@@ -92,7 +92,7 @@ function checkEditorAssignments() {
 	</td>
 </tr>
 <tr valign="top">
-	<td rowspan="4" class="label">{fieldLabel suppressId="true" key="submission.indexing"}</td>
+	<td rowspan="4" >{fieldLabel suppressId="true" key="submission.indexing"}</td>
 	<td class="value">
 		{translate key="manager.section.submissionsToThisSection"}<br/>
 		<input type="checkbox" name="metaReviewed" id="metaReviewed" value="1" {if $metaReviewed}checked="checked"{/if} />
@@ -119,34 +119,34 @@ function checkEditorAssignments() {
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel suppressId="true" key="submission.restrictions"}</td>
+	<td >{fieldLabel suppressId="true" key="submission.restrictions"}</td>
 	<td class="value">
 		<input type="checkbox" name="editorRestriction" id="editorRestriction" value="1" {if $editorRestriction}checked="checked"{/if} />
 		{fieldLabel name="editorRestriction" key="manager.sections.editorRestriction"}
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel key="manager.sections.wordCount"}</td>
+	<td >{fieldLabel key="manager.sections.wordCount"}</td>
 	<td class="value">
 		{fieldLabel name="wordCount" key="manager.sections.wordCountInstructions"}&nbsp;&nbsp;<input type="text" name="wordCount" id="abbrev" value="{$wordCount}" size="10" maxlength="20" class="textField" />
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="hideTitle" key="issue.toc"}</td>
+	<td >{fieldLabel name="hideTitle" key="issue.toc"}</td>
 	<td class="value">
 		<input type="checkbox" name="hideTitle" id="hideTitle" value="1" {if $hideTitle}checked="checked"{/if} />
 		{fieldLabel name="hideTitle" key="manager.sections.hideTocTitle"}
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">&nbsp;</td>
+	<td >&nbsp;</td>
 	<td class="value">
 		<input type="checkbox" name="hideAuthor" id="hideAuthor" value="1" {if $hideAuthor}checked="checked"{/if} />
 		{fieldLabel name="hideAuthor" key="manager.sections.hideTocAuthor"}
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="hideAbout" key="navigation.about"}</td>
+	<td >{fieldLabel name="hideAbout" key="navigation.about"}</td>
 	<td class="value">
 		<input type="checkbox" name="hideAbout" id="hideAbout" value="1" {if $hideAbout}checked="checked"{/if} />
 		{fieldLabel name="hideAbout" key="manager.sections.hideAbout"}
@@ -154,7 +154,7 @@ function checkEditorAssignments() {
 </tr>
 {if $commentsEnabled}
 <tr valign="top">
-	<td class="label">{fieldLabel name="disableComments" key="comments.readerComments"}</td>
+	<td >{fieldLabel name="disableComments" key="comments.readerComments"}</td>
 	<td class="value">
 		<input type="checkbox" name="disableComments" id="disableComments" value="1" {if $disableComments}checked="checked"{/if} />
 		{fieldLabel name="disableComments" key="manager.sections.disableComments"}

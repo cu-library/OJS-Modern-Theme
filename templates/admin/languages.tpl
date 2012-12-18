@@ -19,7 +19,7 @@
 
 <table class="form">
 <tr valign="top">
-	<td width="20%" class="label">{translate key="locale.primary"}</td>
+	<td width="20%" >{translate key="locale.primary"}</td>
 	<td width="80%" class="value">
 		<select name="primaryLocale" id="primaryLocale" size="1" class="selectMenu">
 		{foreach from=$installedLocales item=localeKey}
@@ -31,7 +31,7 @@
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{translate key="locale.supported"}</td>
+	<td >{translate key="locale.supported"}</td>
 	<td>
 		<table width="100%">
 		{foreach from=$installedLocales item=localeKey}

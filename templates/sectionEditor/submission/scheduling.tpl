@@ -15,7 +15,7 @@
 {if !$publicationFeeEnabled || $publicationPayment}
 	<form action="{url op="scheduleForPublication" path=$submission->getId()}" method="post">
 		<tr valign="top">
-			<td width="25%" class="label">
+			<td width="25%" >
 				<label for="issueId">{translate key="editor.article.scheduleForPublication"}</label>
 			</td>
 			<td width="25%" class="value">
@@ -44,7 +44,7 @@
 	{if $publishedArticle}
 		<form action="{url op="setDatePublished" path=$submission->getId()}" method="post">
 			<tr valign="top">
-				<td width="20%" class="label">
+				<td width="20%" >
 					<label for="issueId">{translate key="editor.issues.published"}</label>
 				</td>
 				<td class="value">

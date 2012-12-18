@@ -80,13 +80,13 @@
 	<form name="terms">
 	{if $context->getDefineTerms()}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="rt.context.termToDefine"}</td>
+			<td width="20%" >{translate key="rt.context.termToDefine"}</td>
 			<td width="80%" class="value"><input name="searchTerm" value="{$defineTerm|escape}" length="40" class="textField" />
 		</tr>
 	{elseif $context->getAuthorTerms() || $context->getCitedBy()}
 		{foreach from=$article->getAuthors() item=author key=key}
 			<tr valign="top">
-				<td width="20%" class="label" align="right">
+				<td width="20%"  align="right">
 					<input type="checkbox" checked="checked" style="checkbox" name="searchTerm{$key+1}Check" value="1" />
 				</td>
 				<td width="80%" class="value">
@@ -96,12 +96,12 @@
 		{/foreach}
 	{elseif $context->getGeoTerms()}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="rt.context.termToDefine"}</td>
+			<td width="20%" >{translate key="rt.context.termToDefine"}</td>
 			<td width="80%" class="value"><input name="searchTerm" value="{$coverageGeo|escape}" length="40" class="textField" />
 		</tr>
 	{else}
 		<tr valign="top">
-			<td width="20%" class="label">{translate key="rt.context.searchTerms"}</td>
+			<td width="20%" >{translate key="rt.context.searchTerms"}</td>
 			<td width="80%" class="value">
 				{foreach from=$keywords item=keyword name=keywords key=key}
 					<input name="searchTerm{$key+1}" value="{$keyword|trim|escape}" length="40" class="textField" />
@@ -117,7 +117,7 @@
 	<form name="additionalParams">
 	{foreach from=$searchValues key=paramKey item=value}
 		<tr valign="top">
-			<td width="20%" class="label">
+			<td width="20%" >
 				{if $paramKey == 'author'}{translate key="user.role.author"}
 				{elseif $paramKey == 'coverageGeo'}{translate key="article.coverageGeo"}
 				{elseif $paramKey == 'title'}{translate key="article.title"}

@@ -36,7 +36,7 @@
 <table class="data" width="100%">
 {if count($formLocales) > 1}
 	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{if $typeId}{url|assign:"subscriptionTypeUrl" op="editSubscriptionType" path=$typeId escape=false}
 			{else}{url|assign:"subscriptionTypeUrl" op="createSubscriptionType" escape=false}
@@ -47,15 +47,15 @@
 	</tr>
 {/if}
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="name" required="true" key="manager.subscriptionTypes.form.typeName"}</td>
+	<td width="20%" >{fieldLabel name="name" required="true" key="manager.subscriptionTypes.form.typeName"}</td>
 	<td width="80%" class="value"><input type="text" name="name[{$formLocale|escape}]" value="{$name[$formLocale]|escape}" size="35" maxlength="80" id="name" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="description" key="manager.subscriptionTypes.form.description"}</td>
+	<td >{fieldLabel name="description" key="manager.subscriptionTypes.form.description"}</td>
 	<td class="value"><textarea name="description[{$formLocale|escape}]" id="description" cols="40" rows="4" class="textArea">{$description[$formLocale]|escape}</textarea></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="cost" required="true" key="manager.subscriptionTypes.form.cost"}</td>
+	<td >{fieldLabel name="cost" required="true" key="manager.subscriptionTypes.form.cost"}</td>
 	<td class="value">
 		<input type="text" name="cost" value="{$cost|escape}" size="5" maxlength="10" id="cost" class="textField" />
 		<br />
@@ -63,16 +63,16 @@
 	</td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="currency" required="true" key="manager.subscriptionTypes.form.currency"}</td>
+	<td >{fieldLabel name="currency" required="true" key="manager.subscriptionTypes.form.currency"}</td>
 	<td><select name="currency" id="currency" class="selectMenu">{html_options options=$validCurrencies selected=$currency}</select></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="format" required="true" key="manager.subscriptionTypes.form.format"}</td>
+	<td >{fieldLabel name="format" required="true" key="manager.subscriptionTypes.form.format"}</td>
 	<td><select id="format" name="format" class="selectMenu">{html_options options=$validFormats selected=$format}</select></td>
 </tr>
 {if !$typeId}
 <tr valign="top">
-	<td class="label">{fieldLabel name="duration" required="true" key="manager.subscriptionTypes.form.duration"}</td>
+	<td >{fieldLabel name="duration" required="true" key="manager.subscriptionTypes.form.duration"}</td>
 	<td class="value">
 		<input type="radio" name="nonExpiring" id="nonExpiring-0" value="0"{if !$nonExpiring} checked="checked"{/if} />&nbsp;{translate key="manager.subscriptionTypes.form.nonExpiring.expiresAfter"} <input type="text" name="duration" value="{$duration|escape}" size="5" maxlength="10" id="duration" class="textField" /> {translate key="manager.subscriptionTypes.form.nonExpiring.months"}
 	</td>
@@ -85,7 +85,7 @@
 </tr>
 {elseif $typeId && !$nonExpiring}
 <tr valign="top">
-	<td class="label">{fieldLabel name="duration" required="true" key="manager.subscriptionTypes.form.duration"}</td>
+	<td >{fieldLabel name="duration" required="true" key="manager.subscriptionTypes.form.duration"}</td>
 	<td class="value">
 		<input type="text" name="duration" value="{$duration|escape}" size="5" maxlength="10" id="duration" class="textField" />
 		<br />
@@ -95,7 +95,7 @@
 {/if}
 {if !$typeId}
 <tr valign="top">
-	<td class="label">{fieldLabel name="subscriptions" key="manager.subscriptionTypes.form.subscriptions"}</td>
+	<td >{fieldLabel name="subscriptions" key="manager.subscriptionTypes.form.subscriptions"}</td>
 	<td class="value">
 		<input type="radio" name="institutional" id="institutional-0" value="0"{if !$institutional} checked="checked"{/if} />&nbsp;{translate key="manager.subscriptionTypes.form.individual"}
 	</td>
@@ -108,7 +108,7 @@
 </tr>
 {/if}
 <tr valign="top">
-	<td class="label">{fieldLabel name="options" key="manager.subscriptionTypes.form.options"}</td>
+	<td >{fieldLabel name="options" key="manager.subscriptionTypes.form.options"}</td>
 	<td class="value">
 		<input type="checkbox" name="membership" id="membership" value="1"{if $membership} checked="checked"{/if} />&nbsp;{fieldLabel name="membership" key="manager.subscriptionTypes.form.membership"}
 	</td>

@@ -47,7 +47,7 @@
 
 <table class="data" width="100%">
 	<tr valign="top">	
-		<td width="20%" class="label">{fieldLabel name="sectionId" required="true" key="section.section"}</td>
+		<td width="20%" >{fieldLabel name="sectionId" required="true" key="section.section"}</td>
 		<td width="80%" class="value"><select name="sectionId" id="sectionId" size="1" class="selectMenu">{html_options options=$sectionOptions selected=$sectionId}</select></td>
 	</tr>
 </table>
@@ -72,7 +72,7 @@
 
 	<table class="data" width="100%">
 		<tr valign="top">	
-			<td width="20%" class="label">{fieldLabel name="locale" required="true" key="article.language"}</td>
+			<td width="20%" >{fieldLabel name="locale" required="true" key="article.language"}</td>
 			<td width="80%" class="value"><select name="locale" id="locale" size="1" class="selectMenu">{html_options options=$supportedSubmissionLocaleNames selected=$locale}</select></td>
 		</tr>
 	</table>
@@ -166,7 +166,7 @@ function checkSubmissionChecklist() {
 
 <table width="100%" class="data">
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="commentsToEditor" key="author.submit.comments"}</td>
+	<td width="20%" >{fieldLabel name="commentsToEditor" key="author.submit.comments"}</td>
 	<td width="80%" class="value"><textarea name="commentsToEditor" id="commentsToEditor" rows="3" cols="40" class="textArea">{$commentsToEditor|escape}</textarea></td>
 </tr>
 </table>

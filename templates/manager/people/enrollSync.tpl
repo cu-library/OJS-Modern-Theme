@@ -21,7 +21,7 @@
 
 <table class="data" width="100%">
 	<tr valign="top">
-		<td width="20%" class="label"><label for="rolePath">{translate key="manager.people.enrollSyncRole"}</label></td>
+		<td width="20%" ><label for="rolePath">{translate key="manager.people.enrollSyncRole"}</label></td>
 		<td width="80%" class="value">
 			{if $rolePath}
 				<input type="hidden" name="rolePath" value="{$rolePath|escape}" />
@@ -45,7 +45,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><label for="syncJournal">{translate key="manager.people.enrollSyncJournal"}</label></td>
+		<td ><label for="syncJournal">{translate key="manager.people.enrollSyncJournal"}</label></td>
 		<td class="value">
 			<select name="syncJournal" id="syncJournal" size="1" class="selectMenu">
 				<option value=""></option>

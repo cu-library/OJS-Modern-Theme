@@ -16,7 +16,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td class="label">{translate key="editor.article.decision"}</td>
+		<td >{translate key="editor.article.decision"}</td>
 		<td>
 			{if $lastEditorDecision}
 				{assign var="decision" value=$lastEditorDecision.decision}
@@ -27,7 +27,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">
+		<td  width="20%">
 			{translate key="submission.notifyEditor"}
 		</td>
 		<td class="value" width="80%">
@@ -44,7 +44,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">
+		<td  width="20%">
 			{translate key="submission.editorVersion"}
 		</td>
 		<td class="value" width="80%">
@@ -56,7 +56,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">
+		<td  width="20%">
 			{translate key="submission.authorVersion"}
 		</td>
 		<td class="value" width="80%">
@@ -69,7 +69,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">
+		<td  width="20%">
 			{translate key="author.article.uploadAuthorVersion"}
 		</td>
 		<td class="value" width="80%">

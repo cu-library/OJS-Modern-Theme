@@ -24,53 +24,53 @@
 <h3>{translate key="rt.admin.options"}</h3>
 <table width="100%" class="data">
 	<tr valign="top">
-		<td class="label" width="3%"><input type="checkbox" name="abstract" id="abstract" {if $abstract}checked="checked" {/if}/></td>
+		<td  width="3%"><input type="checkbox" name="abstract" id="abstract" {if $abstract}checked="checked" {/if}/></td>
 		<td class="value" width="97%"><label for="abstract">{translate key="rt.admin.settings.abstract"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="authorBio" id="authorBio" {if $authorBio}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="authorBio" id="authorBio" {if $authorBio}checked="checked" {/if}/></td>
 		<td class="value"><label for="authorBio">{translate key="rt.admin.settings.authorBio"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="captureCite" id="captureCite" {if $captureCite}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="captureCite" id="captureCite" {if $captureCite}checked="checked" {/if}/></td>
 		<td class="value">
 			<label for="captureCite">{translate key="rt.admin.settings.captureCite"}</label><br />
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="viewMetadata" id="viewMetadata" {if $viewMetadata}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="viewMetadata" id="viewMetadata" {if $viewMetadata}checked="checked" {/if}/></td>
 		<td class="value"><label for="viewMetadata">{translate key="rt.admin.settings.viewMetadata"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="supplementaryFiles" id="supplementaryFiles" {if $supplementaryFiles}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="supplementaryFiles" id="supplementaryFiles" {if $supplementaryFiles}checked="checked" {/if}/></td>
 		<td class="value"><label for="supplementaryFiles">{translate key="rt.admin.settings.supplementaryFiles"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="printerFriendly" id="printerFriendly" {if $printerFriendly}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="printerFriendly" id="printerFriendly" {if $printerFriendly}checked="checked" {/if}/></td>
 		<td class="value"><label for="printerFriendly">{translate key="rt.admin.settings.printerFriendly"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="defineTerms" id="defineTerms" {if $defineTerms}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="defineTerms" id="defineTerms" {if $defineTerms}checked="checked" {/if}/></td>
 		<td class="value"><label for="defineTerms">{translate key="rt.admin.settings.defineTerms"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="emailOthers" id="emailOthers" {if $emailOthers}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="emailOthers" id="emailOthers" {if $emailOthers}checked="checked" {/if}/></td>
 		<td class="value"><label for="emailOthers">{translate key="rt.admin.settings.emailOthers"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="emailAuthor" id="emailAuthor" {if $emailAuthor}checked="checked" {/if}/></td>
+		<td ><input type="checkbox" name="emailAuthor" id="emailAuthor" {if $emailAuthor}checked="checked" {/if}/></td>
 		<td class="value"><label for="emailAuthor">{translate key="rt.admin.settings.emailAuthor"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="findingReferences" id="findingReferences" value="1"{if $findingReferences} checked="checked"{/if} /></td>
+		<td ><input type="checkbox" name="findingReferences" id="findingReferences" value="1"{if $findingReferences} checked="checked"{/if} /></td>
 		<td class="value"><label for="findingReferences">{translate key="rt.admin.settings.findingReferences"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label"><input type="checkbox" name="enableComments" id="enableComments" value="1"{if $enableComments} checked="checked"{/if} /></td>
+		<td ><input type="checkbox" name="enableComments" id="enableComments" value="1"{if $enableComments} checked="checked"{/if} /></td>
 		<td class="value"><label for="enableComments">{translate key="rt.admin.settings.addComment"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">&nbsp;</td>
+		<td >&nbsp;</td>
 		<td>
 			<input type="radio" name="enableCommentsMode" id="enableCommentsMode-authenticated" value="{$commentsOptions.COMMENTS_AUTHENTICATED|escape}"{if $enableComments==$commentsOptions.COMMENTS_AUTHENTICATED} checked="checked"{/if} />&nbsp;&nbsp;<label for="enableCommentsMode-authenticated">{translate key="rt.admin.settings.addComment.authenticated"}</label><br />
 			<input type="radio" name="enableCommentsMode" id="enableCommentsMode-anonymous" value="{$commentsOptions.COMMENTS_ANONYMOUS|escape}"{if $enableComments==$commentsOptions.COMMENTS_ANONYMOUS} checked="checked"{/if} />&nbsp;&nbsp;<label for="enableCommentsMode-anonymous">{translate key="rt.admin.settings.addComment.anonymous"}</label><br />

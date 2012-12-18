@@ -28,11 +28,11 @@
 
 <table class="data">
 <tr valign="top">
-	<td width="20%" class="label">{fieldLabel name="commentTitle" key="submission.comments.subject"}</td>
+	<td width="20%" >{fieldLabel name="commentTitle" key="submission.comments.subject"}</td>
 	<td width="80%" class="value"><input type="text" id="commentTitle" name="commentTitle" value="{$commentTitle|escape}" size="50" maxlength="255" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="comments" key="submission.comments.comments" required="true"}</td>
+	<td >{fieldLabel name="comments" key="submission.comments.comments" required="true"}</td>
 	<td class="value"><textarea name="comments" id="comments" rows="15" cols="50" class="textArea">{$comments}</textarea></td>
 </tr>
 {if $isPeerReviewComment}

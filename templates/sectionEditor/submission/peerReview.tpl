@@ -13,22 +13,22 @@
 
 <table width="100%" class="data">
 	<tr>
-		<td width="20%" class="label">{translate key="article.authors"}</td>
+		<td width="20%" >{translate key="article.authors"}</td>
 		<td width="80%">
 			{url|assign:"url" page="user" op="email" redirectUrl=$currentUrl to=$submission->getAuthorEmails() subject=$submission->getLocalizedTitle() articleId=$submission->getId()}
 			{$submission->getAuthorString()|escape} {icon name="mail" url=$url}
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="article.title"}</td>
+		<td >{translate key="article.title"}</td>
 		<td>{$submission->getLocalizedTitle()|strip_unsafe_html}</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="section.section"}</td>
+		<td >{translate key="section.section"}</td>
 		<td>{$submission->getSectionTitle()|escape}</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="user.role.editor"}</td>
+		<td >{translate key="user.role.editor"}</td>
 		<td>
 			{assign var=editAssignments value=$submission->getEditAssignments()}
 			{foreach from=$editAssignments item=editAssignment}
@@ -49,7 +49,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">{translate key="submission.reviewVersion"}</td>
+		<td  width="20%">{translate key="submission.reviewVersion"}</td>
 		{if $reviewFile}
 			<td width="80%" class="value">
 				<a href="{url op="downloadFile" path=$submission->getId()|to_array:$reviewFile->getFileId():$reviewFile->getRevision()}" class="file">{$reviewFile->getFileName()|escape}</a>&nbsp;&nbsp;
@@ -73,7 +73,7 @@
 	{foreach from=$suppFiles item=suppFile}
 		<tr valign="top">
 			{if !$notFirstSuppFile}
-				<td class="label" rowspan="{$suppFiles|@count}">{translate key="article.suppFilesAbbrev"}</td>
+				<td  rowspan="{$suppFiles|@count}">{translate key="article.suppFilesAbbrev"}</td>
 				{assign var=notFirstSuppFile value=1}
 			{/if}
 			<td width="80%" class="value nowrap">
@@ -91,7 +91,7 @@
 		</tr>
 	{foreachelse}
 	<tr valign="top">
-		<td class="label">{translate key="article.suppFilesAbbrev"}</td>
+		<td >{translate key="article.suppFilesAbbrev"}</td>
 		<td class="nodata">{translate key="common.none"}</td>
 	</tr>
 {/foreach}
@@ -136,7 +136,7 @@
 
 	<table width="100%" class="data">
  	<tr valign="top">
-		<td class="label">{translate key="submission.reviewForm"}</td>
+		<td >{translate key="submission.reviewForm"}</td>
 		<td>
 		{if $reviewAssignment->getReviewFormId()}
 			{assign var="reviewFormId" value=$reviewAssignment->getReviewFormId()}
@@ -150,7 +150,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="20%">&nbsp;</td>
+		<td  width="20%">&nbsp;</td>
 		<td width="80%">
 			<table width="100%" class="info">
 				<tr>
@@ -201,7 +201,7 @@
 
 	{if $reviewAssignment->getDateConfirmed() && !$reviewAssignment->getDeclined()}
 		<tr valign="top">
-			<td class="label">{translate key="reviewer.article.recommendation"}</td>
+			<td >{translate key="reviewer.article.recommendation"}</td>
 			<td>
 				{if $reviewAssignment->getRecommendation() !== null && $reviewAssignment->getRecommendation() !== ''}
 					{assign var="recommendation" value=$reviewAssignment->getRecommendation()}
@@ -221,13 +221,13 @@
 		</tr>
 		{if $currentJournal->getSetting('requireReviewerCompetingInterests')}
 			<tr valign="top">
-				<td class="label">{translate key="reviewer.competingInterests"}</td>
+				<td >{translate key="reviewer.competingInterests"}</td>
 				<td>{$reviewAssignment->getCompetingInterests()|strip_unsafe_html|nl2br|default:"&mdash;"}</td>
 			</tr>
 		{/if}{* requireReviewerCompetingInterests *}
 		{if $reviewFormResponses[$reviewId]}
 			<tr valign="top">
-				<td class="label">{translate key="submission.reviewFormResponse"}</td>
+				<td >{translate key="submission.reviewFormResponse"}</td>
 				<td>
 					<a href="javascript:openComments('{url op="viewReviewFormResponse" path=$submission->getId()|to_array:$reviewAssignment->getId()}');" class="icon">{icon name="comment"}</a>
 				</td>
@@ -235,7 +235,7 @@
 		{/if}
 		{if !$reviewAssignment->getReviewFormId() || $reviewAssignment->getMostRecentPeerReviewComment()}{* Only display comments link if a comment is entered or this is a non-review form review *}
 			<tr valign="top">
-				<td class="label">{translate key="submission.review"}</td>
+				<td >{translate key="submission.review"}</td>
 				<td>
 					{if $reviewAssignment->getMostRecentPeerReviewComment()}
 						{assign var="comment" value=$reviewAssignment->getMostRecentPeerReviewComment()}
@@ -247,7 +247,7 @@
 			</tr>
 		{/if}
 		<tr valign="top">
-			<td class="label">{translate key="reviewer.article.uploadedFile"}</td>
+			<td >{translate key="reviewer.article.uploadedFile"}</td>
 			<td>
 				<table width="100%" class="data">
 					{foreach from=$reviewAssignment->getReviewerFileRevisions() item=reviewerFile key=key}
@@ -276,7 +276,7 @@
 
 	{if (($reviewAssignment->getRecommendation() === null || $reviewAssignment->getRecommendation() === '') || !$reviewAssignment->getDateConfirmed()) && $reviewAssignment->getDateNotified() && !$reviewAssignment->getDeclined()}
 		<tr valign="top">
-			<td class="label">{translate key="reviewer.article.editorToEnter"}</td>
+			<td >{translate key="reviewer.article.editorToEnter"}</td>
 			<td>
 				{if !$reviewAssignment->getDateConfirmed()}
 					<a href="{url op="confirmReviewForReviewer" path=$submission->getId()|to_array:$reviewAssignment->getId() accept=1}" class="action">{translate key="reviewer.article.canDoReview"}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{url op="confirmReviewForReviewer" path=$submission->getId()|to_array:$reviewAssignment->getId() accept=0}" class="action">{translate key="reviewer.article.cannotDoReview"}</a><br />
@@ -297,7 +297,7 @@
 
 	{if $reviewAssignment->getDateNotified() && !$reviewAssignment->getDeclined() && $rateReviewerOnQuality}
 		<tr valign="top">
-			<td class="label">{translate key="editor.article.rateReviewer"}</td>
+			<td >{translate key="editor.article.rateReviewer"}</td>
 			<td>
 			<form method="post" action="{url op="rateReviewer"}">
 				<input type="hidden" name="reviewId" value="{$reviewAssignment->getId()}" />

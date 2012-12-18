@@ -33,16 +33,16 @@
 
 <table class="data" width="100%">
 	<tr valign="top">
-		<td class="label" width="5%">{fieldLabel name="email" key="user.email"}</td>
+		<td  width="5%">{fieldLabel name="email" key="user.email"}</td>
 		<td class="value" width="45%"><input type="text" id="email" name="email" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label" width="5%">{fieldLabel name="confirmEmail" key="user.confirmEmail"}</td>
+		<td  width="5%">{fieldLabel name="confirmEmail" key="user.confirmEmail"}</td>
 		<td class="value" width="45%"><input type="text" id="confirmEmail" name="confirmEmail" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	{if $captchaEnabled}
 	<tr>
-		<td class="label" valign="top">{fieldLabel name="captcha" required="true" key="common.captchaField"}</td>
+		<td  valign="top">{fieldLabel name="captcha" required="true" key="common.captchaField"}</td>
 		<td class="value">
 			<img src="{url page="user" op="viewCaptcha" path=$captchaId}" alt="{translate key="common.captchaField.altText"}" /><br />
 			<span class="instruct">{translate key="common.captchaField.description"}</span><br />

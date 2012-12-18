@@ -19,7 +19,7 @@
 <div id="layoutEditors">
 <table class="data" width="100%">
 	<tr>
-		<td width="20%" class="label">{translate key="user.role.layoutEditor"}</td>
+		<td width="20%" >{translate key="user.role.layoutEditor"}</td>
 		{if $layoutSignoff->getUserId()}<td width="20%" class="value">{$layoutEditor->getFullName()|escape}</td>{/if}
 		<td class="value"><a href="{url op="assignLayoutEditor" path=$submission->getId()}" class="action">{translate key="submission.layout.assignLayoutEditor"}</a></td>
 	</tr>
