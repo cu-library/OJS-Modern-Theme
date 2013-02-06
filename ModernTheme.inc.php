@@ -41,8 +41,9 @@ class ModernThemePlugin extends ThemePlugin {
 										. DIRECTORY_SEPARATOR 
 										. 'modern' 
 										. DIRECTORY_SEPARATOR 
-										. 'templates';          
-		$templateMgr->clearTemplateCache();		                              
+										. 'templates';   
+											      
+		$templateMgr->compile_id = 'modernTheme';
 	}
 }
 
