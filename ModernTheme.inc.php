@@ -29,21 +29,20 @@ class ModernThemePlugin extends ThemePlugin {
 	}
 	
 	function getDescription() {
-    return 'A more modern, responsive theme for OJS';
-  }
+		return 'A more modern, responsive theme for OJS';
+	}
   
-  function activate(&$templateMgr) {
-    $templateMgr->template_dir[0] = Core::getBaseDir() 
-		                              . DIRECTORY_SEPARATOR 
-		                              . 'plugins' 
-		                              . DIRECTORY_SEPARATOR 
-		                              . 'themes' 
-		                              . DIRECTORY_SEPARATOR 
-		                              . 'modern' 
-		                              . DIRECTORY_SEPARATOR 
-		                              . 'templates';          
-		$templateMgr->clearTemplateCache();
-		                              
+	function activate(&$templateMgr) {
+		$templateMgr->template_dir[0] = Core::getBaseDir() 
+										. DIRECTORY_SEPARATOR 
+										. 'plugins' 
+										. DIRECTORY_SEPARATOR 
+										. 'themes' 
+										. DIRECTORY_SEPARATOR 
+										. 'modern' 
+										. DIRECTORY_SEPARATOR 
+										. 'templates';          
+		$templateMgr->clearTemplateCache();		                              
 	}
 }
 
