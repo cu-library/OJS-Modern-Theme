@@ -7,6 +7,7 @@
 {elseif !$pageCrumbTitleTranslated}
   {assign var="pageCrumbTitleTranslated" value=$pageTitleTranslated}
 {/if}
+{/strip}
 
 {call_hook|assign:"leftSidebarCode" name="Templates::Common::LeftSidebar"}
 {call_hook|assign:"rightSidebarCode" name="Templates::Common::RightSidebar"}
@@ -60,42 +61,70 @@
     <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
     {/if}
 
-    <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/general.js"></script>
-    <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/tag-it.js"></script>
-    <!-- Add javascript required for font sizer -->
-    <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="{$baseUrl}/lib/pkp/js/fontController.js" ></script>
-    <script type="text/javascript">{literal}
-      $(function(){
-        fontSize("#sizer", "body", 9, 16, 32, "{/literal}{$basePath|escape:"javascript"}{literal}"); // Initialize the font sizer
-      });
-    {/literal}</script>
+  <!-- Compiled scripts -->
+  {if $useMinifiedJavaScript}
+    <script type="text/javascript" src="{$baseUrl}/js/pkp.min.js"></script>
+  {else}
+    {include file="common/minifiedScripts.tpl"}
+  {/if}
 
-    <script type="text/javascript">
-      // initialise plugins
-      {literal}
-      $(function(){
-        {/literal}{if $validateId}{literal}
-        jqueryValidatorI18n("{/literal}{$baseUrl}{literal}", "{/literal}{$currentLocale}{literal}"); // include the appropriate validation localization
-          $("form[name={/literal}{$validateId}{literal}]").validate({
-            errorClass: "error",
-            highlight: function(element, errorClass) {
-              $(element).parent().parent().addClass(errorClass);
-            },
-            unhighlight: function(element, errorClass) {
-              $(element).parent().parent().removeClass(errorClass);
-            }
-          });
-        {/literal}{/if}{literal}
+  <script type="text/javascript">{literal}
+    <!--
+    $(function(){
+      fontSize("#sizer", "body", 9, 16, 32, "{/literal}{$basePath|escape:"javascript"}{literal}"); // Initialize the font sizer
+    });
+    // -->
+  {/literal}</script>
+
+  <script type="text/javascript">
+    <!--
+    // initialise plugins
+    {literal}
+    $(function(){
+      {/literal}{if $validateId}{literal}
+      jqueryValidatorI18n("{/literal}{$baseUrl}{literal}", "{/literal}{$currentLocale}{literal}"); // include the appropriate validation localization
+      $("form[name={/literal}{$validateId}{literal}]").validate({
+        errorClass: "error",
+        highlight: function(element, errorClass) {
+          $(element).parent().parent().addClass(errorClass);
+        },
+        unhighlight: function(element, errorClass) {
+          $(element).parent().parent().removeClass(errorClass);
+        }
       });
-      {/literal}
-    </script>
-    {$additionalHeadData}
-    
+      {/literal}{/if}{literal}
+      $(".tagit").live('click', function() {
+        $(this).find('input').focus();
+      });
+    });
+    // -->
+    {/literal}
+  </script>
+
+  {if $hasSystemNotifications}
+    {url|assign:fetchNotificationUrl page='notification' op='fetchNotification' escape=false}
     <script type="text/javascript">
-      var old_jQuery = $.noConflict();
+      $(function(){ldelim}
+        $.get('{$fetchNotificationUrl}', null,
+          function(data){ldelim}
+            var notifications = data.content;
+            var i, l;
+            if (notifications && notifications.general) {ldelim}
+              $.each(notifications.general, function(notificationLevel, notificationList) {ldelim}
+                $.each(notificationList, function(notificationId, notification) {ldelim}
+                  console.log(notification);
+                  $.pnotify(notification);
+                {rdelim});
+              {rdelim});
+            {rdelim}
+        {rdelim}, 'json');
+      {rdelim});
     </script>
-    
+  {/if}{* hasSystemNotifications *}
+
+  {$additionalHeadData}
+
+</head>
   </head>
   <body>
     {include file="common/navbar.tpl"}

@@ -15,6 +15,13 @@
 import('classes.plugins.ThemePlugin');
 
 class ModernThemePlugin extends ThemePlugin {
+
+	var $templateManager;
+
+	function ModernThemePlugin() {
+		parent::ThemePlugin();
+	}
+
 	/**
 	 * Get the name of this plugin. The name must be unique within
 	 * its category.
@@ -33,7 +40,22 @@ class ModernThemePlugin extends ThemePlugin {
 	}
   
 	function activate(&$templateMgr) {
-		$templateMgr->template_dir[0] = Core::getBaseDir() 
+		$this->templateManager = $templateMgr;
+	}
+
+	function register($category, $path) {
+		if (parent::register($category, $path)) {
+			HookRegistry::register(
+				'TemplateManager::display',
+				array(&$this, 'callback')
+			);
+			return true;
+		} 
+		return false;
+	}
+
+	function callback($hookName, $args) { 
+		$this->templateManager->template_dir[0] = Core::getBaseDir() 
 										. DIRECTORY_SEPARATOR 
 										. 'plugins' 
 										. DIRECTORY_SEPARATOR 
@@ -41,10 +63,13 @@ class ModernThemePlugin extends ThemePlugin {
 										. DIRECTORY_SEPARATOR 
 										. 'modern' 
 										. DIRECTORY_SEPARATOR 
-										. 'templates';   
-											      
-		$templateMgr->compile_id = 'modernTheme';
-	}
+										. 'templates';   											      
+		$this->templateManager->compile_id = 'modernTheme';
+		header('Content-Type: ' . $args[2] . '; charset=' . $args[3]);
+		header('Cache-Control: ' . "$this->templateManager->cacheability");
+		$args[4] = $this->templateManager->fetch($args[1], null, null, true);
+		return true; 
+	} 
 }
 
 ?>
