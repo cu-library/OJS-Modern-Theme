@@ -1,4 +1,5 @@
-BETA of Modern. 
+BETA RELEASE, please report bugs to the issue tracker on github. 
+Still MANY css issues to be dealt with. 
 
 This project is a baseline for creating custom themes for OJS instances. 
 
