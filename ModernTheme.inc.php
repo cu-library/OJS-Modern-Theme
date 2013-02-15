@@ -64,12 +64,14 @@ class ModernThemePlugin extends ThemePlugin {
 										. DIRECTORY_SEPARATOR 
 										. 'modern' 
 										. DIRECTORY_SEPARATOR 
-										. 'templates';   											      
+										. 'templates';
+										   											      
 		$this->templateManager->compile_id = 'modernTheme';
 		header('Content-Type: ' . $args[2] . '; charset=' . $args[3]);
 		header('Cache-Control: ' . "$this->templateManager->cacheability");
 		$args[4] = $this->templateManager->fetch($args[1], null, null, true);
 		return true; 
+
 	} 
 }
 
