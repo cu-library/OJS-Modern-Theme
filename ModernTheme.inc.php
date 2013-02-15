@@ -55,6 +55,7 @@ class ModernThemePlugin extends ThemePlugin {
 	}
 
 	function callback($hookName, $args) { 
+
 		$this->templateManager->template_dir[0] = Core::getBaseDir() 
 										. DIRECTORY_SEPARATOR 
 										. 'plugins' 
