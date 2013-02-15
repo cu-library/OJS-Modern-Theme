@@ -1,12 +1,11 @@
 {**
- * completed.tpl
+ * templates/author/completed.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show the details of completed submissions.
  *
- * $Id$
  *}
 <div id="submissions">
 <table class="listing" width="100%">
@@ -22,7 +21,7 @@
 	</tr>
 	<tr><td class="headseparator" colspan="{if $statViews}7{else}6{/if}">&nbsp;</td></tr>
 {iterate from=submissions item=submission}
-	{assign var="articleId" value=$submission->getArticleId()}
+	{assign var="articleId" value=$submission->getId()}
 	<tr valign="top">
 		<td>{$articleId|escape}</td>
 		<td>{$submission->getDateSubmitted()|date_format:$dateFormatTrunc}</td>

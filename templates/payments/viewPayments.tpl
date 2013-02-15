@@ -1,12 +1,11 @@
 {**
- * viewPayments.tpl
+ * templates/payments/viewPayments.tpl
  *
  * Copyright (c) 2006-2009 Gunther Eysenbach, Juan Pablo Alperin, MJ Suhonos
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Table to view all past CompletedPayments
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="common.payments"}
@@ -16,7 +15,7 @@
 <ul class="menu">
 	<li><a href="{url op="payments"}">{translate key="manager.payment.options"}</a></li>
 	<li><a href="{url op="payMethodSettings"}">{translate key="manager.payment.paymentMethods"}</a></li>
-	<li class="current"><a href="{url op="viewPayments"}">{translate key="manager.payment.records"}</a></li>		
+	<li class="current"><a href="{url op="viewPayments"}">{translate key="manager.payment.records"}</a></li>
 </ul>
 
 <br />
@@ -50,14 +49,19 @@
 	{/if}
 	<tr valign="top">
 		<td>
-			<a class="action" href="{url op="userProfile" path=$payment->getUserId()}">{$payment->getUsername()|escape|wordwrap:15:" ":true}</a>
+			{assign var=user value=$userDao->getById($payment->getUserId())}
+			{if $isJournalManager}
+				<a class="action" href="{url op="userProfile" path=$payment->getUserId()}">{$user->getUsername()|escape|wordwrap:15:" ":true}</a>
+			{else}
+				{$user->getUsername()|escape|wordwrap:15:" ":true}
+			{/if}
 		</td>
 		<td>
 			{if $isSubscription}
 				{if $isIndividual}
-					<a href="{url page="subscriptionManager" op="editSubscription" path="individual"|to_array:$subscriptionId}">{$payment->getName()|escape}</a>
+					<a href="{url op="editSubscription" path="individual"|to_array:$subscriptionId}">{$payment->getName()|escape}</a>
 				{elseif $isInstitutional}
-					<a href="{url page="subscriptionManager" op="editSubscription" path="institutional"|to_array:$subscriptionId}">{$payment->getName()|escape}</a>
+					<a href="{url op="editSubscription" path="institutional"|to_array:$subscriptionId}">{$payment->getName()|escape}</a>
 				{else}
 					{$payment->getName()|escape}
 				{/if}
@@ -92,4 +96,3 @@
 </table>
 
 {include file="common/footer.tpl"}
-

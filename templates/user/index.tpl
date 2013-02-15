@@ -1,12 +1,11 @@
 {**
- * index.tpl
+ * templates/user/index.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * User index.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="user.userHome"}
@@ -214,6 +213,11 @@
 	{if $currentJournal}
 		{if $subscriptionsEnabled}
 			<li>&#187; <a href="{url page="user" op="subscriptions"}">{translate key="user.manageMySubscriptions"}</a></li>
+		{/if}
+	{/if}
+	{if $currentJournal}
+		{if $acceptGiftPayments}
+			<li>&#187; <a href="{url page="user" op="gifts"}">{translate key="gifts.manageMyGifts"}</a></li>
 		{/if}
 	{/if}
 	<li>&#187; <a href="{url page="user" op="profile"}">{translate key="user.editMyProfile"}</a></li>

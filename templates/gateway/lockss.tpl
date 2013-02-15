@@ -1,5 +1,5 @@
 {**
- * lockss.tpl
+ * templates/gateway/lockss.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -58,48 +58,48 @@
 
 <table width="100%" class="data">
 <tr valign="top">
-	<td width="20%" >Journal URL</td>
+	<td width="20%" class="label">Journal URL</td>
 	<td width="80%" class="value"><a href="{$journal->getUrl()|escape}">{$journal->getUrl()|escape}</a></td>
 </tr>
 <tr valign="top">
-	<td >Title</td>
+	<td class="label">Title</td>
 	<td class="value">{$journal->getLocalizedTitle()|escape}</td>
 </tr>
 <tr valign="top">
-	<td >Publisher</td>
+	<td class="label">Publisher</td>
 	<td class="value"><a href="{$journal->getSetting('publisherUrl')|escape}">{$journal->getSetting('publisherInstitution')|escape}</a></td>
 </tr>
 <tr valign="top">
-	<td >Description</td>
+	<td class="label">Description</td>
 	<td class="value">{$journal->getLocalizedSetting('searchDescription')|escape}</td>
 </tr>
 <tr valign="top">
-	<td >Keywords</td>
+	<td class="label">Keywords</td>
 	<td class="value">{$journal->getLocalizedSetting('searchKeywords')|escape}</td>
 </tr>
 {if $journal->getSetting('issn')}
 <tr valign="top">
-	<td >ISSN</td>
+	<td class="label">ISSN</td>
 	<td class="value">{$journal->getSetting('issn')|escape}</td>
 </tr>
 {/if}
 <tr valign="top">
-	<td >Language(s)</td>
+	<td class="label">Language(s)</td>
 	<td class="value">{foreach from=$locales key=localeKey item=localeName}{$localeName|escape} ({$localeKey|escape})<br />{/foreach}</td>
 </tr>
 <tr valign="top">
-	<td >Publisher Email</td>
+	<td class="label">Publisher Email</td>
 	<td class="value">{mailto address=$journal->getSetting('contactEmail')|escape encode="hex"}</td>
 </tr>
 {if $journal->getLocalizedSetting('copyrightNotice')}
 <tr valign="top">
-	<td >Copyright</td>
+	<td class="label">Copyright</td>
 	<td class="value">{$journal->getLocalizedSetting('copyrightNotice')|nl2br}</td>
 </tr>
 {/if}
 {if $journal->getLocalizedSetting('openAccessPolicy')}
 <tr valign="top">
-	<td >Rights</td>
+	<td class="label">Rights</td>
 	<td class="value">{$journal->getLocalizedSetting('openAccessPolicy')|nl2br}</td>
 </tr>
 {/if}

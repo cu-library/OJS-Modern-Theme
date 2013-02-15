@@ -1,12 +1,11 @@
 {**
- * step4.tpl
+ * templates/author/submit/step4.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Step 4 of author article submission.
  *
- * $Id$
  *}
 {assign var="pageTitle" value="author.submit.step4"}
 {include file="author/submit/submitHeader.tpl"}
@@ -15,7 +14,7 @@
 {literal}
 <!--
 function confirmForgottenUpload() {
-	var fieldValue = document.submitForm.uploadSuppFile.value;
+	var fieldValue = document.getElementById('submitForm').uploadSuppFile.value;
 	if (fieldValue) {
 		return confirm("{/literal}{translate key="author.submit.forgottenSubmitSuppFile"}{literal}");
 	}
@@ -25,7 +24,7 @@ function confirmForgottenUpload() {
 {/literal}
 </script>
 
-<form name="submitForm" method="post" action="{url op="saveSubmit" path=$submitStep}" enctype="multipart/form-data">
+<form id="submitForm" method="post" action="{url op="saveSubmit" path=$submitStep}" enctype="multipart/form-data">
 <input type="hidden" name="articleId" value="{$articleId|escape}" />
 {include file="common/formErrors.tpl"}
 
@@ -64,7 +63,7 @@ function confirmForgottenUpload() {
 
 <table class="data" width="100%">
 <tr>
-	<td width="30%" >{fieldLabel name="uploadSuppFile" key="author.submit.uploadSuppFile"}</td>
+	<td width="30%" class="label">{fieldLabel name="uploadSuppFile" key="author.submit.uploadSuppFile"}</td>
 	<td width="70%" class="value">
 		<input type="file" name="uploadSuppFile" id="uploadSuppFile"  class="uploadField" /> <input name="submitUploadSuppFile" type="submit" class="button" value="{translate key="common.upload"}" />
 		{if $currentJournal->getSetting('showEnsuringLink')}<a class="action" href="javascript:openHelp('{get_help_id key="editorial.sectionEditorsRole.review.blindPeerReview" url="true"}')">{translate key="reviewer.article.ensuringBlindReview"}</a>{/if}

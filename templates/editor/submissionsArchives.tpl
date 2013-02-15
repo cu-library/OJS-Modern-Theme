@@ -1,12 +1,11 @@
 {**
- * submissionsArchives.tpl
+ * templates/editor/submissionsArchives.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show listing of submission archives.
  *
- * $Id$
  *}
 <div id="submissions">
 <table width="100%" class="listing">
@@ -26,7 +25,7 @@
 	</tr>
 	
 	{iterate from=submissions item=submission}
-	{assign var="articleId" value=$submission->getArticleId()}
+	{assign var="articleId" value=$submission->getId()}
 
 	<tr valign="top" {if $submission->getFastTracked()} class="fastTracked"{/if}>
 		<td>{$articleId|escape}</td>

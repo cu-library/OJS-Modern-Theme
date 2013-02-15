@@ -1,12 +1,11 @@
 {**
- * active.tpl
+ * templates/copyeditor/active.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show copyeditor's active submissions.
  *
- * $Id$
  *}
 <div id="submissions">
 <table class="listing" width="100%">
@@ -23,7 +22,7 @@
 
 {iterate from=submissions item=submission}
 	{assign var="copyeditingInitialSignoff" value=$submission->getSignoff('SIGNOFF_COPYEDITING_INITIAL')}
-	{assign var="articleId" value=$submission->getArticleId()}
+	{assign var="articleId" value=$submission->getId()}
 	<tr valign="top">
 		<td>{$articleId|escape}</td>
 		<td>{$copyeditingInitialSignoff->getDateNotified()|date_format:$dateFormatTrunc}</td>

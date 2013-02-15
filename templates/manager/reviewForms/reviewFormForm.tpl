@@ -1,5 +1,5 @@
 {**
- * reviewFormForm.tpl
+ * templates/manager/reviewForms/reviewFormForm.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -21,7 +21,7 @@
 
 <br/>
 
-<form name="reviewFormForm" method="post" action="{url op="updateReviewForm"}">
+<form id="reviewFormForm" method="post" action="{url op="updateReviewForm"}">
 {if $reviewFormId}
 	<input type="hidden" name="reviewFormId" value="{$reviewFormId}"/>
 {/if}
@@ -31,7 +31,7 @@
 <table class="data" width="100%">
 {if count($formLocales) > 1}
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{if $reviewFormId}{url|assign:"reviewFormFormUrl" op="editReviewForm" path=$reviewFormId escape=false}
 			{else}{url|assign:"reviewFormFormUrl" op="createReviewForm" escape=false}
@@ -42,11 +42,11 @@
 	</tr>
 {/if}
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="title" required="true" key="manager.reviewForms.title"}</td>
+	<td width="20%" class="label">{fieldLabel name="title" required="true" key="manager.reviewForms.title"}</td>
 	<td width="80%" class="value"><input type="text" name="title[{$formLocale|escape}]" value="{$title[$formLocale]|escape}" id="title" size="40" maxlength="120" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="description" key="manager.reviewForms.description"}</td>
+	<td class="label">{fieldLabel name="description" key="manager.reviewForms.description"}</td>
 	<td class="value"><textarea name="description[{$formLocale|escape}]" rows="4" cols="40" id="description" class="textArea">{$description[$formLocale]|escape}</textarea></td>
 </tr>
 </table>

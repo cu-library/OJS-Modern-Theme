@@ -1,5 +1,5 @@
 {**
- * submission.tpl
+ * templates/proofreader/submission.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -7,10 +7,9 @@
  * Show the details of a submission.
  *
  *
- * $Id$
  *}
 {strip}
-{translate|assign:"pageTitleTranslated" key="submission.page.editing" id=$submission->getArticleId()}
+{translate|assign:"pageTitleTranslated" key="submission.page.editing" id=$submission->getId()}
 {assign var="pageCrumbTitle" value="submission.editing"}
 {include file="common/header.tpl"}
 {/strip}

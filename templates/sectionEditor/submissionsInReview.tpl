@@ -1,12 +1,11 @@
 {**
- * submissionsInReview.tpl
+ * templates/sectionEditor/submissionsInReview.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show section editor's submissions in review.
  *
- * $Id$
  *}
 <div id="submissions">
 <table width="100%" class="listing">

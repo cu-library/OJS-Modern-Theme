@@ -1,12 +1,11 @@
 {**
- * backIssues.tpl
+ * templates/layoutEditor/backIssues.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Listings of back issues
  *
- * $Id$
  *}
 {assign var="pageTitle" value="editor.issues.backIssues"}
 {url|assign:"currentUrl" page="editor" op="backIssues"}{include file="common/header.tpl"}

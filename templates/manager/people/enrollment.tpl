@@ -1,19 +1,18 @@
 {**
- * enrollment.tpl
+ * templates/manager/people/enrollment.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * List enrolled users.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.people.enrollment"}
 {include file="common/header.tpl"}
 {/strip}
 
-<form name="disableUser" method="post" action="{url op="disableUser"}">
+<form id="disableUser" method="post" action="{url op="disableUser"}">
 	<input type="hidden" name="reason" value=""/>
 	<input type="hidden" name="userId" value=""/>
 </form>
@@ -22,7 +21,7 @@
 {literal}
 <!--
 function toggleChecked() {
-	var elements = document.people.elements;
+	var elements = document.getElementById('people').elements;
 	for (var i=0; i < elements.length; i++) {
 		if (elements[i].name == 'bcc[]') {
 			elements[i].checked = !elements[i].checked;
@@ -34,10 +33,10 @@ function confirmAndPrompt(userId) {
 	var reason = prompt('{/literal}{translate|escape:"javascript" key="manager.people.confirmDisable"}{literal}');
 	if (reason == null) return;
 
-	document.disableUser.reason.value = reason;
-	document.disableUser.userId.value = userId;
+	document.getElementById('disableUser').reason.value = reason;
+	document.getElementById('disableUser').userId.value = userId;
 
-	document.disableUser.submit();
+	document.getElementById('disableUser').submit();
 }
 // -->
 {/literal}
@@ -102,7 +101,7 @@ function confirmAndPrompt(userId) {
 <p><a href="{url path="all"}" class="action">{translate key="manager.people.allUsers"}</a></p>
 {/if}
 
-<form name="people" action="{url page="user" op="email"}" method="post">
+<form id="people" action="{url page="user" op="email"}" method="post">
 <input type="hidden" name="redirectUrl" value="{url path=$roleSymbolic}"/>
 
 <div id="users">

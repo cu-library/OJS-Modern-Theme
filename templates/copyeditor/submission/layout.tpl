@@ -1,5 +1,5 @@
 {**
- * layout.tpl
+ * templates/copyeditor/submission/layout.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -17,7 +17,7 @@
 <div id="layoutEditors">
 <table width="100%" class="data">
 	<tr>
-		<td  width="20%">{translate key="user.role.layoutEditor"}</td>
+		<td class="label" width="20%">{translate key="user.role.layoutEditor"}</td>
 		<td class="value" width="80%">{if $layoutSignoff->getUserId()}{$layoutEditor->getFullName()|escape}{else}{translate key="common.none"}{/if}</td>
 	</tr>
 </table>

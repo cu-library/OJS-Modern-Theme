@@ -1,12 +1,11 @@
 {**
- * completed.tpl
+ * templates/layoutEditor/completed.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show layout editor's submission archive.
  *
- * $Id$
  *}
 {if !$dateFrom}
 {assign var="dateFrom" value="--"}
@@ -20,16 +19,17 @@
 {literal}
 <!--
 function sortSearch(heading, direction) {
-  document.submit.sort.value = heading;
-  document.submit.sortDirection.value = direction;
-  document.submit.submit() ;
+  	var submitForm = document.getElementById('submit');
+	submitForm.sort.value = heading;
+	submitForm.sortDirection.value = direction;
+	submitForm.submit();
 }
 // -->
 {/literal}
-</script> 
+</script>
 
 <div id="search">
-<form method="post" name="submit" action="{url op="submissions" path=$pageToDisplay}">
+<form method="post" id="submit" action="{url op="submissions" path=$pageToDisplay}">
 	<select name="searchField" size="1" class="selectMenu">
 		{html_options_translate options=$fieldOptions selected=$searchField}
 	</select>
@@ -72,7 +72,7 @@ function sortSearch(heading, direction) {
 	</tr>
 	<tr><td colspan="7" class="headseparator">&nbsp;</td></tr>
 {iterate from=submissions item=submission}
-	{assign var="articleId" value=$submission->getArticleId()}
+	{assign var="articleId" value=$submission->getId()}
 	{assign var="layoutSignoff" value=$submission->getSignoff('SIGNOFF_LAYOUT')}
 
 	<tr valign="top">
@@ -89,9 +89,9 @@ function sortSearch(heading, direction) {
 			{elseif $status == STATUS_QUEUED}
 				{translate key="submissions.queued"}
 			{elseif $status == STATUS_PUBLISHED}
-				{print_issue_id articleId="$articleId"}			
+				{print_issue_id articleId="$articleId"}
 			{elseif $status == STATUS_DECLINED}
-				{translate key="submissions.declined"}								
+				{translate key="submissions.declined"}
 			{/if}
 		</td>
 	</tr>

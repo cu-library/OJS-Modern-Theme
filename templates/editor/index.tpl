@@ -1,12 +1,11 @@
 {**
- * index.tpl
+ * templates/editor/index.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Editor index.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="editor.home"}
@@ -40,15 +39,16 @@
 {literal}
 <!--
 function sortSearch(heading, direction) {
-  document.submit.sort.value = heading;
-  document.submit.sortDirection.value = direction;
-  document.submit.submit() ;
+	var submitForm = document.getElementById('submit');
+	submitForm.sort.value = heading;
+	submitForm.sortDirection.value = direction;
+	submitForm.submit();
 }
 // -->
 {/literal}
-</script> 
+</script>
 
-<form method="post" name="submit" action="{url path="search"}">
+<form method="post" id="submit" action="{url path="search"}">
 	{if $section}<input type="hidden" name="section" value="{$section|escape:"quotes"}"/>{/if}
 	<input type="hidden" name="sort" value="id"/>
 	<input type="hidden" name="sortDirection" value="ASC"/>
@@ -95,22 +95,22 @@ function sortSearch(heading, direction) {
 	<tr>
 		<td colspan="6" class="headseparator">&nbsp;</td>
 	</tr>
-	
+
 	{iterate from=submissions item=submission}
 	{assign var="highlightClass" value=$submission->getHighlightClass()}
 	{assign var="fastTracked" value=$submission->getFastTracked()}
 	<tr valign="top"{if $highlightClass || $fastTracked} class="{$highlightClass|escape} {if $fastTracked}fastTracked{/if}"{/if}>
-		<td>{$submission->getArticleId()}</td>
+		<td>{$submission->getId()}</td>
 		<td>{$submission->getDateSubmitted()|date_format:$dateFormatTrunc}</td>
 		<td>{$submission->getSectionAbbrev()|escape}</td>
 		<td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td>
-		<td><a href="{url op="submission" path=$submission->getArticleId()}" class="action">{$submission->getLocalizedTitle()|strip_tags|truncate:60:"..."}</a></td>
+		<td><a href="{url op="submission" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_tags|truncate:60:"..."}</a></td>
 		<td align="right">
 			{assign var="status" value=$submission->getSubmissionStatus()}
 			{if $status == STATUS_ARCHIVED}
 				{translate key="submissions.archived"}
 			{elseif $status == STATUS_PUBLISHED}
-				{print_issue_id articleId=$submission->getArticleId()}	
+				{print_issue_id articleId=$submission->getId()}
 			{elseif $status == STATUS_DECLINED}
 				{translate key="submissions.declined"}&nbsp;&nbsp;<a href="{url op="deleteSubmission" path=$articleId}" onclick="return confirm('{translate|escape:"jsparam" key="editor.submissionArchive.confirmDelete"}')" class="action">{translate key="common.delete"}</a>
 			{elseif $status==STATUS_QUEUED_UNASSIGNED}{translate key="submissions.queuedUnassigned"}

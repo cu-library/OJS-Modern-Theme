@@ -1,12 +1,11 @@
 {**
- * individualSubscriptionForm.tpl
+ * templates/subscription/individualSubscriptionForm.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Individual subscription form under journal management.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageCrumbTitle" value="$subscriptionTitle"}
@@ -23,7 +22,7 @@
 
 <br/>
 
-<form method="post" name="subscriptionForm" action="{url op="updateSubscription" path="individual"}">
+<form method="post" id="subscriptionForm" action="{url op="updateSubscription" path="individual"}">
 {if $subscriptionId}
 <input type="hidden" name="subscriptionId" value="{$subscriptionId|escape}" />
 {/if}
@@ -33,7 +32,7 @@
 <table class="data" width="100%">
 {if count($formLocales) > 1}
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{if $subscriptionId}
 				{url|assign:"formUrl" op="editSubscription" path="individual"|to_array:$subscriptionId userId=$userId escape=false}
@@ -63,7 +62,7 @@
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="userId" required="true" key="manager.subscriptions.form.userId"}</td>
+	<td width="20%" class="label">{fieldLabel name="userId" required="true" key="manager.subscriptions.form.userId"}</td>
 	<td width="80%" class="value">
 		{assign var=emailString value="$userFullName <$userEmail>"}
 		{url|assign:"url" page="user" op="email" to=$emailString|to_array redirectUrl=$currentUrl}
@@ -80,7 +79,7 @@
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="notes" key="manager.subscriptions.form.notes"}</td>
+	<td width="20%" class="label">{fieldLabel name="notes" key="manager.subscriptions.form.notes"}</td>
 	<td width="80%" class="value"><textarea name="notes" id="notes" cols="40" rows="6" class="textArea">{$notes|escape}</textarea></td>
 </tr>
 </table>

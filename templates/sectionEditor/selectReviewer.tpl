@@ -1,12 +1,11 @@
 {**
- * selectReviewer.tpl
+ * templates/sectionEditor/selectReviewer.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * List reviewers and give the ability to select a reviewer.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="user.role.reviewers"}
@@ -17,9 +16,10 @@
 {literal}
 <!--
 function sortSearch(heading, direction) {
-  document.submit.sort.value = heading;
-  document.submit.sortDirection.value = direction;
-  document.submit.submit() ;
+	var submitForm = document.getElementById('submit');
+	submitForm.sort.value = heading;
+	submitForm.sortDirection.value = direction;
+	submitForm.submit();
 }
 // -->
 {/literal}
@@ -27,7 +27,7 @@ function sortSearch(heading, direction) {
 
 <div id="selectReviewer">
 <h3>{translate key="editor.article.selectReviewer"}</h3>
-<form name="submit" method="post" action="{url op="selectReviewer" path=$articleId}">
+<form id="submit" method="post" action="{url op="selectReviewer" path=$articleId}">
 	<input type="hidden" name="sort" value="name"/>
 	<input type="hidden" name="sortDirection" value="ASC"/>
 	<select name="searchField" size="1" class="selectMenu">
@@ -97,7 +97,11 @@ function sortSearch(heading, direction) {
 	<td>{$reviewerStats.incomplete|default:0}</td>
 	<td>
 		{if $reviewer->review_id}
-			{translate key="common.alreadyAssigned"}
+			{if $reviewer->declined}
+				<a class="action" href="{url op="reassignReviewer" path=$articleId|to_array:$reviewer->getUserId()}">{translate key="editor.reassign"}</a>
+			{else}
+				{translate key="common.alreadyAssigned"}
+			{/if}
 		{else}
 		<a class="action" href="{url op="selectReviewer" path=$articleId|to_array:$reviewer->getId()}">{translate key="common.assign"}</a>
 		{/if}

@@ -1,12 +1,11 @@
 {**
- * submissions.tpl
+ * templates/editor/submissions.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Editor submissions page(s).
  *
- * $Id$
  *}
 {strip}
 {strip}
@@ -42,15 +41,16 @@
 {literal}
 <!--
 function sortSearch(heading, direction) {
-  document.submit.sort.value = heading;
-  document.submit.sortDirection.value = direction;
-  document.submit.submit() ;
+ 	var submitForm = document.getElementById('submit');
+	submitForm.sort.value = heading;
+	submitForm.sortDirection.value = direction;
+	submitForm.submit();
 }
 // -->
 {/literal}
-</script> 
+</script>
 
-<form method="post" name="submit" action="{url op="submissions" path=$pageToDisplay}">
+<form method="post" id="submit" action="{url op="submissions" path=$pageToDisplay}">
 	<input type="hidden" name="sort" value="id"/>
 	<input type="hidden" name="sortDirection" value="ASC"/>
 	<select name="searchField" size="1" class="selectMenu">
@@ -85,6 +85,12 @@ function sortSearch(heading, direction) {
 <div id="notes">
 <h4>{translate key="common.notes"}</h4>
 {translate key="editor.submissionReview.notes"}
+</div>
+{elseif ($pageToDisplay == "submissionsInEditing")}
+<br />
+<div id="notes">
+<h4>{translate key="common.notes"}</h4>
+{translate key="editor.submissionEditing.notes"}
 </div>
 {/if}
 

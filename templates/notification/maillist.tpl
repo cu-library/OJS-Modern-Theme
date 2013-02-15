@@ -1,5 +1,5 @@
 {**
- * index.tpl
+ * templates/notification/maillist.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -33,16 +33,16 @@
 
 <table class="data" width="100%">
 	<tr valign="top">
-		<td  width="5%">{fieldLabel name="email" key="user.email"}</td>
+		<td class="label" width="5%">{fieldLabel name="email" key="user.email"}</td>
 		<td class="value" width="45%"><input type="text" id="email" name="email" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td  width="5%">{fieldLabel name="confirmEmail" key="user.confirmEmail"}</td>
+		<td class="label" width="5%">{fieldLabel name="confirmEmail" key="user.confirmEmail"}</td>
 		<td class="value" width="45%"><input type="text" id="confirmEmail" name="confirmEmail" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	{if $captchaEnabled}
 	<tr>
-		<td  valign="top">{fieldLabel name="captcha" required="true" key="common.captchaField"}</td>
+		<td class="label" valign="top">{fieldLabel name="captcha" required="true" key="common.captchaField"}</td>
 		<td class="value">
 			<img src="{url page="user" op="viewCaptcha" path=$captchaId}" alt="{translate key="common.captchaField.altText"}" /><br />
 			<span class="instruct">{translate key="common.captchaField.description"}</span><br />

@@ -1,5 +1,5 @@
 {**
- * citationEditor.tpl
+ * templates/citation/citationEditor.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -98,7 +98,7 @@
 			// Feature to disable introduction message.
 			$('#introductionHide').click(function() {ldelim}
 				$.getJSON(
-					'{url router=$smarty.const.ROUTE_COMPONENT component="api.user.UserApiHandler" op="setUserSetting"}?setting-name=citation-editor-hide-intro&setting-value='+($(this).attr('checked')===true ? 'true' : 'false'),
+					'{url router=$smarty.const.ROUTE_COMPONENT component="api.user.UserApiHandler" op="updateUserMessageState"}?setting-name=citation-editor-hide-intro&setting-value='+($(this).attr('checked')===true ? 'true' : 'false'),
 					function(jsonData) {ldelim}
 						if (jsonData.status !== true) {ldelim}
 							alert(jsonData.content);

@@ -1,5 +1,5 @@
 {**
- * reviewFormElementForm.tpl
+ * templates/manager/reviewForms/reviewFormElementForm.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -18,12 +18,12 @@
 <!--
 function togglePossibleResponses(newValue, multipleResponsesElementTypesString) {
 	if (multipleResponsesElementTypesString.indexOf(';'+newValue+';') != -1) {
-		document.reviewFormElementForm.addResponse.disabled=false;
+		document.getElementById('reviewFormElementForm').addResponse.disabled=false;
 	} else {
-		if (document.reviewFormElementForm.addResponse.disabled == false) {
+		if (document.getElementById('reviewFormElementForm').addResponse.disabled == false) {
 			alert({/literal}'{translate|escape:"jsparam" key="manager.reviewFormElement.changeType"}'{literal});
 		}
-		document.reviewFormElementForm.addResponse.disabled=true;
+		document.getElementById('reviewFormElementForm').addResponse.disabled=true;
 	}
 }
 // -->
@@ -31,7 +31,7 @@ function togglePossibleResponses(newValue, multipleResponsesElementTypesString) 
 </script>
 
 <br/>
-<form name="reviewFormElementForm" method="post" action="{url op="updateReviewFormElement" anchor="possibleResponses"}">
+<form id="reviewFormElementForm" method="post" action="{url op="updateReviewFormElement" anchor="possibleResponses"}">
 	<input type="hidden" name="reviewFormId" value="{$reviewFormId}"/>
 	<input type="hidden" name="reviewFormElementId" value="{$reviewFormElementId}"/>
 
@@ -40,7 +40,7 @@ function togglePossibleResponses(newValue, multipleResponsesElementTypesString) 
 <table class="data" width="100%">
 {if count($formLocales) > 1}
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{if $reviewFormElementId}{url|assign:"reviewFormElementFormUrl" op="editReviewFormElement" path=$reviewFormId|to_array:$reviewFormElementId escape=false}
 			{else}{url|assign:"reviewFormElementFormUrl" op="createReviewFormElement" path=$reviewFormId escape=false}
@@ -51,7 +51,7 @@ function togglePossibleResponses(newValue, multipleResponsesElementTypesString) 
 	</tr>
 {/if}
 <tr valign="top">
-	<td >{fieldLabel name="question" required="true" key="manager.reviewFormElements.question"}</td>
+	<td class="label">{fieldLabel name="question" required="true" key="manager.reviewFormElements.question"}</td>
 	<td class="value"><textarea name="question[{$formLocale|escape}]" rows="4" cols="40" id="question" class="textArea">{$question[$formLocale]|escape}</textarea></td>
 </tr>
 <tr valign="top">
@@ -69,13 +69,13 @@ function togglePossibleResponses(newValue, multipleResponsesElementTypesString) 
 	</td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="elementType" required="true" key="manager.reviewFormElements.elementType"}</td>
+	<td class="label">{fieldLabel name="elementType" required="true" key="manager.reviewFormElements.elementType"}</td>
 	<td class="value">
 		<select name="elementType" id="elementType" class="selectMenu" size="1" onchange="togglePossibleResponses(this.options[this.selectedIndex].value, '{$multipleResponsesElementTypesString}')">{html_options_translate options=$reviewFormElementTypeOptions selected=$elementType}</select>
 	</td>
 </tr>
 <tr valign="top">
-	<td >&nbsp;</td>
+	<td class="label">&nbsp;</td>
 	<td class="value">
 		<a name="possibleResponses"></a>
 		{foreach name=responses from=$possibleResponses[$formLocale] key=responseId item=responseItem}
@@ -88,7 +88,7 @@ function togglePossibleResponses(newValue, multipleResponsesElementTypesString) 
 				</tr>
 			{/if}
 				<tr valign="top">
-					<td width="5%" ><input type="text" name="possibleResponses[{$formLocale|escape}][{$responseId|escape}][order]" value="{$responseItem.order|escape}" size="3" maxlength="2" class="textField" /></td>
+					<td width="5%" class="label"><input type="text" name="possibleResponses[{$formLocale|escape}][{$responseId|escape}][order]" value="{$responseItem.order|escape}" size="3" maxlength="2" class="textField" /></td>
 					<td class="value"><textarea name="possibleResponses[{$formLocale|escape}][{$responseId|escape}][content]" id="possibleResponses-{$responseId}" rows="3" cols="40" class="textArea">{$responseItem.content|escape}</textarea></td>
 					<td width="100%"><input type="submit" name="delResponse[{$responseId}]" value="{translate key="common.delete"}" class="button" /></td>
 				</tr>

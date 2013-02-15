@@ -1,12 +1,11 @@
 {**
- * metadata.tpl
+ * templates/rt/metadata.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Article reading tools -- article metadata page.
  *
- * $Id$
  *}
 {strip}
 {assign var=pageTitle value="rt.viewMetadata"}
@@ -86,7 +85,7 @@
 	<td>6.</td>
 	<td>{translate key="rt.metadata.dublinCore.contributor"}</td>
 	<td>{translate key="rt.metadata.pkp.sponsors"}</td>
-	<td>{$article->getArticleSponsor()|escape}</td>
+	<td>{$article->getLocalizedSponsor()|escape}</td>
 </tr>
 <tr><td colspan="4" class="separator">&nbsp;</td></tr>
 <tr valign="top">
@@ -137,21 +136,23 @@
 	<td>{translate key="rt.metadata.pkp.uri"}</td>
 	<td><a target="_new" href="{url page="article" op="view" path=$articleId}">{url page="article" op="view" path=$articleId}</a></td>
 </tr>
-{if $issue->getPublished()}
-	{assign var=doi value=$article->getDOI()}
-{else}
-	{assign var=doi value=$article->getDOI(true)}{* Don't affix DOI *}
-{/if}
-{if $doi}
 <tr><td colspan="4" class="separator">&nbsp;</td></tr>
-<tr valign="top">
-	<td>10.</td>
-	<td>{translate key="rt.metadata.dublinCore.identifier"}</td>
-	<td>{translate key="rt.metadata.pkp.doi"}</td>
-	<td>{$doi|escape}</a></td>
-</tr>
-<tr><td colspan="4" class="separator">&nbsp;</td></tr>
-{/if}
+{foreach from=$pubIdPlugins item=pubIdPlugin}
+	{if $issue->getPublished()}
+		{assign var=pubId value=$pubIdPlugin->getPubId($article)}
+	{else}
+		{assign var=pubId value=$pubIdPlugin->getPubId($article, true)}{* Preview rather than assign a pubId *}
+	{/if}
+	{if $pubId}
+		<tr valign="top">
+			<td>10.</td>
+			<td>{translate key="rt.metadata.dublinCore.identifier"}</td>
+			<td>{$pubIdPlugin->getPubIdFullName()|escape}</td>
+			<td>{$pubId|escape}</a></td>
+		</tr>
+		<tr><td colspan="4" class="separator">&nbsp;</td></tr>
+	{/if}
+{/foreach}
 <tr valign="top">
 	<td>11.</td>
 	<td>{translate key="rt.metadata.dublinCore.source"}</td>

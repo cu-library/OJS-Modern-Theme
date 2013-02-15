@@ -1,12 +1,11 @@
 {**
- * rounds.tpl
+ * templates/sectionEditor/submission/rounds.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate displaying past rounds for a submission.
  *
- * $Id$
  *}
 <div id="rounds">
 <div id="regretsAndCancels">
@@ -63,11 +62,11 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td  width="20%">{translate key="submission.reviewVersion"}</td>
+		<td class="label" width="20%">{translate key="submission.reviewVersion"}</td>
 		<td class="value" width="80%">
 			{assign var="reviewFile" value=$reviewFilesByRound[$roundPlusOne]}
 			{if $reviewFile}
-				<a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$reviewFile->getFileId():$reviewFile->getRevision()}" class="file">{$reviewFile->getFileName()|escape}</a>&nbsp;&nbsp;{$reviewFile->getDateModified()|date_format:$dateFormatShort}
+				<a href="{url op="downloadFile" path=$submission->getId()|to_array:$reviewFile->getFileId():$reviewFile->getRevision()}" class="file">{$reviewFile->getFileName()|escape}</a>&nbsp;&nbsp;{$reviewFile->getDateModified()|date_format:$dateFormatShort}
 			{else}
 				{translate key="common.none"}
 			{/if}
@@ -76,8 +75,9 @@
 </table>
 </div>
 {assign var="start" value="A"|ord}
+{assign var=reviewKey value=0}
 
-{foreach from=$roundAssignments item=reviewAssignment key=reviewKey}
+{foreach from=$roundAssignments item=reviewAssignment}
 {assign var="reviewId" value=$reviewAssignment->getId()}
 
 {if !$reviewAssignment->getCancelled()}
@@ -137,34 +137,34 @@
 	</tr>
 	{if $reviewFormResponses[$reviewId]}
 		<tr valign="top">
-			<td >{translate key="submission.reviewFormResponse"}</td>
+			<td class="label">{translate key="submission.reviewFormResponse"}</td>
 			<td>
-				<a href="javascript:openComments('{url op="viewReviewFormResponse" path=$submission->getArticleId()|to_array:$reviewAssignment->getId()}');" class="icon">{icon name="letter"}</a>
+				<a href="javascript:openComments('{url op="viewReviewFormResponse" path=$submission->getId()|to_array:$reviewAssignment->getId()}');" class="icon">{icon name="letter"}</a>
 			</td>
 		</tr>
 	{/if}
 	<tr valign="top">
-		<td >{translate key="reviewer.article.reviewerComments"}</td>
+		<td class="label">{translate key="reviewer.article.reviewerComments"}</td>
 		<td colspan="4">
 			{if $reviewAssignment->getMostRecentPeerReviewComment()}
 				{assign var="comment" value=$reviewAssignment->getMostRecentPeerReviewComment()}
-				<a href="javascript:openComments('{url op="viewPeerReviewComments" path=$submission->getArticleId()|to_array:$reviewAssignment->getId() anchor=$comment->getId()}');" class="icon">{icon name="comment"}</a> {$comment->getDatePosted()|date_format:$dateFormatShort}
+				<a href="javascript:openComments('{url op="viewPeerReviewComments" path=$submission->getId()|to_array:$reviewAssignment->getId() anchor=$comment->getId()}');" class="icon">{icon name="comment"}</a> {$comment->getDatePosted()|date_format:$dateFormatShort}
 			{else}
-				<a href="javascript:openComments('{url op="viewPeerReviewComments" path=$submission->getArticleId()|to_array:$reviewAssignment->getId()}');" class="icon">{icon name="comment"}</a>{translate key="common.noComments"}
+				<a href="javascript:openComments('{url op="viewPeerReviewComments" path=$submission->getId()|to_array:$reviewAssignment->getId()}');" class="icon">{icon name="comment"}</a>{translate key="common.noComments"}
 			{/if}
 		</td>
 	</tr>
  	<tr valign="top">
-		<td >{translate key="reviewer.article.uploadedFile"}</td>
+		<td class="label">{translate key="reviewer.article.uploadedFile"}</td>
 		<td colspan="4">
 			<table width="100%" class="data">
 				{foreach from=$reviewAssignment->getReviewerFileRevisions() item=reviewerFile key=key}
 				<tr valign="top">
 					<td valign="middle">
-						<form name="authorView{$reviewAssignment->getId()}" method="post" action="{url op="makeReviewerFileViewable"}">
-							<a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$reviewerFile->getFileId():$reviewerFile->getRevision()}" class="file">{$reviewerFile->getFileName()|escape}</a>&nbsp;&nbsp;{$reviewerFile->getDateModified()|date_format:$dateFormatShort}
+						<form id="authorView{$reviewAssignment->getId()}" method="post" action="{url op="makeReviewerFileViewable"}">
+							<a href="{url op="downloadFile" path=$submission->getId()|to_array:$reviewerFile->getFileId():$reviewerFile->getRevision()}" class="file">{$reviewerFile->getFileName()|escape}</a>&nbsp;&nbsp;{$reviewerFile->getDateModified()|date_format:$dateFormatShort}
 							<input type="hidden" name="reviewId" value="{$reviewAssignment->getId()}" />
-							<input type="hidden" name="articleId" value="{$submission->getArticleId()}" />
+							<input type="hidden" name="articleId" value="{$submission->getId()}" />
 							<input type="hidden" name="fileId" value="{$reviewerFile->getFileId()}" />
 							<input type="hidden" name="revision" value="{$reviewerFile->getRevision()}" />
 							{translate key="editor.article.showAuthor"} <input type="checkbox"
@@ -183,6 +183,7 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 	</tr>
 </table>
 {/if}
+{assign var=reviewKey value=$reviewKey+1}
 {/foreach}
 </div>
 <div class="separator"></div>
@@ -194,7 +195,7 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 
 <table class="data" width="100%">
 	<tr valign="top">
-		<td  width="20%">{translate key="editor.article.decision"}</td>
+		<td class="label" width="20%">{translate key="editor.article.decision"}</td>
 		<td class="value" width="80%">
 			{foreach from=$roundDecisions item=editorDecision key=decisionKey}
 				{if $decisionKey neq 0} | {/if}
@@ -206,14 +207,14 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 		</td>
 	</tr>
 	<tr valign="top">
-		<td  width="20%">{translate key="submission.notifyAuthor"}</td>
+		<td class="label" width="20%">{translate key="submission.notifyAuthor"}</td>
 		<td class="value" width="80%">
 			{translate key="submission.editorAuthorRecord"}
 			{if $submission->getMostRecentEditorDecisionComment()}
 				{assign var="comment" value=$submission->getMostRecentEditorDecisionComment()}
-				<a href="javascript:openComments('{url op="viewEditorDecisionComments" path=$submission->getArticleId() anchor=$comment->getId()}');" class="icon">{icon name="comment"}</a> {$comment->getDatePosted()|date_format:$dateFormatShort}
+				<a href="javascript:openComments('{url op="viewEditorDecisionComments" path=$submission->getId() anchor=$comment->getId()}');" class="icon">{icon name="comment"}</a> {$comment->getDatePosted()|date_format:$dateFormatShort}
 			{else}
-				<a href="javascript:openComments('{url op="viewEditorDecisionComments" path=$submission->getArticleId()}');" class="icon">{icon name="comment"}</a>{translate key="common.noComments"}
+				<a href="javascript:openComments('{url op="viewEditorDecisionComments" path=$submission->getId()}');" class="icon">{icon name="comment"}</a>{translate key="common.noComments"}
 			{/if}
 		</td>
 	</tr>
@@ -221,13 +222,13 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 		<tr valign="top">
 			{if !$authorRevisionExists}
 				{assign var="authorRevisionExists" value=true}
-				<td width="20%"  rowspan="{$authorFiles|@count}" >{translate key="submission.authorVersion"}</td>
+				<td width="20%" class="label" rowspan="{$authorFiles|@count}" class="label">{translate key="submission.authorVersion"}</td>
 			{/if}
-			<td width="80%" class="value"><a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$authorFile->getFileId():$authorFile->getRevision()}" class="file">{$authorFile->getFileName()|escape}</a>&nbsp;&nbsp;{$authorFile->getDateModified()|date_format:$dateFormatShort}</td>
+			<td width="80%" class="value"><a href="{url op="downloadFile" path=$submission->getId()|to_array:$authorFile->getFileId():$authorFile->getRevision()}" class="file">{$authorFile->getFileName()|escape}</a>&nbsp;&nbsp;{$authorFile->getDateModified()|date_format:$dateFormatShort}</td>
 		</tr>
 	{foreachelse}
 		<tr valign="top">
-			<td width="20%" >{translate key="submission.authorVersion"}</td>
+			<td width="20%" class="label">{translate key="submission.authorVersion"}</td>
 			<td width="80%" colspan="4" class="nodata">{translate key="common.none"}</td>
 		</tr>
 	{/foreach}
@@ -235,14 +236,14 @@ name="viewable" value="1"{if $reviewerFile->getViewable()} checked="checked"{/if
 		<tr valign="top">
 			{if !$editorRevisionExists}
 				{assign var="editorRevisionExists" value=true}
-				<td width="20%"  rowspan="{$editorFiles|@count}" >{translate key="submission.editorVersion"}</td>
+				<td width="20%" class="label" rowspan="{$editorFiles|@count}" class="label">{translate key="submission.editorVersion"}</td>
 			{/if}
 
-			<td width="30%"><a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$editorFile->getFileId():$editorFile->getRevision()}" class="file">{$editorFile->getFileName()|escape}</a>&nbsp;&nbsp;{$editorFile->getDateModified()|date_format:$dateFormatShort}</td>
+			<td width="30%"><a href="{url op="downloadFile" path=$submission->getId()|to_array:$editorFile->getFileId():$editorFile->getRevision()}" class="file">{$editorFile->getFileName()|escape}</a>&nbsp;&nbsp;{$editorFile->getDateModified()|date_format:$dateFormatShort}</td>
 		</tr>
 	{foreachelse}
 		<tr valign="top">
-			<td width="20%" >{translate key="submission.editorVersion"}</td>
+			<td width="20%" class="label">{translate key="submission.editorVersion"}</td>
 			<td width="80%" colspan="4" class="nodata">{translate key="common.none"}</td>
 		</tr>
 	{/foreach}

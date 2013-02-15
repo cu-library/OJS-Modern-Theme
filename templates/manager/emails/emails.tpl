@@ -1,12 +1,11 @@
 {**
- * emails.tpl
+ * templates/manager/emails/emails.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Display list of email templates in journal management.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.emails"}

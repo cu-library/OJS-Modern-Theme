@@ -1,12 +1,11 @@
 {**
- * copyedit.tpl
+ * templates/sectionEditor/submission/copyedit.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate defining the copyediting table.
  *
- * $Id$
  *}
 <div id="copyedit">
 <h3>{translate key="submission.copyediting"}</h3>
@@ -14,7 +13,7 @@
 {if $useCopyeditors}
 <table width="100%" class="data">
 	<tr>
-		<td width="20%" >{translate key="user.role.copyeditor"}</td>
+		<td width="20%" class="label">{translate key="user.role.copyeditor"}</td>
 		{if $submission->getUserIdBySignoffType('SIGNOFF_COPYEDITING_INITIAL')}<td width="20%" class="value">{$copyeditor->getFullName()|escape}</td>{/if}
 		<td class="value"><a href="{url op="selectCopyeditor" path=$submission->getId()}" class="action">{translate key="editor.article.selectCopyeditor"}</a></td>
 	</tr>

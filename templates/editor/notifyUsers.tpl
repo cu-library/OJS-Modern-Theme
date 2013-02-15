@@ -1,12 +1,11 @@
 {**
- * email.tpl
+ * templates/editor/notifyUsers.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Editor's "Notify Users" email template form
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="email.compose"}
@@ -47,32 +46,32 @@
 <table id="recipients" class="data" width="100%">
 <tr valign="top">
 	<td><input type="radio" id="allUsers" name="whichUsers" value="allUsers"/></td>
-	<td >
+	<td class="label">
 		<label for="allUsers">{translate key="editor.notifyUsers.allUsers" count=$allUsersCount|default:0}</label>
 	</td>
 </tr>
 <tr valign="top">
 	<td><input type="radio" id="allReaders" name="whichUsers" value="allReaders"/></td>
-	<td >
+	<td class="label">
 		<label for="allReaders">{translate key="editor.notifyUsers.allReaders" count=$allReadersCount|default:0}</label>
 	</td>
 </tr>
 <tr valign="top">
 	<td><input type="radio" id="allAuthors" name="whichUsers" value="allAuthors"/></td>
-	<td >
+	<td class="label">
 		<label for="allAuthors">{translate key="editor.notifyUsers.allAuthors" count=$allAuthorsCount|default:0}</label>
 	</td>
 </tr>
 {if $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION}
 <tr valign="top">
 	<td><input type="radio" id="allIndividualSubscribers" name="whichUsers" value="allIndividualSubscribers"/></td>
-	<td >
+	<td class="label">
 		<label for="allIndividualSubscribers">{translate key="editor.notifyUsers.allIndividualSubscribers" count=$allIndividualSubscribersCount|default:0}</label>
 	</td>
 </tr>
 <tr valign="top">
 	<td><input type="radio" id="allInstitutionalSubscribers" name="whichUsers" value="allInstitutionalSubscribers"/></td>
-	<td >
+	<td class="label">
 		<label for="allInstitutionalSubscribers">{translate key="editor.notifyUsers.allInstitutionalSubscribers" count=$allInstitutionalSubscribersCount|default:0}</label>
 	</td>
 </tr>
@@ -80,7 +79,7 @@
 {if $senderEmail}
 	<tr valign="top">
 		<td><input type="checkbox" name="ccSelf" /></td>
-		<td >
+		<td class="label">
 			{translate key="email.bccSender" address=$senderEmail|escape}
 		</td>
 	</tr>
@@ -97,7 +96,7 @@
 	<td width="5%">
 		<input type="checkbox" name="includeToc" id="includeToc" value="1"/>
 	</td>
-	<td width="75%" >
+	<td width="75%" class="label">
 		<label for="includeToc">{translate key="editor.notifyUsers.includeToc"}</label>&nbsp;
 		<select name="issue" id="issue" class="selectMenu">
 			{iterate from=issues item=issue}
@@ -114,15 +113,15 @@
 
 <table id="email" class="data" width="100%">
 <tr valign="top">
-	<td >{translate key="email.from"}</td>
+	<td class="label">{translate key="email.from"}</td>
 	<td class="value">{$from|escape}</td>
 </tr>
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="subject" key="email.subject"}</td>
+	<td width="20%" class="label">{fieldLabel name="subject" key="email.subject"}</td>
 	<td width="80%" class="value"><input type="text" id="subject" name="subject" value="{$subject|escape}" size="60" maxlength="120" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="body" key="email.body"}</td>
+	<td class="label">{fieldLabel name="body" key="email.body"}</td>
 	<td class="value"><textarea name="body" cols="60" rows="15" class="textArea">{$body|escape}</textarea></td>
 </tr>
 </table>

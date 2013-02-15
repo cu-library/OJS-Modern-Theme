@@ -1,12 +1,11 @@
 {**
- * subscriptions.tpl
+ * templates/about/subscriptions.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * About the Journal Subscriptions.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="about.subscriptions"}
@@ -33,6 +32,10 @@
 	{/if}
 	{if !empty($subscriptionAdditionalInformation)}
 		{$subscriptionAdditionalInformation|nl2br}<br />
+	{/if}
+	{if $acceptGiftSubscriptionPayments}
+		{translate key="gifts.giftSubscriptionsAvailable"}&nbsp;
+		<a class="action" href="{url page="gifts" op="purchaseGiftSubscription"}">{translate key="gifts.purchaseGiftSubscription"}</a>
 	{/if}
 </p>
 </div>

@@ -1,12 +1,11 @@
 {**
- * bio.tpl
+ * templates/rt/findingReferences.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Article reading tools -- "finding references" page.
  *
- * $Id$
  *}
 {strip}
 {assign var=pageTitle value="rt.findingReferences"}
@@ -18,14 +17,17 @@
 <!--
 
 function invokeGoogleScholar() {
-	document.googleScholar.as_q.value = document.inputForm.title.value;
-	document.googleScholar.as_sauthors.value = document.inputForm.author.value;
-	document.googleScholar.submit();
+	var googleScholarForm = document.getElementById('googleScholar');
+
+	googleScholarForm.as_q.value = document.getElementById('inputForm').title.value;
+	googleScholarForm.as_sauthors.value = document.getElementById('inputForm').author.value;
+	googleScholarForm.submit();
 }
 
 function invokeWLA() {
-	document.wla.q.value = document.inputForm.title.value + " " + document.inputForm.author.value;
-	document.wla.submit();
+	var wlaForm = document.getElementById('wla');
+	wlaForm.q.value = document.getElementById('inputForm').title.value + " " + document.getElementById('inputForm').author.value;
+	wlaForm.submit();
 }
 
 // -->
@@ -35,7 +37,7 @@ function invokeWLA() {
 <h3>{$article->getLocalizedTitle()|strip_unsafe_html}</h3>
 
 <!-- Include the real forms for each of the search engines -->
-<form name="googleScholar" method="get" action="http://scholar.google.com/scholar">
+<form id="googleScholar" method="get" action="http://scholar.google.com/scholar">
 	<input type="hidden" name="as_q" value="" />
 	<input type="hidden" name="as_sauthors" value="" />
 	<input type="hidden" name="btnG" value="Search Scholar" />
@@ -43,21 +45,21 @@ function invokeWLA() {
 	<input type="hidden" name="as_allsubj" value="all" />
 </form>
 
-<form name="wla" method="get" action="http://search.live.com/results.aspx">
+<form id="wla" method="get" action="http://search.live.com/results.aspx">
 	<input type="hidden" name="q" value="" />
 	<input type="hidden" name="scope" value="academic" />
 </form>
 
-<form name="inputForm" target="#">
+<form id="inputForm" target="#">
 
 <!-- Display the form fields -->
 <table width="100%" class="data">
 	<tr valign="top">
-		<td  width="20%"><label for="author">{translate key="user.role.author"}</label></td>
+		<td class="label" width="20%"><label for="author">{translate key="user.role.author"}</label></td>
 		<td class="value" width="80%"><input name="author" id="author" type="text" size="20" maxlength="40" class="textField" value="{$article->getAuthorString()|escape}" /></td>
 	</tr>
 	<tr valign="top">
-		<td ><label for="title">{translate key="article.title"}</label></td>
+		<td class="label"><label for="title">{translate key="article.title"}</label></td>
 		<td class="value"><input type="text" id="title" name="title" size="40" maxlength="40" class="textField" value="{$article->getLocalizedTitle()|escape}" /></td>
 	</tr>
 </table>

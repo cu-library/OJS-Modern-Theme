@@ -1,12 +1,11 @@
 {**
- * subscriptionPolicyForm.tpl
+ * templates/subscription/subscriptionPolicyForm.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Setup subscription policies.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.subscriptionPolicies"}
@@ -28,7 +27,7 @@
 {translate key="manager.subscriptionPolicies.subscriptionPoliciesSaved"}<br />
 {/if}
 
-<form name="subscriptionPolicies" method="post" action="{url op="saveSubscriptionPolicies"}">
+<form id="subscriptionPolicies" method="post" action="{url op="saveSubscriptionPolicies"}">
 {include file="common/formErrors.tpl"}
 
 	<script type="text/javascript">
@@ -59,7 +58,7 @@
 <table width="100%" class="data">
 {if count($formLocales) > 1}
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{url|assign:"subscriptionPoliciesUrl" op="subscriptionPolicies" escape=false}
 			{form_language_chooser form="subscriptionPolicies" url=$subscriptionPoliciesUrl}
@@ -68,23 +67,23 @@
 	</tr>
 {/if}
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="subscriptionName" key="user.name"}</td>
+		<td width="20%" class="label">{fieldLabel name="subscriptionName" key="user.name"}</td>
 		<td width="80%" class="value"><input type="text" name="subscriptionName" id="subscriptionName" value="{$subscriptionName|escape}" size="30" maxlength="60" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="subscriptionEmail" key="user.email"}</td>
+		<td width="20%" class="label">{fieldLabel name="subscriptionEmail" key="user.email"}</td>
 		<td width="80%" class="value"><input type="text" name="subscriptionEmail" id="subscriptionEmail" value="{$subscriptionEmail|escape}" size="30" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="subscriptionPhone" key="user.phone"}</td>
+		<td width="20%" class="label">{fieldLabel name="subscriptionPhone" key="user.phone"}</td>
 		<td width="80%" class="value"><input type="text" name="subscriptionPhone" id="subscriptionPhone" value="{$subscriptionPhone|escape}" size="15" maxlength="24" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="subscriptionFax" key="user.fax"}</td>
+		<td width="20%" class="label">{fieldLabel name="subscriptionFax" key="user.fax"}</td>
 		<td width="80%" class="value"><input type="text" name="subscriptionFax" id="subscriptionFax" value="{$subscriptionFax|escape}" size="15" maxlength="24" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="subscriptionMailingAddress" key="common.mailingAddress"}</td>
+		<td width="20%" class="label">{fieldLabel name="subscriptionMailingAddress" key="common.mailingAddress"}</td>
 		<td width="80%" class="value"><textarea name="subscriptionMailingAddress" id="subscriptionMailingAddress" rows="6" cols="40" class="textArea">{$subscriptionMailingAddress|escape}</textarea></td>
 	</tr>
 </table>
@@ -112,7 +111,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="5%"  align="right">
+		<td width="5%" class="label" align="right">
 			<input type="radio" name="subscriptionExpiryPartial" id="subscriptionExpiryPartial-0" value="0"{if not $subscriptionExpiryPartial} checked="checked"{/if} />
 		</td>
 		<td width="95%" class="value">
@@ -125,7 +124,7 @@
 		<td colspan="2" class="separator">&nbsp;</td>
 	</tr>
 	<tr valign="top">
-		<td width="5%"  align="right">
+		<td width="5%" class="label" align="right">
 			<input type="radio" name="subscriptionExpiryPartial" id="subscriptionExpiryPartial-1" value="1"{if $subscriptionExpiryPartial} checked="checked"{/if} />
 		</td>
 		<td width="95%" class="value">

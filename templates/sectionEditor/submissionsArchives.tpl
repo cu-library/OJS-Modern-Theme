@@ -1,12 +1,11 @@
 {**
- * submissionsArchives.tpl
+ * templates/sectionEditor/submissionsArchives.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show section editor's submission archive.
  *
- * $Id$
  *}
 <div id="submissions">
 <table width="100%" class="listing">
@@ -22,9 +21,9 @@
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 
 {iterate from=submissions item=submission}
-	{assign var="articleId" value=$submission->getArticleId()}
+	{assign var="articleId" value=$submission->getId()}
 	<tr valign="top">
-		<td>{$submission->getArticleId()}</td>
+		<td>{$submission->getId()}</td>
 		<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
 		<td>{$submission->getSectionAbbrev()|escape}</td>
 		<td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td>

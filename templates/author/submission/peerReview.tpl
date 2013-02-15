@@ -1,12 +1,11 @@
 {**
- * peerReview.tpl
+ * templates/author/submission/peerReview.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate defining the author's peer review table.
  *
- * $Id$
  *}
 <div id="peerReview">
 <h3>{translate key="submission.peerReview"}</h3>
@@ -22,7 +21,7 @@
 
 <table class="data" width="100%">
 	<tr valign="top">
-		<td  width="20%">
+		<td class="label" width="20%">
 			{translate key="submission.reviewVersion"}
 		</td>
 		<td class="value" width="80%">
@@ -35,7 +34,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td  width="20%">
+		<td class="label" width="20%">
 			{translate key="submission.initiated"}
 		</td>
 		<td class="value" width="80%">
@@ -47,7 +46,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td  width="20%">
+		<td class="label" width="20%">
 			{translate key="submission.lastModified"}
 		</td>
 		<td class="value" width="80%">
@@ -59,7 +58,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td  width="20%">
+		<td class="label" width="20%">
 			{translate key="common.uploadedFile"}
 		</td>
 		<td class="value" width="80%">
@@ -79,7 +78,7 @@
 	</tr>
 	{if !$smarty.section.round.last}
 		<tr valign="top">
-			<td  width="20%">
+			<td class="label" width="20%">
 				{translate key="submission.editorVersion"}
 			</td>
 			<td class="value" width="80%">
@@ -91,7 +90,7 @@
 			</td>
 		</tr>
 		<tr valign="top">
-			<td  width="20%">
+			<td class="label" width="20%">
 				{translate key="submission.authorVersion"}
 			</td>
 			<td class="value" width="80%">

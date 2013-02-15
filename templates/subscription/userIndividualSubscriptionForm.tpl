@@ -1,12 +1,11 @@
 {**
- * userIndividualSubscriptionForm.tpl
+ * templates/subscription/userIndividualSubscriptionForm.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * User purchase individual subscription form
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="user.subscriptions.purchaseIndividualSubscription"}
@@ -17,16 +16,16 @@
 <br/>
 
 {if $subscriptionId}
-<form method="post" name="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"|to_array:$subscriptionId}">
+<form method="post" id="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"|to_array:$subscriptionId}">
 {else}
-<form method="post" name="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"}">
+<form method="post" id="subscriptionForm" action="{url op="payPurchaseSubscription" path="individual"}">
 {/if}
 
 {include file="common/formErrors.tpl"}
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="typeId" required="true" key="user.subscriptions.form.typeId"}</td>
+	<td width="20%" class="label">{fieldLabel name="typeId" required="true" key="user.subscriptions.form.typeId"}</td>
 	<td width="80%" class="value"><select name="typeId" id="typeId" class="selectMenu">
 		{foreach from=$subscriptionTypes item=subscriptionType}
 			<option value="{$subscriptionType->getTypeId()}"{if $typeId == $subscriptionType->getTypeId()} selected="selected"{/if}>{$subscriptionType->getSummaryString()|escape}</option>
@@ -34,7 +33,7 @@
 	</select></td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="membership" key="user.subscriptions.form.membership"}</td>
+	<td class="label">{fieldLabel name="membership" key="user.subscriptions.form.membership"}</td>
 	<td class="value">
 		<input type="text" name="membership" value="{$membership|escape}" id="membership" size="30" maxlength="40" class="textField" />
 	</td>

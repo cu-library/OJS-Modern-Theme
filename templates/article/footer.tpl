@@ -1,5 +1,5 @@
 {**
- * footer.tpl
+ * templates/article/footer.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -38,7 +38,10 @@
 {/if}
 
 {if $currentJournal && $currentJournal->getSetting('includeCreativeCommons')}
-{translate key="common.ccLicense"}
+	<br /><br />
+	<a rel="license" target="_new" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+	<br />
+	This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> is licensed under a <a target="_new" rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.
 {/if}
 
 {call_hook name="Templates::Article::Footer::PageFooter"}

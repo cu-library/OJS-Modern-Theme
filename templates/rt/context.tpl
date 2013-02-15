@@ -1,12 +1,11 @@
 {**
- * context.tpl
+ * templates/rt/context.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Article reading tools -- context view page.
  *
- * $Id$
  *}
 {strip}
 {assign var=pageTitleTranslated value=$context->getTitle()|capitalize}
@@ -23,7 +22,7 @@
 		var searchForm = document.forms[formIndex];
 
 		// Get a list of search terms
-		var elements = document.terms.elements;
+		var elements = document.getElementById('terms').elements;
 		for (var i=0; i<elements.length; i++) {
 			if (elements[i].type=='text') {
 				var value = elements[i].value;
@@ -43,7 +42,7 @@
 		var newAction = searchForm.action;
 		newAction = newAction.replace(/{\$formKeywords}/g, termsGet);
 		{/literal}{foreach from=$searchParams item=param}{literal}
-		newAction = newAction.replace(/{\${/literal}{$param|escape}{literal}}/g, document.additionalParams.{/literal}{$param|escape}{literal}.value.replace(/ /g,'+'));
+		newAction = newAction.replace(/{\${/literal}{$param|escape}{literal}}/g, document.getElementById('additionalParams').{/literal}{$param|escape}{literal}.value.replace(/ /g,'+'));
 		{/literal}{/foreach}{literal}
 		searchForm.action = newAction;
 
@@ -77,16 +76,16 @@
 <p>{if $context->getDefineTerms()}{translate key="rt.context.defineTermsDescription"}{elseif $context->getAuthorTerms()}{translate key="rt.context.authorTermsDescription"}{elseif $context->getCitedBy()}{translate key="rt.context.citesContextDescription}{else}{translate key="rt.context.searchDescription"}{/if}</p>
 
 <table class="data" width="100%">
-	<form name="terms">
+	<form id="terms">
 	{if $context->getDefineTerms()}
 		<tr valign="top">
-			<td width="20%" >{translate key="rt.context.termToDefine"}</td>
+			<td width="20%" class="label">{translate key="rt.context.termToDefine"}</td>
 			<td width="80%" class="value"><input name="searchTerm" value="{$defineTerm|escape}" length="40" class="textField" />
 		</tr>
 	{elseif $context->getAuthorTerms() || $context->getCitedBy()}
 		{foreach from=$article->getAuthors() item=author key=key}
 			<tr valign="top">
-				<td width="20%"  align="right">
+				<td width="20%" class="label" align="right">
 					<input type="checkbox" checked="checked" style="checkbox" name="searchTerm{$key+1}Check" value="1" />
 				</td>
 				<td width="80%" class="value">
@@ -96,12 +95,12 @@
 		{/foreach}
 	{elseif $context->getGeoTerms()}
 		<tr valign="top">
-			<td width="20%" >{translate key="rt.context.termToDefine"}</td>
+			<td width="20%" class="label">{translate key="rt.context.termToDefine"}</td>
 			<td width="80%" class="value"><input name="searchTerm" value="{$coverageGeo|escape}" length="40" class="textField" />
 		</tr>
 	{else}
 		<tr valign="top">
-			<td width="20%" >{translate key="rt.context.searchTerms"}</td>
+			<td width="20%" class="label">{translate key="rt.context.searchTerms"}</td>
 			<td width="80%" class="value">
 				{foreach from=$keywords item=keyword name=keywords key=key}
 					<input name="searchTerm{$key+1}" value="{$keyword|trim|escape}" length="40" class="textField" />
@@ -114,10 +113,10 @@
 	</form>
 
 
-	<form name="additionalParams">
+	<form id="additionalParams">
 	{foreach from=$searchValues key=paramKey item=value}
 		<tr valign="top">
-			<td width="20%" >
+			<td width="20%" class="label">
 				{if $paramKey == 'author'}{translate key="user.role.author"}
 				{elseif $paramKey == 'coverageGeo'}{translate key="article.coverageGeo"}
 				{elseif $paramKey == 'title'}{translate key="article.title"}
@@ -134,7 +133,7 @@
 
 <table class="listing" width="100%">
 	{foreach from=$searches item=search key=key name=searches}
-	<form name="search{$key+1}form" method="{if $search->getSearchPost()}post{else}get{/if}" action="{$search->getSearchUrl()|escape}">
+	<form id="search{$key+1}form" method="{if $search->getSearchPost()}post{else}get{/if}" action="{$search->getSearchUrl()|escape}">
 	{foreach from=$search->postParams item=postParam}
 		<input type="hidden" name="{$postParam.name|escape}" value="{$postParam.value|escape}" />
 	{/foreach}

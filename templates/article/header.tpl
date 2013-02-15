@@ -1,5 +1,5 @@
 {**
- * header.tpl
+ * templates/article/header.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -27,6 +27,7 @@
 	<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/pkp.css" type="text/css" />
 	<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" />
 	<link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" />
+	<link rel="stylesheet" href="{$baseUrl}/styles/compiled.css" type="text/css" />
 	<link rel="stylesheet" href="{$baseUrl}/styles/articleView.css" type="text/css" />
 	{if $journalRt && $journalRt->getEnabled()}
 		<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/rtEmbedded.css" type="text/css" />
@@ -60,22 +61,24 @@
 	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
 	{/if}
 
-	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/jquery.cookie.js"></script>
-	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/fontController.js" ></script>
 	<script type="text/javascript">{literal}
 		$(function(){
 			fontSize("#sizer", "body", 9, 16, 32, "{/literal}{$basePath|escape:"javascript"}{literal}"); // Initialize the font sizer
 		});
 	{/literal}</script>
 
+	<!-- Compiled scripts -->
+	{if $useMinifiedJavaScript}
+		<script type="text/javascript" src="{$baseUrl}/js/pkp.min.js"></script>
+	{else}
+		{include file="common/minifiedScripts.tpl"}
+	{/if}
 
-	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/general.js"></script>
 	{$additionalHeadData}
 </head>
 <body>
 
 <div id="container">
-<div id="fade" class="black_overlay"></div>{* The background 'lightbox' effect *}
 
 <div id="header">
 <div id="headerTitle">

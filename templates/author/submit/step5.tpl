@@ -1,12 +1,11 @@
 {**
- * step5.tpl
+ * templates/author/submit/step5.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Step 5 of author article submission.
  *
- * $Id$
  *}
 {assign var="pageTitle" value="author.submit.step5"}
 {include file="author/submit/submitHeader.tpl"}
@@ -69,7 +68,7 @@
 		<table class="data" width="100%">
 			<tr valign="top">
 				<td width="5%" align="left"><input type="checkbox" name="qualifyForWaiver" value="1" {if $qualifyForWaiver}checked="checked"{/if}/></td>
-				<td width="95%">{translate key="author.submit.qualityForWaiver"}</td>
+				<td width="95%">{translate key="author.submit.qualifyForWaiver"}</td>
 			</tr>
 			<tr>
 				<td />

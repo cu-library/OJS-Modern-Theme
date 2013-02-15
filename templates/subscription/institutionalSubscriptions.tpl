@@ -1,12 +1,11 @@
 {**
- * institutionalSubscriptions.tpl
+ * templates/subscription/institutionalSubscriptions.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Display list of institutional subscriptions in journal management.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.institutionalSubscriptions"}
@@ -37,7 +36,7 @@
 {assign var="dateTo" value="--"}
 {/if}
 
-<form method="post" name="submit" action="{url op="subscriptions" path="institutional"}">
+<form method="post" id="submit" action="{url op="subscriptions" path="institutional"}">
 	<select name="searchField" size="1" class="selectMenu">
 		{html_options_translate options=$fieldOptions selected=$searchField}
 	</select>

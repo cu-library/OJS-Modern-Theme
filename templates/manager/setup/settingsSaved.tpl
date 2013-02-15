@@ -1,12 +1,11 @@
 {**
- * stepSaved.tpl
+ * templates/manager/setup/settingsSaved.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Show confirmation after saving settings.
  *
- * $Id$
  *}
 {assign var="pageTitle" value="manager.setup.journalSetup"}
 {include file="manager/setup/setupHeader.tpl"}

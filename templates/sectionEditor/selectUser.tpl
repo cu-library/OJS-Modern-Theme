@@ -1,19 +1,18 @@
 {**
- * selectUser.tpl
+ * templates/sectionEditor/selectUser.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * List a set of users and allow one to be selected.
  *
- * $Id$
  *}
 {strip}
 {include file="common/header.tpl"}
 {/strip}
 
 <h3>{translate key=$pageSubTitle}</h3>
-<form name="submit" method="post" action="{url op=$actionHandler path=$articleId}">
+<form id="submit" method="post" action="{url op=$actionHandler path=$articleId}">
 	<select name="searchField" size="1" class="selectMenu">
 		{html_options_translate options=$fieldOptions selected=$searchField}
 	</select>

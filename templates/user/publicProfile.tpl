@@ -1,12 +1,11 @@
 {**
- * publicProfile.tpl
+ * templates/user/publicProfile.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Public user profile display.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="user.profile.publicProfile"}
@@ -33,7 +32,7 @@
 <table class="listing" width="100%">
 	{if $user->getLocalizedAffiliation()}
 		<tr valign="top">
-			<td  width="20%">
+			<td class="label" width="20%">
 				{translate key="user.affiliation"}
 			</td>
 			<td class="data" width="80%">
@@ -44,7 +43,7 @@
 
 	{if $user->getLocalizedBiography()}
 		<tr valign="top">
-			<td >
+			<td class="label">
 				{translate key="user.biography"}
 			</td>
 			<td class="data">

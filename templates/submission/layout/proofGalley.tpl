@@ -1,12 +1,11 @@
 {**
- * proofGalley.tpl
+ * templates/submission/layout/proofGalley.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Proof a galley.
  *
- * $Id$
  *}
 {assign var="pageTitle" value="submission.layout.viewingGalley"}
 <?xml version="1.0" encoding="UTF-8"?>
@@ -19,12 +18,19 @@
 
 	<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/common.css" type="text/css" />
 	<link rel="stylesheet" href="{$baseUrl}/styles/common.css" type="text/css" />
+	<link rel="stylesheet" href="{$baseUrl}/styles/compiled.css" type="text/css" />
 
 	{foreach from=$stylesheets item=cssUrl}
 		<link rel="stylesheet" href="{$cssUrl}" type="text/css" />
 	{/foreach}
 
-	<script type="text/javascript" src="{$baseUrl}/lib/pkp/js/general.js"></script>
+	<!-- Compiled scripts -->
+	{if $useMinifiedJavaScript}
+		<script type="text/javascript" src="{$baseUrl}/js/pkp.min.js"></script>
+	{else}
+		{include file="common/minifiedScripts.tpl"}
+	{/if}
+
 	{$additionalHeadData}
 </head>
 {url|assign:"galleyUrl" op="proofGalleyFile" path=$articleId|to_array:$galleyId}

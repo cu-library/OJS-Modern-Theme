@@ -1,12 +1,11 @@
 {**
- * scheduling.tpl
+ * templates/sectionEditor/submission/scheduling.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate defining the scheduling table.
  *
- * $Id$
  *}
 <div id="scheduling">
 <h3>{translate key="submission.scheduling"}</h3>
@@ -15,7 +14,7 @@
 {if !$publicationFeeEnabled || $publicationPayment}
 	<form action="{url op="scheduleForPublication" path=$submission->getId()}" method="post">
 		<tr valign="top">
-			<td width="25%" >
+			<td width="25%" class="label">
 				<label for="issueId">{translate key="editor.article.scheduleForPublication"}</label>
 			</td>
 			<td width="25%" class="value">
@@ -44,7 +43,7 @@
 	{if $publishedArticle}
 		<form action="{url op="setDatePublished" path=$submission->getId()}" method="post">
 			<tr valign="top">
-				<td width="20%" >
+				<td width="20%" class="label">
 					<label for="issueId">{translate key="editor.issues.published"}</label>
 				</td>
 				<td class="value">

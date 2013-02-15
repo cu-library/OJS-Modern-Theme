@@ -1,12 +1,11 @@
 {**
- * email.tpl
+ * templates/rt/email.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Reading Tools email template form
  *
- * $Id$
  *}
 {strip}
 {if $op=="emailColleague"}
@@ -21,19 +20,19 @@
 {literal}
 <!--
 function deleteAttachment(fileId) {
-	document.emailForm.deleteAttachment.value = fileId;
-	document.emailForm.submit();
+	document.getElementById('emailForm').deleteAttachment.value = fileId;
+	document.getElementById('emailForm').submit();
 }
 // -->
 {/literal}
 </script>
 <div id="rtEmail">
-<form method="post" name="emailForm" action="{$formActionUrl}"{if $attachmentsEnabled} enctype="multipart/form-data"{/if}>
+<form method="post" id="emailForm" action="{$formActionUrl}"{if $attachmentsEnabled} enctype="multipart/form-data"{/if}>
 <input type="hidden" name="continued" value="1"/>
 {if $attachmentsEnabled}
 	<input type="hidden" name="deleteAttachment" value="" />
 	{foreach from=$persistAttachments item=temporaryFile}
-		<input type="hidden" name="persistAttachments[]" value="{$temporaryFile->getFileId()}" />
+		<input type="hidden" name="persistAttachments[]" value="{$temporaryFile->getId()}" />
 	{/foreach}
 {/if}
 
@@ -65,7 +64,7 @@ function deleteAttachment(fileId) {
 <table class="data" width="100%">
 {if $addressFieldsEnabled}
 <tr valign="top">
-	<td  width="20%">{fieldLabel name="to" key="email.to"}</td>
+	<td class="label" width="20%">{fieldLabel name="to" key="email.to"}</td>
 	<td width="80%" class="value">
 		{foreach from=$to item=toAddress}
 			<input type="text" name="to[]" id="to" value="{if $toAddress.name != ''}{$toAddress.name|escape} &lt;{$toAddress.email|escape}&gt;{else}{$toAddress.email|escape}{/if}" size="40" maxlength="120" class="textField" /><br/>
@@ -79,7 +78,7 @@ function deleteAttachment(fileId) {
 	</td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="cc" key="email.cc"}</td>
+	<td class="label">{fieldLabel name="cc" key="email.cc"}</td>
 	<td class="value">
 		{foreach from=$cc item=ccAddress}
 			<input type="text" name="cc[]" id="cc" value="{if $ccAddress.name != ''}{$ccAddress.name|escape} &lt;{$ccAddress.email|escape}&gt;{else}{$ccAddress.email|escape}{/if}" size="40" maxlength="120" class="textField" /><br/>
@@ -93,7 +92,7 @@ function deleteAttachment(fileId) {
 	</td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="bcc" key="email.bcc"}</td>
+	<td class="label">{fieldLabel name="bcc" key="email.bcc"}</td>
 	<td class="value">
 		{foreach from=$bcc item=bccAddress}
 			<input type="text" name="bcc[]" id="bcc" value="{if $bccAddress.name != ''}{$bccAddress.name|escape} &lt;{$bccAddress.email|escape}&gt;{else}{$bccAddress.email|escape}{/if}" size="40" maxlength="120" class="textField" /><br/>
@@ -125,13 +124,13 @@ function deleteAttachment(fileId) {
 	<td colspan="2">&nbsp;</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="email.attachments"}</td>
+	<td class="label">{translate key="email.attachments"}</td>
 	<td class="value">
 		{assign var=attachmentNum value=1}
 		{foreach from=$persistAttachments item=temporaryFile}
 			{$attachmentNum|escape}.&nbsp;{$temporaryFile->getOriginalFileName()|escape}&nbsp;
 			({$temporaryFile->getNiceFileSize()})&nbsp;
-			<a href="javascript:deleteAttachment({$temporaryFile->getFileId()})" class="action">{translate key="common.delete"}</a>
+			<a href="javascript:deleteAttachment({$temporaryFile->getId()})" class="action">{translate key="common.delete"}</a>
 			<br/>
 			{assign var=attachmentNum value=$attachmentNum+1}
 		{/foreach}
@@ -146,15 +145,15 @@ function deleteAttachment(fileId) {
 	<td colspan="2">&nbsp;</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="email.from"}</td>
+	<td class="label">{translate key="email.from"}</td>
 	<td class="value">{$from|escape}</td>
 </tr>
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="subject" key="email.subject"}</td>
+	<td width="20%" class="label">{fieldLabel name="subject" key="email.subject"}</td>
 	<td width="80%" class="value"><input type="text" id="subject" name="subject" value="{$subject|escape}" size="50" maxlength="120" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="body" key="email.body"}</td>
+	<td class="label">{fieldLabel name="body" key="email.body"}</td>
 	<td class="value"><textarea name="body" cols="50" rows="15" class="textArea">{$body|escape}</textarea></td>
 </tr>
 </table>

@@ -1,12 +1,11 @@
 {**
- * proofread.tpl
+ * templates/sectionEditor/submission/proofread.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate defining the proofreading table.
  *
- * $Id$
  *}
 {assign var=proofSignoff value=$submission->getSignoff('SIGNOFF_PROOFREADING_PROOFREADER')}
 {assign var=proofreader value=$submission->getUserBySignoffType('SIGNOFF_PROOFREADING_PROOFREADER')}
@@ -17,7 +16,7 @@
 {if $useProofreaders}
 <table class="data" width="100%">
 	<tr>
-		<td width="20%" >{translate key="user.role.proofreader"}</td>
+		<td width="20%" class="label">{translate key="user.role.proofreader"}</td>
 		{if $proofSignoff->getUserId()}<td class="value" width="20%">{$proofreader->getFullName()|escape}</td>{/if}
 		<td class="value"><a href="{url op="selectProofreader" path=$submission->getId()}" class="action">{translate key="editor.article.selectProofreader"}</a></td>
 	</tr>

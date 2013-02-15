@@ -1,5 +1,5 @@
 {**
- * aboutThisPublishingSystem.tpl
+ * templates/about/aboutThisPublishingSystem.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -8,7 +8,6 @@
  *
  * TODO: Display the image describing the system.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="about.aboutThisPublishingSystem"}

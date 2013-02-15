@@ -1,12 +1,11 @@
 {**
- * paymentSettingsForm.tpl
+ * templates/payments/payMethodSettingsForm.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Form to edit payment settings.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.payment.paymentMethods"}
@@ -16,7 +15,7 @@
 <ul class="menu">
 	<li><a href="{url op="payments"}">{translate key="manager.payment.options"}</a></li>
 	<li class="current"><a href="{url op="payMethodSettings"}">{translate key="manager.payment.paymentMethods"}</a></li>
-	<li><a href="{url op="viewPayments"}">{translate key="manager.payment.records"}</a></li>		
+	<li><a href="{url op="viewPayments"}">{translate key="manager.payment.records"}</a></li>
 </ul>
 
 {include file="common/formErrors.tpl"}
@@ -26,15 +25,15 @@
 
 {literal}
 function changePaymentMethod() {
-	document.paymentSettingsForm.action="{/literal}{url|escape:"javascript" op="payMethodSettings" escape=false}{literal}";
-		document.paymentSettingsForm.submit();
+	document.getElementById('paymentSettingsForm').action="{/literal}{url|escape:"javascript" op="payMethodSettings" escape=false}{literal}";
+		document.getElementById('paymentSettingsForm').submit();
 	}
 
 	{/literal}
 // -->
 </script>
 
-<form method="post" name="paymentSettingsForm" action="{url op="savePayMethodSettings"}">
+<form method="post" id="paymentSettingsForm" action="{url op="savePayMethodSettings"}">
 
 <p>{translate key="manager.payment.paymentMethod.description"}</p>
 

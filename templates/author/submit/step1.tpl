@@ -1,12 +1,11 @@
 {**
- * step1.tpl
+ * templates/author/submit/step1.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Step 1 of author article submission.
  *
- * $Id$
  *}
 {assign var="pageTitle" value="author.submit.step1"}
 {include file="author/submit/submitHeader.tpl"}
@@ -21,7 +20,7 @@
 
 <div class="separator"></div>
 
-<form name="submit" method="post" action="{url op="saveSubmit" path=$submitStep}" onsubmit="return checkSubmissionChecklist()">
+<form id="submit" method="post" action="{url op="saveSubmit" path=$submitStep}" onsubmit="return checkSubmissionChecklist()">
 {include file="common/formErrors.tpl"}
 {if $articleId}<input type="hidden" name="articleId" value="{$articleId|escape}" />{/if}
 
@@ -46,8 +45,8 @@
 <input type="hidden" name="submissionChecklist" value="1" />
 
 <table class="data" width="100%">
-	<tr valign="top">	
-		<td width="20%" >{fieldLabel name="sectionId" required="true" key="section.section"}</td>
+	<tr valign="top">
+		<td width="20%" class="label">{fieldLabel name="sectionId" required="true" key="section.section"}</td>
 		<td width="80%" class="value"><select name="sectionId" id="sectionId" size="1" class="selectMenu">{html_options options=$sectionOptions selected=$sectionId}</select></td>
 	</tr>
 </table>
@@ -71,8 +70,8 @@
 	<p>{translate key="author.submit.submissionLocaleDescription"}</p>
 
 	<table class="data" width="100%">
-		<tr valign="top">	
-			<td width="20%" >{fieldLabel name="locale" required="true" key="article.language"}</td>
+		<tr valign="top">
+			<td width="20%" class="label">{fieldLabel name="locale" required="true" key="article.language"}</td>
 			<td width="80%" class="value"><select name="locale" id="locale" size="1" class="selectMenu">{html_options options=$supportedSubmissionLocaleNames selected=$locale}</select></td>
 		</tr>
 	</table>
@@ -86,7 +85,7 @@
 {literal}
 <!--
 function checkSubmissionChecklist() {
-	var elements = document.submit.elements;
+	var elements = document.getElementById('submit').elements;
 	for (var i=0; i < elements.length; i++) {
 		if (elements[i].type == 'checkbox' && !elements[i].checked) {
 			if (elements[i].name.match('^checklist')) {
@@ -106,7 +105,7 @@ function checkSubmissionChecklist() {
 
 {if $authorFees}
 	{include file="author/submit/authorFees.tpl" showPayLinks=0}
-	<div class="separator"></div>	
+	<div class="separator"></div>
 {/if}
 
 {if $currentJournal->getLocalizedSetting('submissionChecklist')}
@@ -166,7 +165,7 @@ function checkSubmissionChecklist() {
 
 <table width="100%" class="data">
 <tr valign="top">
-	<td width="20%" >{fieldLabel name="commentsToEditor" key="author.submit.comments"}</td>
+	<td width="20%" class="label">{fieldLabel name="commentsToEditor" key="author.submit.comments"}</td>
 	<td width="80%" class="value"><textarea name="commentsToEditor" id="commentsToEditor" rows="3" cols="40" class="textArea">{$commentsToEditor|escape}</textarea></td>
 </tr>
 </table>

@@ -1,12 +1,11 @@
 {**
- * selectMergeUser.tpl
+ * templates/manager/people/selectMergeUser.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * List enrolled users so the manager can choose users to merge.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.people.mergeUsers"}

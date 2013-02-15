@@ -1,5 +1,5 @@
 {**
- * step3.tpl
+ * templates/manager/setup/step3.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -9,14 +9,14 @@
 {assign var="pageTitle" value="manager.setup.guidingSubmissions"}
 {include file="manager/setup/setupHeader.tpl"}
 
-<form name="setupForm" method="post" action="{url op="saveSetup" path="3"}">
+<form id="setupForm" method="post" action="{url op="saveSetup" path="3"}">
 {include file="common/formErrors.tpl"}
 
 {if count($formLocales) > 1}
 <div id="locale">
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="20%" >{fieldLabel name="formLocale" key="form.formLanguage"}</td>
+		<td width="20%" class="label">{fieldLabel name="formLocale" key="form.formLanguage"}</td>
 		<td width="80%" class="value">
 			{url|assign:"setupFormUrl" op="setup" path="3" escape=false}
 			{form_language_chooser form="setupForm" url=$setupFormUrl}
@@ -54,7 +54,7 @@
 	{/if}
 
 	<tr valign="top">
-		<td width="5%" ><input type="text" name="submissionChecklist[{$formLocale|escape}][{$checklistId|escape}][order]" value="{$checklistItem.order|escape}" size="3" maxlength="2" class="textField" /></td>
+		<td width="5%" class="label"><input type="text" name="submissionChecklist[{$formLocale|escape}][{$checklistId|escape}][order]" value="{$checklistItem.order|escape}" size="3" maxlength="2" class="textField" /></td>
 		<td class="value"><textarea name="submissionChecklist[{$formLocale|escape}][{$checklistId|escape}][content]" id="submissionChecklist-{$checklistId|escape}" rows="3" cols="40" class="textArea">{$checklistItem.content|escape}</textarea></td>
 		<td width="100%"><input type="submit" name="delChecklist[{$checklistId|escape}]" value="{translate key="common.delete"}" class="button" /></td>
 	</tr>
@@ -79,14 +79,14 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="5%" >
+		<td width="5%" class="label">
 			<input type="checkbox" name="copyrightNoticeAgree" id="copyrightNoticeAgree" value="1"{if $copyrightNoticeAgree} checked="checked"{/if} />
 		</td>
 		<td width="95%" class="value"><label for="copyrightNoticeAgree">{translate key="manager.setup.authorCopyrightNoticeAgree"}</label>
 		</td>
 	</tr>
 	<tr valign="top">
-		<td >
+		<td class="label">
 			<input type="checkbox" name="includeCreativeCommons" id="includeCreativeCommons" value="1"{if $includeCreativeCommons} checked="checked"{/if} />
 		</td>
 		<td class="value">
@@ -104,7 +104,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td  width="5%">
+		<td class="label" width="5%">
 			<input type="checkbox" name="requireAuthorCompetingInterests" id="requireAuthorCompetingInterests" value="1"{if $requireAuthorCompetingInterests} checked="checked"{/if} />
 		</td>
 		<td class="value" width="95%">
@@ -112,7 +112,7 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td >
+		<td class="label">
 			<input type="checkbox" name="requireReviewerCompetingInterests" id="requireReviewerCompetingInterests" value="1"{if $requireReviewerCompetingInterests} checked="checked"{/if} />
 		</td>
 		<td class="value">
@@ -134,7 +134,7 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td width="5%"  valign="bottom"><input type="checkbox" name="metaDiscipline" id="metaDiscipline" value="1"{if $metaDiscipline} checked="checked"{/if} /></td>
+		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaDiscipline" id="metaDiscipline" value="1"{if $metaDiscipline} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaDiscipline" key="manager.setup.discipline"}</h4>
 		</td>
@@ -150,13 +150,13 @@
 			<span class="instruct">{translate key="manager.setup.disciplineExamples"}</span>
 		</td>
 	</tr>
-	
+
 	<tr>
 		<td class="separator" colspan="2"><br />&nbsp;</td>
 	</tr>
-	
+
 	<tr valign="top">
-		<td width="5%"  valign="bottom"><input type="checkbox" name="metaSubjectClass" id="metaSubjectClass" value="1"{if $metaSubjectClass} checked="checked"{/if} /></td>
+		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaSubjectClass" id="metaSubjectClass" value="1"{if $metaSubjectClass} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaSubjectClass" key="manager.setup.subjectClassification"}</h4>
 		</td>
@@ -171,19 +171,19 @@
 				</tr>
 				<tr valign="top">
 					<td width="10%">{fieldLabel name="metaSubjectClassUrl" key="common.url"}</td>
-					<td width="90%"><input type="text" name="metaSubjectClassUrl[{$formLocale|escape}]" id="metaSubjectClassUrl" value="{if $metaSubjectClassUrl[$formLocale]}{$metaSubjectClassUrl[$formLocale]|escape}{else}http://{/if}" size="40" maxlength="255" class="textField" /></td>
+					<td width="90%"><input type="text" name="metaSubjectClassUrl[{$formLocale|escape}]" id="metaSubjectClassUrl" value="{$metaSubjectClassUrl[$formLocale]|escape}" size="40" maxlength="255" class="textField" /></td>
 				</tr>
 			</table>
 			<span class="instruct">{translate key="manager.setup.subjectClassificationExamples"}</span>
 		</td>
 	</tr>
-	
+
 	<tr>
 		<td class="separator" colspan="2"><br />&nbsp;</td>
 	</tr>
-	
+
 	<tr valign="top">
-		<td width="5%"  valign="bottom"><input type="checkbox" name="metaSubject" id="metaSubject" value="1"{if $metaSubject} checked="checked"{/if} /></td>
+		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaSubject" id="metaSubject" value="1"{if $metaSubject} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaSubject" key="manager.setup.subjectKeywordTopic"}</h4>
 		</td>
@@ -198,13 +198,13 @@
 			<span class="instruct">{translate key="manager.setup.subjectExamples"}</span>
 		</td>
 	</tr>
-	
+
 	<tr>
 		<td class="separator" colspan="2"><br />&nbsp;</td>
 	</tr>
-	
+
 	<tr valign="top">
-		<td width="5%"  valign="bottom"><input type="checkbox" name="metaCoverage" id="metaCoverage" value="1"{if $metaCoverage} checked="checked"{/if} /></td>
+		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaCoverage" id="metaCoverage" value="1"{if $metaCoverage} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaCoverage" key="manager.setup.coverage"}</h4>
 		</td>
@@ -249,13 +249,13 @@
 			<span class="instruct">{translate key="manager.setup.coverageResearchSampleExamples"}</span>
 		</td>
 	</tr>
-	
+
 	<tr>
 		<td class="separator" colspan="2"><br />&nbsp;</td>
 	</tr>
-	
+
 	<tr valign="top">
-		<td width="5%"  valign="bottom"><input type="checkbox" name="metaType" id="metaType" value="1"{if $metaType} checked="checked"{/if} /></td>
+		<td width="5%" class="label" valign="bottom"><input type="checkbox" name="metaType" id="metaType" value="1"{if $metaType} checked="checked"{/if} /></td>
 		<td width="95%" class="value">
 			<h4>{fieldLabel name="metaType" key="manager.setup.typeMethodApproach"}</h4>
 		</td>
@@ -279,7 +279,7 @@
 <h3>3.5 {translate key="manager.setup.registerJournalForIndexing"}</h3>
 
 {url|assign:"oaiUrl" page="oai"}
-<p>{translate key="manager.setup.registerJournalForIndexingDescription" oaiUrl=$oaiUrl}</p>
+<p>{translate key="manager.setup.registerJournalForIndexingDescription" oaiUrl=$oaiUrl siteUrl=$baseUrl}</p>
 </div>
 
 <div class="separator"></div>
@@ -291,11 +291,11 @@
 
 <table width="100%" class="data">
 	<tr valign="top">
-		<td ><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckPrimaryContact" id="copySubmissionAckPrimaryContact" value="true" {if $copySubmissionAckPrimaryContact}checked="checked"{/if}/></td>
+		<td class="label"><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckPrimaryContact" id="copySubmissionAckPrimaryContact" value="true" {if $copySubmissionAckPrimaryContact}checked="checked"{/if}/></td>
 		<td class="value">{fieldLabel name="copySubmissionAckPrimaryContact" key="manager.setup.notifications.copyPrimaryContact"}</td>
 	</tr>
 	<tr valign="top">
-		<td ><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckSpecified" id="copySubmissionAckSpecified" value="true" {if $copySubmissionAckSpecified}checked="checked"{/if}/></td>
+		<td class="label"><input {if !$submissionAckEnabled}disabled="disabled" {/if}type="checkbox" name="copySubmissionAckSpecified" id="copySubmissionAckSpecified" value="true" {if $copySubmissionAckSpecified}checked="checked"{/if}/></td>
 		<td class="value">{fieldLabel name="copySubmissionAckAddress" key="manager.setup.notifications.copySpecifiedAddress"}&nbsp;&nbsp;<input {if !$submissionAckEnabled}disabled="disabled" {/if}type="text" class="textField" id="copySubmissionAckAddress" name="copySubmissionAckAddress" value="{$copySubmissionAckAddress|escape}"/></td>
 	</tr>
 	{if !$submissionAckEnabled}
@@ -320,25 +320,25 @@
 	<p>{translate key="manager.setup.metaCitationsDescription"}</p>
 	<table width="100%" class="data">
 		<tr valign="top">
-			<td width="5%" >
+			<td width="5%" class="label">
 				<input type="checkbox" name="metaCitations" id="metaCitations" value="1"{if $metaCitations} checked="checked"{/if} />
 			</td>
 			<td width="95%" class="value"><label for="metaCitations">{translate key="manager.setup.citations"}</label>
 			</td>
 		</tr>
 	</table>
-	
+
 	<div id="citationFilterSetupToggle" {if !$metaCitations}style="visible: none"{/if}>
 		<h4>{translate key="manager.setup.citationFilterParser"}</h4>
 		<p>{translate key="manager.setup.citationFilterParserDescription"}</p>
 		{load_url_in_div id="parserFilterGridContainer" loadMessageId="manager.setup.filter.parser.grid.loadMessage" url="$parserFilterGridUrl"}
-		
+
 		<h4>{translate key="manager.setup.citationFilterLookup"}</h4>
 		<p>{translate key="manager.setup.citationFilterLookupDescription"}</p>
 		{load_url_in_div id="lookupFilterGridContainer" loadMessageId="manager.setup.filter.lookup.grid.loadMessage" url="$lookupFilterGridUrl"}
 		<h4>{translate key="manager.setup.citationOutput"}</h4>
 		<p>{translate key="manager.setup.citationOutputStyleDescription"}</p>
-		{fbvSelect id="metaCitationOutputFilterSelect" name="metaCitationOutputFilterId"
+		{fbvElement type="select" id="metaCitationOutputFilterSelect" name="metaCitationOutputFilterId"
 				from=$metaCitationOutputFilters translate=false selected=$metaCitationOutputFilterId|escape
 				defaultValue="-1" defaultLabel="manager.setup.filter.pleaseSelect"|translate}
 	</div>
@@ -347,7 +347,7 @@
 			// jQuerify DOM elements
 			$metaCitationsCheckbox = $('#metaCitations');
 			$metaCitationsSetupBox = $('#citationFilterSetupToggle');
-			
+
 			// Set the initial state
 			initialCheckboxState = $metaCitationsCheckbox.attr('checked');
 			if (initialCheckboxState) {
@@ -355,7 +355,7 @@
 			} else {
 				$metaCitationsSetupBox.css('display', 'none');
 			}
-			
+
 			// Toggle the settings box.
 			// NB: Has to be click() rather than change() to work in IE.
 			$metaCitationsCheckbox.click(function(){
@@ -365,7 +365,7 @@
 					$metaCitationsSetupBox.toggle(300);
 				}
 			});
-		});	
+		});
 	</script>{/literal}
 {/if}
 </div>
@@ -379,4 +379,3 @@
 </form>
 
 {include file="common/footer.tpl"}
-

@@ -1,12 +1,11 @@
 {**
- * submissions.tpl
+ * templates/layoutEditor/submissions.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Layout editor submissions list.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="common.queue.long.$pageToDisplay"}

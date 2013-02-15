@@ -1,12 +1,11 @@
 {**
- * systemInfo.tpl
+ * templates/admin/systemInfo.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Display system information.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="admin.systemInformation"}
@@ -74,7 +73,7 @@
 <table class="data" width="100%">
 {foreach from=$sectionData key=settingName item=settingValue}
 <tr valign="top">
-	<td width="30%" >{$settingName|escape}</td>
+	<td width="30%" class="label">{$settingName|escape}</td>
 	<td width="70%">{if $settingValue === true}{translate key="common.on"}{elseif $settingValue === false}{translate key="common.off"}{else}{$settingValue|escape}{/if}</td>
 </tr>
 {/foreach}
@@ -91,7 +90,7 @@
 <table class="data" width="100%">
 {foreach from=$serverInfo key=settingName item=settingValue}
 <tr valign="top">
-	<td width="30%" >{translate key=$settingName|escape}</td>
+	<td width="30%" class="label">{translate key=$settingName|escape}</td>
 	<td width="70%" class="value">{$settingValue|escape}</td>
 </tr>
 {/foreach}

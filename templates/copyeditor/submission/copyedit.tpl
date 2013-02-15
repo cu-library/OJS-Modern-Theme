@@ -1,19 +1,18 @@
 {**
- * copyedit.tpl
+ * templates/copyeditor/submission/copyedit.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate defining the copyeditor's submission management table.
  *
- * $Id$
  *}
 <div id="copyedit">
 <h3>{translate key="submission.copyedit"}</h3>
 
 <table width="100%" class="data">
 	<tr>
-		<td  width="20%">{translate key="user.role.copyeditor"}</td>
+		<td class="label" width="20%">{translate key="user.role.copyeditor"}</td>
 		<td class="value" width="80%">{if $submission->getUserIdBySignoffType('SIGNOFF_COPYEDITING_INITIAL')}{$copyeditor->getFullName()|escape}{else}{translate key="common.none"}{/if}</td>
 	</tr>
 </table>

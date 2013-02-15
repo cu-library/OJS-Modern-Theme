@@ -1,12 +1,11 @@
 {**
- * editorDecisionComment.tpl
+ * templates/submission/comment/editorDecisionComment.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Form to enter comments.
  *
- * $Id$
  *}
 {strip}
 {include file="submission/comment/header.tpl"}
@@ -68,11 +67,11 @@ window.opener.location.reload();
 
 <table class="data" width="100%">
 <tr valign="top">
-	<td >{fieldLabel name="commentTitle" key="submission.comments.subject"}</td>
+	<td class="label">{fieldLabel name="commentTitle" key="submission.comments.subject"}</td>
 	<td class="value"><input type="text" name="commentTitle" id="commentTitle" value="{$commentTitle|escape}" size="50" maxlength="255" class="textField" /></td>
 </tr>
 <tr valign="top">
-	<td >{fieldLabel name="comments" key="submission.comments.addComment"}</td>
+	<td class="label">{fieldLabel name="comments" key="submission.comments.addComment"}</td>
 	<td class="value"><textarea id="comments" name="comments" rows="10" cols="50" class="textArea">{$comments|escape}</textarea></td>
 </tr>
 </table>

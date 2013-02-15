@@ -1,5 +1,5 @@
 {**
- * submission.tpl
+ * templates/reviewer/submission.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
@@ -8,10 +8,9 @@
  *
  * FIXME: At "Notify The Editor", fix the date.
  *
- * $Id$
  *}
 {strip}
-{assign var="articleId" value=$submission->getArticleId()}
+{assign var="articleId" value=$submission->getId()}
 {assign var="reviewId" value=$reviewAssignment->getId()}
 {translate|assign:"pageTitleTranslated" key="submission.page.review" id=$articleId}
 {assign var="pageCrumbTitle" value="submission.review"}
@@ -22,7 +21,7 @@
 {literal}
 <!--
 function confirmSubmissionCheck() {
-	if (document.recommendation.recommendation.value=='') {
+	if (document.getElementById('recommendation').recommendation.value=='') {
 		alert('{/literal}{translate|escape:"javascript" key="reviewer.article.mustSelectDecision"}{literal}');
 		return false;
 	}
@@ -36,15 +35,15 @@ function confirmSubmissionCheck() {
 
 <table width="100%" class="data">
 <tr valign="top">
-	<td width="20%" >{translate key="article.title"}</td>
+	<td width="20%" class="label">{translate key="article.title"}</td>
 	<td width="80%" class="value">{$submission->getLocalizedTitle()|strip_unsafe_html}</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="article.journalSection"}</td>
+	<td class="label">{translate key="article.journalSection"}</td>
 	<td class="value">{$submission->getSectionTitle()|escape}</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="article.abstract"}</td>
+	<td class="label">{translate key="article.abstract"}</td>
 	<td class="value">{$submission->getLocalizedAbstract()|strip_unsafe_html|nl2br}</td>
 </tr>
 {assign var=editAssignments value=$submission->getEditAssignments()}
@@ -52,7 +51,7 @@ function confirmSubmissionCheck() {
 	{if !$notFirstEditAssignment}
 		{assign var=notFirstEditAssignment value=1}
 		<tr valign="top">
-			<td >{translate key="reviewer.article.submissionEditor"}</td>
+			<td class="label">{translate key="reviewer.article.submissionEditor"}</td>
 			<td class="value">
 	{/if}
 			{assign var=emailString value=$editAssignment->getEditorFullName()|concat:" <":$editAssignment->getEditorEmail():">"}
@@ -72,7 +71,7 @@ function confirmSubmissionCheck() {
 	</tr>
 {/if}
 	<tr valign="top">
-	       <td >{translate key="submission.metadata"}</td>
+	       <td class="label">{translate key="submission.metadata"}</td>
 	       <td class="value">
 		       <a href="{url op="viewMetadata" path=$reviewId|to_array:$articleId}" class="action" target="_new">{translate key="submission.viewMetadata"}</a>
 	       </td>
@@ -84,19 +83,19 @@ function confirmSubmissionCheck() {
 <h3>{translate key="reviewer.article.reviewSchedule"}</h3>
 <table width="100%" class="data">
 <tr valign="top">
-	<td  width="20%">{translate key="reviewer.article.schedule.request"}</td>
+	<td class="label" width="20%">{translate key="reviewer.article.schedule.request"}</td>
 	<td class="value" width="80%">{if $submission->getDateNotified()}{$submission->getDateNotified()|date_format:$dateFormatShort}{else}&mdash;{/if}</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="reviewer.article.schedule.response"}</td>
+	<td class="label">{translate key="reviewer.article.schedule.response"}</td>
 	<td class="value">{if $submission->getDateConfirmed()}{$submission->getDateConfirmed()|date_format:$dateFormatShort}{else}&mdash;{/if}</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="reviewer.article.schedule.submitted"}</td>
+	<td class="label">{translate key="reviewer.article.schedule.submitted"}</td>
 	<td class="value">{if $submission->getDateCompleted()}{$submission->getDateCompleted()|date_format:$dateFormatShort}{else}&mdash;{/if}</td>
 </tr>
 <tr valign="top">
-	<td >{translate key="reviewer.article.schedule.due"}</td>
+	<td class="label">{translate key="reviewer.article.schedule.due"}</td>
 	<td class="value">{if $submission->getDateDue()}{$submission->getDateDue()|date_format:$dateFormatShort}{else}&mdash;{/if}</td>
 </tr>
 </table>
@@ -164,7 +163,7 @@ function confirmSubmissionCheck() {
 		<table width="100%" class="data">
 			{if ($confirmedStatus and not $declined) or not $journal->getSetting('restrictReviewerFileAccess')}
 			<tr valign="top">
-				<td width="30%" >
+				<td width="30%" class="label">
 					{translate key="submission.submissionManuscript"}
 				</td>
 				<td class="value" width="70%">
@@ -179,7 +178,7 @@ function confirmSubmissionCheck() {
 				</td>
 			</tr>
 			<tr valign="top">
-				<td >
+				<td class="label">
 					{translate key="article.suppFiles"}
 				</td>
 				<td class="value">
@@ -233,7 +232,7 @@ function confirmSubmissionCheck() {
 	<tr valign="top">
 		<td>&nbsp;</td>
 		<td>
-			{translate key="submission.reviewForm"} 
+			{translate key="submission.reviewForm"}
 			{if $confirmedStatus and not $declined}
 				<a href="{url op="editReviewFormResponse" path=$reviewId|to_array:$reviewAssignment->getReviewFormId()}" class="icon">{icon name="comment"}</a>
 			{else}
@@ -252,7 +251,7 @@ function confirmSubmissionCheck() {
 	<tr valign="top">
 		<td>&nbsp;</td>
 		<td>
-			{translate key="submission.logType.review"} 
+			{translate key="submission.logType.review"}
 			{if $confirmedStatus and not $declined}
 				<a href="javascript:openComments('{url op="viewPeerReviewComments" path=$articleId|to_array:$reviewId}');" class="icon">{icon name="comment"}</a>
 			{else}
@@ -275,7 +274,7 @@ function confirmSubmissionCheck() {
 			{foreach from=$submission->getReviewerFileRevisions() item=reviewerFile key=key}
 				{assign var=uploadedFileExists value="1"}
 				<tr valign="top">
-				<td  width="30%">
+				<td class="label" width="30%">
 					{if $key eq "0"}
 						{translate key="reviewer.article.uploadedFile"}
 					{/if}
@@ -290,7 +289,7 @@ function confirmSubmissionCheck() {
 				</tr>
 			{foreachelse}
 				<tr valign="top">
-				<td  width="30%">
+				<td class="label" width="30%">
 					{translate key="reviewer.article.uploadedFile"}
 				</td>
 				<td class="nodata">
@@ -326,22 +325,22 @@ function confirmSubmissionCheck() {
 	<td>
 		<table class="data" width="100%">
 			<tr valign="top">
-				<td  width="30%">{translate key="submission.recommendation"}</td>
+				<td class="label" width="30%">{translate key="submission.recommendation"}</td>
 				<td class="value" width="70%">
 				{if $submission->getRecommendation() !== null && $submission->getRecommendation() !== ''}
 					{assign var="recommendation" value=$submission->getRecommendation()}
 					<strong>{translate key=$reviewerRecommendationOptions.$recommendation}</strong>&nbsp;&nbsp;
 					{$submission->getDateCompleted()|date_format:$dateFormatShort}
 				{else}
-					<form name="recommendation" method="post" action="{url op="recordRecommendation"}">
+					<form id="recommendation" method="post" action="{url op="recordRecommendation"}">
 					<input type="hidden" name="reviewId" value="{$reviewId|escape}" />
 					<select name="recommendation" {if not $confirmedStatus or $declined or $submission->getCancelled() or (!$reviewFormResponseExists and !$reviewAssignment->getMostRecentPeerReviewComment() and !$uploadedFileExists)}disabled="disabled"{/if} class="selectMenu">
 						{html_options_translate options=$reviewerRecommendationOptions selected=''}
 					</select>&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="submit" name="submit" onclick="return confirmSubmissionCheck()" class="button" value="{translate key="reviewer.article.submitReview"}" {if not $confirmedStatus or $declined or $submission->getCancelled() or (!$reviewFormResponseExists and !$reviewAssignment->getMostRecentPeerReviewComment() and !$uploadedFileExists)}disabled="disabled"{/if} />
-					</form>					
+					</form>
 				{/if}
-				</td>		
+				</td>
 			</tr>
 		</table>
 	</td>

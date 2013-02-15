@@ -1,12 +1,11 @@
 {**
- * contact.tpl
+ * templates/about/contact.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * About the Journal / Journal Contact.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="about.journalContact"}

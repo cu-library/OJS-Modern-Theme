@@ -1,12 +1,11 @@
 {**
- * proofread.tpl
+ * templates/layoutEditor/submission/proofread.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Subtemplate defining the layout editor's proofreading table.
  *
- * $Id$
  *}
 {assign var=proofSignoff value=$submission->getSignoff('SIGNOFF_PROOFREADING_PROOFREADER')}
 {assign var=proofreader value=$submission->getUserBySignoffType('SIGNOFF_PROOFREADING_PROOFREADER')}
@@ -17,7 +16,7 @@
 {if $useProofreaders}
 <table width="100%" class="data">
 	<tr>
-		<td  width="20%">{translate key="user.role.proofreader"}</td>
+		<td class="label" width="20%">{translate key="user.role.proofreader"}</td>
 		<td class="value" width="80%">{if $proofSignoff->getUserId()}{$proofreader->getFullName()|escape}{else}{translate key="common.none"}{/if}</td>
 	</tr>
 </table>
@@ -79,7 +78,7 @@
 				{icon name="mail" disabled="disabled"}
 			{else}
 				{translate|assign:"confirmMessage" key="common.confirmComplete"}
-				{url|assign:"url" op="layoutEditorProofreadingComplete" articleId=$submission->getArticleId()}
+				{url|assign:"url" op="layoutEditorProofreadingComplete" articleId=$submission->getId()}
 				{icon name="mail" onclick="return confirm('$confirmMessage')" url=$url}
 			{/if}
 			{$layoutEditorProofreadSignoff->getDateCompleted()|date_format:$dateFormatShort|default:""}
@@ -93,9 +92,9 @@
 {translate key="submission.proofread.corrections"}
 {if $submission->getMostRecentProofreadComment()}
 	{assign var="comment" value=$submission->getMostRecentProofreadComment()}
-	<a href="javascript:openComments('{url op="viewProofreadComments" path=$submission->getArticleId() anchor=$comment->getId()}');" class="icon">{icon name="comment"}</a>{$comment->getDatePosted()|date_format:$dateFormatShort}
+	<a href="javascript:openComments('{url op="viewProofreadComments" path=$submission->getId() anchor=$comment->getId()}');" class="icon">{icon name="comment"}</a>{$comment->getDatePosted()|date_format:$dateFormatShort}
 {else}
-	<a href="javascript:openComments('{url op="viewProofreadComments" path=$submission->getArticleId()}');" class="icon">{icon name="comment"}</a>{translate key="common.noComments"}
+	<a href="javascript:openComments('{url op="viewProofreadComments" path=$submission->getId()}');" class="icon">{icon name="comment"}</a>{translate key="common.noComments"}
 {/if}
 
 {if $currentJournal->getLocalizedSetting('proofInstructions')}

@@ -1,57 +1,29 @@
 {**
- * article.tpl
+ * templates/article/article.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Article View.
  *}
+{if $galley}
+	{assign var=pubObject value=$galley}
+{else}
+	{assign var=pubObject value=$article}
+{/if}
+
+
 {include file="article/header.tpl"}
 
 {if $galley}
 	{if $galley->isHTMLGalley()}
 		{$galley->getHTMLContents()}
 	{elseif $galley->isPdfGalley()}
-		{url|assign:"pdfUrl" op="viewFile" path=$articleId|to_array:$galley->getBestGalleyId($currentJournal) escape=false}
-		{translate|assign:"noPluginText" key='article.pdf.pluginMissing'}
-		<script type="text/javascript"><!--{literal}
-			$(document).ready(function(){
-				if ($.browser.webkit) { // PDFObject does not correctly work with safari's built-in PDF viewer
-					var embedCode = "<object id='pdfObject' type='application/pdf' data='{/literal}{$pdfUrl|escape:'javascript'}{literal}' width='99%' height='99%'><div id='pluginMissing'>{/literal}{$noPluginText|escape:'javascript'}{literal}</div></object>";
-					$("#articlePdf").html(embedCode);
-					if($("#pluginMissing").is(":hidden")) {
-						$('#fullscreenShow').show();
-						$("#articlePdf").resizable({ containment: 'parent', handles: 'se' });
-					} else { // Chrome Mac hides the embed object, obscuring the text.  Reinsert.
-						$("#articlePdf").html('{/literal}{$noPluginText|escape:"javascript"}{literal}');
-					}
-				} else {
-					var success = new PDFObject({ url: "{/literal}{$pdfUrl|escape:'javascript'}{literal}" }).embed("articlePdf");
-					if (success) {
-						// PDF was embedded; enbale fullscreen mode and the resizable widget
-						$('#fullscreenShow').show();
-						$("#articlePdfResizer").resizable({ containment: 'parent', handles: 'se' });
-					}
-				}
-			});
-		{/literal}
-		// -->
-		</script>
-		<div id="articlePdfResizer">
-			<div id="articlePdf" class="ui-widget-content">
-				{translate key="article.pdf.pluginMissing"}
-			</div>
-		</div>
-		<p>
-			{* The target="_parent" is for the sake of iphones, which present scroll problems otherwise. *}
-			<a class="action" target="_parent" href="{url op="download" path=$articleId|to_array:$galley->getBestGalleyId($currentJournal)}">{translate key="article.pdf.download"}</a>
-			<a class="action" href="#" id="fullscreenShow">{translate key="common.fullscreen"}</a>
-			<a class="action" href="#" id="fullscreenHide">{translate key="common.fullscreenOff"}</a>
-		</p>
+		{include file="article/pdfViewer.tpl"}
 	{/if}
 {else}
 	<div id="topBar">
-		{assign var=galleys value=$article->getGalleys()}
+		{if is_a($article, 'PublishedArticle')}{assign var=galleys value=$article->getGalleys()}{/if}
 		{if $galleys && $subscriptionRequired && $showGalleyLinks}
 			<div id="accessKey">
 				<img src="{$baseUrl}/lib/pkp/templates/images/icons/fulltext_open_medium.gif" alt="{translate key="article.accessLogoOpen.altText"}" />
@@ -135,6 +107,19 @@
 		{/if}
 	{/if}
 {/if}
+
+{foreach from=$pubIdPlugins item=pubIdPlugin}
+	{if $issue->getPublished()}
+		{assign var=pubId value=$pubIdPlugin->getPubId($pubObject)}
+	{else}
+		{assign var=pubId value=$pubIdPlugin->getPubId($pubObject, true)}{* Preview rather than assign a pubId *}
+	{/if}
+	{if $pubId}
+		<br />
+		<br />
+		{$pubIdPlugin->getPubIdDisplayType()|escape}: {if $pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}<a id="pub-id::{$pubIdPlugin->getPubIdType()|escape}" href="{$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}">{$pubId|escape}</a>{else}{$pubId|escape}{/if}
+	{/if}
+{/foreach}
 
 {include file="article/comments.tpl"}
 

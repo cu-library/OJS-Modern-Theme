@@ -1,17 +1,21 @@
 {**
- * index.tpl
+ * templates/manager/index.tpl
  *
  * Copyright (c) 2003-2012 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * Journal management index.
  *
- * $Id$
  *}
 {strip}
 {assign var="pageTitle" value="manager.journalManagement"}
 {include file="common/header.tpl"}
 {/strip}
+
+{if $newVersionAvailable}
+<div class="warningMessage">{translate key="site.upgradeAvailable.manager" currentVersion=$currentVersion latestVersion=$latestVersion siteAdminName=$siteAdmin->getFullName() siteAdminEmail=$siteAdmin->getEmail()}</div>
+{/if}
+
 <div id="managementPages">
 <h3>{translate key="manager.managementPages"}</h3>
 
