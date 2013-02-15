@@ -1,23 +1,6 @@
-<div class="navbar navbar-static-top">
+<div class="navbar">
       <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="{url context=$homeContext page="index"}">
-          {if $displayPageHeaderTitle}
-            {$displayPageHeaderTitle}
-          {elseif $alternatePageHeader}
-            {$alternatePageHeader}
-          {elseif $siteTitle}
-            {$siteTitle}
-          {else}
-            {$applicationName}
-          {/if}
-          </a>
-          <div class="nav-collapse collapse">
+        <div class="container">          
             <ul class="nav">
 		      <li id="home"><a href="{url page="index"}">{translate key="navigation.home"}</a></li>
 		      <li id="about"><a href="{url page="about"}">{translate key="navigation.about"}</a></li>
@@ -56,7 +39,6 @@
 			  {/if}
 		      {/foreach}
             </ul><!-- /nav -->
-          </div><!--/.nav-collapse -->
         </div>
       </div>
   </div>
