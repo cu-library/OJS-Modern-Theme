@@ -59,3 +59,15 @@
   ul.inline img{
     vertical-align: baseline;
   }
+
+  #sidebar-username{
+    width: auto;
+  }
+
+  #sidebar-password{
+    width: auto;
+  }
+
+  #query{
+    width: 94%;
+  }

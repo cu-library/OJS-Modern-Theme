@@ -26,7 +26,7 @@
       {if $rightSidebarCode}
          <div id="rightSidebar" class="span3 well well-small">
            <ul class="nav nav-list">
-             {$rightSidebarCode|regex_replace:'/<\/div>.*?<div/s':'</div><li class="divider"></li><div'|replace:'<br />':''|replace:'<div':'<li'|replace:'div>':'li>'|replace:'ul>':'ul class="nav nav-list">'|replace:'span':'li'|replace:'li class="blockTitle"':'li class="nav-header"'|replace:'blockSubtitle':'nav-header sub-header'}
+             {$rightSidebarCode|regex_replace:'/<\/div>.*?<div/s':'</div><li class="divider"></li><div'|replace:'<br />':''|replace:'<div':'<li'|replace:'div>':'li>'|replace:'ul>':'ul class="nav nav-list">'|replace:'span':'li'|replace:'li class="blockTitle"':'li class="nav-header"'|replace:'blockSubtitle':'nav-header sub-header'|replace:'<form':'<li><form'|replace:'/form>':'/form></li>'}
             </ul>
          </div>
       {/if}
