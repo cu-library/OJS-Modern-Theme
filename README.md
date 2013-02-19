@@ -4,7 +4,7 @@ Still MANY css issues to be dealt with.
 This project is a baseline for creating custom themes for OJS instances. 
 
 Bootstrap (2.3.0) is applied to the 'out of the box' OJS html templates, which are stored in the 'templates'
-directory. Changes have only been made to the common/* files. 
+directory. 
 
 A special shoutout and thank you to John Willinsky of the PKP project!
 

@@ -22,8 +22,8 @@
 {/if}
 </p>
 
-<p align="center">
-	<img src="{$baseUrl}/{$edProcessFile}" style="border: 0;" alt="{translate key="about.aboutThisPublishingSystem.altText"}" />
+<p class="text-center">
+	<img src="{$baseUrl}/{$edProcessFile}" alt="{translate key="about.aboutThisPublishingSystem.altText"}" />
 </p>
 
 {include file="common/footer.tpl"}
