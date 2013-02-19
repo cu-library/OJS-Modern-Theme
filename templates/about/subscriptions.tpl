@@ -35,68 +35,63 @@
 	{/if}
 	{if $acceptGiftSubscriptionPayments}
 		{translate key="gifts.giftSubscriptionsAvailable"}&nbsp;
-		<a class="action" href="{url page="gifts" op="purchaseGiftSubscription"}">{translate key="gifts.purchaseGiftSubscription"}</a>
+		<a href="{url page="gifts" op="purchaseGiftSubscription"}">{translate key="gifts.purchaseGiftSubscription"}</a>
 	{/if}
 </p>
 </div>
 
 <a name="subscriptionTypes" id="subscriptionTypes"></a>
 {if !$individualSubscriptionTypes->wasEmpty()}
-<div id="availableSubscriptionTypes">
+
 <h3>{translate key="about.subscriptions.individual"}</h3>
 <p>{translate key="subscriptions.individualDescription"}</p>
-<table width="100%" class="listing">
-	<tr>
-		<td colspan="4" class="headseparator">&nbsp;</td>
-	</tr>
-	<tr class="heading" valign="bottom">
-		<td width="40%">{translate key="about.subscriptionTypes.name"}</td>
-		<td width="20%">{translate key="about.subscriptionTypes.format"}</td>
-		<td width="25%">{translate key="about.subscriptionTypes.duration"}</td>
-		<td width="15%">{translate key="about.subscriptionTypes.cost"}</td>
-	</tr>
-	<tr>
-		<td colspan="4" class="headseparator">&nbsp;</td>
-	</tr>
-{iterate from=individualSubscriptionTypes item=subscriptionType}
-		<tr valign="top">
-			<td>{$subscriptionType->getSubscriptionTypeName()|escape}<br />{$subscriptionType->getSubscriptionTypeDescription()|nl2br}</td>
+<table class="table table-bordered">
+	<thead>
+      <tr>
+		<th>{translate key="about.subscriptionTypes.name"}</th>
+		<th>{translate key="about.subscriptionTypes.format"}</th>
+		<th>{translate key="about.subscriptionTypes.duration"}</th>
+		<th>{translate key="about.subscriptionTypes.cost"}</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{iterate from=individualSubscriptionTypes item=subscriptionType}
+		<tr>
+			<td><strong>{$subscriptionType->getSubscriptionTypeName()|escape}</strong><br />{$subscriptionType->getSubscriptionTypeDescription()|nl2br}</td>
 			<td>{translate key=$subscriptionType->getFormatString()}</td>
 			<td>{$subscriptionType->getDurationYearsMonths()|escape}</td>
 			<td>{$subscriptionType->getCost()|string_format:"%.2f"}&nbsp;({$subscriptionType->getCurrencyStringShort()|escape})</td>
 		</tr>
-		<tr><td colspan="4" class="{if $individualSubscriptionTypes->eof()}end{/if}separator">&nbsp;</td></tr>
-{/iterate}
+    {/iterate}
+    </tbody>
 </table>
-</div>
+
 <br />
+
 {/if}
 
 {if !$institutionalSubscriptionTypes->wasEmpty()}
 <h3>{translate key="about.subscriptions.institutional"}</h3>
 <p>{translate key="subscriptions.institutionalDescription"}</p>
-<table width="100%" class="listing">
-	<tr>
-		<td colspan="4" class="headseparator">&nbsp;</td>
-	</tr>
-	<tr class="heading" valign="bottom">
-		<td width="40%">{translate key="about.subscriptionTypes.name"}</td>
-		<td width="20%">{translate key="about.subscriptionTypes.format"}</td>
-		<td width="25%">{translate key="about.subscriptionTypes.duration"}</td>
-		<td width="15%">{translate key="about.subscriptionTypes.cost"}</td>
-	</tr>
-	<tr>
-		<td colspan="4" class="headseparator">&nbsp;</td>
-	</tr>
-{iterate from=institutionalSubscriptionTypes item=subscriptionType}
-		<tr valign="top">
-			<td>{$subscriptionType->getSubscriptionTypeName()|escape}<br />{$subscriptionType->getSubscriptionTypeDescription()|nl2br}</td>
+<table class="table table-bordered">
+	<thead>
+      <tr>
+		<th>{translate key="about.subscriptionTypes.name"}</th>
+		<th>{translate key="about.subscriptionTypes.format"}</th>
+		<th>{translate key="about.subscriptionTypes.duration"}</th>
+		<th>{translate key="about.subscriptionTypes.cost"}</th>
+	  </tr>
+	</thead>
+	<tbody>
+   {iterate from=institutionalSubscriptionTypes item=subscriptionType}
+		<tr>
+			<td><strong>{$subscriptionType->getSubscriptionTypeName()|escape}</strong><br />{$subscriptionType->getSubscriptionTypeDescription()|nl2br}</td>
 			<td>{translate key=$subscriptionType->getFormatString()}</td>
 			<td>{$subscriptionType->getDurationYearsMonths()|escape}</td>
 			<td>{$subscriptionType->getCost()|string_format:"%.2f"}&nbsp;({$subscriptionType->getCurrencyStringShort()|escape})</td>
 		</tr>
-		<tr><td colspan="4" class="{if $institutionalSubscriptionTypes->eof()}end{/if}separator">&nbsp;</td></tr>
-{/iterate}
+    {/iterate}
+    </tbody>
 </table>
 {/if}
 

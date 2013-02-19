@@ -12,7 +12,7 @@
 {include file="common/header.tpl"}
 {/strip}
 
-<ul class="plain">
+<ul>
 	{if $currentJournal->getLocalizedSetting('focusScopeDesc') != ''}<li>&#187; <a href="{url op="editorialPolicies" anchor="focusAndScope"}">{translate key="about.focusAndScope"}</a></li>{/if}
 	<li>&#187; <a href="{url op="editorialPolicies" anchor="sectionPolicies"}">{translate key="about.sectionPolicies"}</a></li>
 	{if $currentJournal->getLocalizedSetting('reviewPolicy') != ''}<li>&#187; <a href="{url op="editorialPolicies" anchor="peerReviewProcess"}">{translate key="about.peerReviewProcess"}</a></li>{/if}
@@ -50,7 +50,7 @@
 				{assign var=sectionEditor value=$sectionEditorEntry.user}
 				{if 0 == $hasEditors++}
 				{translate key="user.role.editors"}
-				<ul class="plain">
+				<ul>
 				{/if}
 				<li>{$sectionEditor->getFirstName()|escape} {$sectionEditor->getLastName()|escape}{if $sectionEditor->getLocalizedAffiliation()}, {$sectionEditor->getLocalizedAffiliation()|escape}{/if}</li>
 			{/foreach}

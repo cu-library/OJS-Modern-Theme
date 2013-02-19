@@ -13,7 +13,7 @@
 {/strip}
 <div id="aboutPeople">
 <h3>{translate key="about.people"}</h3>
-<ul class="plain">
+<ul>
 	{if not (empty($journalSettings.mailingAddress) && empty($journalSettings.contactName) && empty($journalSettings.contactAffiliation) && empty($journalSettings.contactMailingAddress) && empty($journalSettings.contactPhone) && empty($journalSettings.contactFax) && empty($journalSettings.contactEmail) && empty($journalSettings.supportName) && empty($journalSettings.supportPhone) && empty($journalSettings.supportEmail))}
 		<li>&#187; <a href="{url op="contact"}">{translate key="about.contact"}</a></li>
 	{/if}
@@ -26,7 +26,7 @@
 </div>
 <div id="aboutPolicies">
 <h3>{translate key="about.policies"}</h3>
-<ul class="plain">
+<ul>
 	{if $currentJournal->getLocalizedSetting('focusScopeDesc') != ''}<li>&#187; <a href="{url op="editorialPolicies" anchor="focusAndScope"}">{translate key="about.focusAndScope"}</a></li>{/if}
 	<li>&#187; <a href="{url op="editorialPolicies" anchor="sectionPolicies"}">{translate key="about.sectionPolicies"}</a></li>
 	{if $currentJournal->getLocalizedSetting('reviewPolicy') != ''}<li>&#187; <a href="{url op="editorialPolicies" anchor="peerReviewProcess"}">{translate key="about.peerReviewProcess"}</a></li>{/if}
@@ -47,7 +47,7 @@
 </div>
 <div id="aboutSubmissions">
 <h3>{translate key="about.submissions"}</h3>
-<ul class="plain">
+<ul>
 	<li>&#187; <a href="{url op="submissions" anchor="onlineSubmissions"}">{translate key="about.onlineSubmissions"}</a></li>
 	{if $currentJournal->getLocalizedSetting('authorGuidelines') != ''}<li>&#187; <a href="{url op="submissions" anchor="authorGuidelines"}">{translate key="about.authorGuidelines"}</a></li>{/if}
 	{if $currentJournal->getLocalizedSetting('copyrightNotice') != ''}<li>&#187; <a href="{url op="submissions" anchor="copyrightNotice"}">{translate key="about.copyrightNotice"}</a></li>{/if}
@@ -58,7 +58,7 @@
 </div>
 <div id="aboutOther">
 <h3>{translate key="about.other"}</h3>
-<ul class="plain">
+<ul>
 	{if not ($currentJournal->getSetting('publisherInstitution') == '' && $currentJournal->getLocalizedSetting('publisherNote') == '' && $currentJournal->getLocalizedSetting('contributorNote') == '' && empty($journalSettings.contributors) && $currentJournal->getLocalizedSetting('sponsorNote') == '' && empty($journalSettings.sponsors))}<li>&#187; <a href="{url op="journalSponsorship"}">{translate key="about.journalSponsorship"}</a></li>{/if}
 	{if $currentJournal->getLocalizedSetting('history') != ''}<li>&#187; <a href="{url op="history"}">{translate key="about.history"}</a></li>{/if}
 	<li>&#187; <a href="{url op="siteMap"}">{translate key="about.siteMap"}</a></li>

@@ -17,7 +17,7 @@
 	{assign var="authorFees" value=1}
 {/if}
 
-<ul class="plain">
+<ul>
 	<li>&#187; <a href="{url page="about" op="submissions" anchor="onlineSubmissions"}">{translate key="about.onlineSubmissions"}</a></li>
 	{if $currentJournal->getLocalizedSetting('authorGuidelines') != ''}<li>&#187; <a href="{url page="about" op="submissions" anchor="authorGuidelines"}">{translate key="about.authorGuidelines"}</a></li>{/if}
 	{if $currentJournal->getLocalizedSetting('copyrightNotice') != ''}<li>&#187; <a href="{url page="about" op="submissions" anchor="copyrightNotice"}">{translate key="about.copyrightNotice"}</a></li>{/if}
@@ -28,11 +28,11 @@
 <div id="onlineSubmissions"><h3>{translate key="about.onlineSubmissions"}</h3>
 <p>
 	{translate key="about.onlineSubmissions.haveAccount" journalTitle=$siteTitle|escape}<br />
-	<a href="{url page="login"}" class="action">{translate key="about.onlineSubmissions.login"}</a>
+	<a href="{url page="login"}">{translate key="about.onlineSubmissions.login"}</a>
 </p>
 <p>
 	{translate key="about.onlineSubmissions.needAccount"}<br />
-	<a href="{url page="user" op="register"}" class="action">{translate key="about.onlineSubmissions.registration"}</a>
+	<a href="{url page="user" op="register"}">{translate key="about.onlineSubmissions.registration"}</a>
 </p>
 <p>{translate key="about.onlineSubmissions.registrationRequired"}</p>
 

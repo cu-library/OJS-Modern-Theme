@@ -15,75 +15,97 @@
 {* WARNING: This page should be kept roughly synchronized with the
    implementation of the Journal Manager's statistics page.        *}
 <div id="statistics">
-<table width="100%" class="data">
-	<tr valign="top">
-		<td width="25%" class="label"><h4>{translate key="common.year"}</h4></td>
-		<td width="75%" colspan="2" class="value">
-			<h4><a class="action" href="{url statisticsYear=$statisticsYear-1}">{translate key="navigation.previousPage"}</a>&nbsp;{$statisticsYear|escape}&nbsp;<a class="action" href="{url statisticsYear=$statisticsYear+1}">{translate key="navigation.nextPage"}</a></h4>
-		</td>
-	</tr>
+	
+<dl class="dl-horizontal">
+    <dt>Year</dt>
+    <dd>{$statisticsYear|escape}</dd>
 
-	{if $statNumPublishedIssues}<tr valign="top">
-		<td class="label">{translate key="manager.statistics.statistics.numIssues"}</td>
-		<td colspan="2" class="value">{$issueStatistics.numPublishedIssues}</td>
-	</tr>{/if}
+	{if $statNumPublishedIssues}
+		<dt>{translate key="manager.statistics.statistics.numIssues"}</dt>
+		<dd>{$issueStatistics.numPublishedIssues}</dd>
+	{/if}
 
-	{if $statItemsPublished}<tr valign="top">
-		<td width="20%" class="label">{translate key="manager.statistics.statistics.itemsPublished"}</td>
-		<td width="80%" colspan="2" class="value">{$articleStatistics.numPublishedSubmissions}</td>
-	</tr>{/if}
-	{if $statNumSubmissions}<tr valign="top">
-		<td width="20%" class="label">{translate key="manager.statistics.statistics.numSubmissions"}</td>
-		<td width="80%" colspan="2" class="value">{$articleStatistics.numSubmissions}</td>
-	</tr>{/if}
-	{if $statPeerReviewed}<tr valign="top">
-		<td width="20%" class="label">{translate key="manager.statistics.statistics.peerReviewed"}</td>
-		<td width="80%" colspan="2" class="value">{$limitedArticleStatistics.numReviewedSubmissions}</td>
-	</tr>{/if}
-	{if $statCountAccept}<tr valign="top">
-		<td width="20%" class="label">&nbsp;&nbsp;{translate key="manager.statistics.statistics.count.accept"}</td>
-		<td width="80%" colspan="2" class="value">{translate key="manager.statistics.statistics.count.value" count=$limitedArticleStatistics.submissionsAccept percentage=$limitedArticleStatistics.submissionsAcceptPercent}</td>
-	</tr>{/if}
-	{if $statCountDecline}<tr valign="top">
-		<td width="20%" class="label">&nbsp;&nbsp;{translate key="manager.statistics.statistics.count.decline"}</td>
-		<td width="80%" colspan="2" class="value">{translate key="manager.statistics.statistics.count.value" count=$limitedArticleStatistics.submissionsDecline percentage=$limitedArticleStatistics.submissionsDeclinePercent}</td>
-	</tr>{/if}
-	{if $statCountRevise}<tr valign="top">
-		<td width="20%" class="label">&nbsp;&nbsp;{translate key="manager.statistics.statistics.count.revise"}</td>
-		<td width="80%" colspan="2" class="value">{translate key="manager.statistics.statistics.count.value" count=$limitedArticleStatistics.submissionsRevise percentage=$limitedArticleStatistics.submissionsRevisePercent}</td>
-	</tr>{/if}
-	{if $statDaysPerReview}<tr valign="top">
-		<td width="20%" class="label">&nbsp;&nbsp;{translate key="manager.statistics.statistics.daysPerReview"}</td>
-		<td colspan="2" class="value">
+	{if $statItemsPublished}
+		<dt>{translate key="manager.statistics.statistics.itemsPublished"}</dt>
+		<dd>{$articleStatistics.numPublishedSubmissions}</dd>
+	{/if}
+
+	{if $statNumSubmissions}
+		<dt>{translate key="manager.statistics.statistics.numSubmissions"}</dt>
+		<dd>{$articleStatistics.numSubmissions}</dd>
+	{/if}
+
+	{if $statPeerReviewed}
+		<dt>{translate key="manager.statistics.statistics.peerReviewed"}</dt>
+		<dd>{$limitedArticleStatistics.numReviewedSubmissions}</dd>
+	{/if}
+
+	{if $statCountAccept}
+		<dt>{translate key="manager.statistics.statistics.count.accept"}</dt>
+		<dd>{translate key="manager.statistics.statistics.count.value" count=$limitedArticleStatistics.submissionsAccept percentage=$limitedArticleStatistics.submissionsAcceptPercent}</dd>
+	{/if}
+
+	{if $statCountDecline}
+		<dt>{translate key="manager.statistics.statistics.count.decline"}</dt>
+		<dd>{translate key="manager.statistics.statistics.count.value" count=$limitedArticleStatistics.submissionsDecline percentage=$limitedArticleStatistics.submissionsDeclinePercent}</dd>
+	{/if}
+
+	{if $statCountRevise}
+		<dt>{translate key="manager.statistics.statistics.count.revise"}</dt>
+		<dd>{translate key="manager.statistics.statistics.count.value" count=$limitedArticleStatistics.submissionsRevise percentage=$limitedArticleStatistics.submissionsRevisePercent}</dd>
+    {/if}
+
+	{if $statDaysPerReview}
+		<dt>{translate key="manager.statistics.statistics.daysPerReview"}</dt>
+		<dd>
 			{assign var=daysPerReview value=$reviewerStatistics.daysPerReview}
 			{math equation="round($daysPerReview)"}
-		</td>
-	</tr>{/if}
-	{if $statDaysToPublication}<tr valign="top">
-		<td width="20%" class="label">&nbsp;&nbsp;{translate key="manager.statistics.statistics.daysToPublication"}</td>
-		<td colspan="2" class="value">{$limitedArticleStatistics.daysToPublication}</td>
-	</tr>{/if}
-	{if $statRegisteredUsers}<tr valign="top">
-		<td width="20%" class="label">{translate key="manager.statistics.statistics.registeredUsers"}</td>
-		<td colspan="2" class="value">{translate key="manager.statistics.statistics.totalNewValue" numTotal=$allUserStatistics.totalUsersCount numNew=$userStatistics.totalUsersCount}</td>
-	</tr>{/if}
-	{if $statRegisteredReaders}<tr valign="top">
-		<td width="20%" class="label">{translate key="manager.statistics.statistics.registeredReaders"}</td>
-		<td colspan="2" class="value">{translate key="manager.statistics.statistics.totalNewValue" numTotal=$allUserStatistics.reader|default:"0" numNew=$userStatistics.reader|default:"0"}</td>
-	</tr>{/if}
+		</dd>
+    {/if}
 
+	{if $statDaysToPublication}
+		<dt>{translate key="manager.statistics.statistics.daysToPublication"}</dt>
+		<dd>{$limitedArticleStatistics.daysToPublication}</dd>
+    {/if}
+
+	{if $statRegisteredUsers}
+		<dt>{translate key="manager.statistics.statistics.registeredUsers"}</dt>
+		<dd>{translate key="manager.statistics.statistics.totalNewValue" numTotal=$allUserStatistics.totalUsersCount numNew=$userStatistics.totalUsersCount}</dd>
+    {/if}
+
+	{if $statRegisteredReaders}
+		<dt>{translate key="manager.statistics.statistics.registeredReaders"}</dt>
+		<dd>{translate key="manager.statistics.statistics.totalNewValue" numTotal=$allUserStatistics.reader|default:"0" numNew=$userStatistics.reader|default:"0"}</dd>
+    {/if}
+
+</dl>
 	{if $currentJournal->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_SUBSCRIPTION && $statSubscriptions}
-		<tr valign="top">
-			<td colspan="3" class="label">{translate key="manager.statistics.statistics.subscriptions"}</td>
-		</tr>
-		{foreach from=$allSubscriptionStatistics key=type_id item=stats}
-		<tr valign="top">
-			<td width="20%" class="label">&nbsp;&nbsp;{$stats.name}:</td>
-			<td colspan="2" class="value">{translate key="manager.statistics.statistics.totalNewValue" numTotal=$stats.count|default:"0" numNew=$subscriptionStatistics.$type_id.count|default:"0"}</td>
-		</tr>
+		
+		<h3>{translate key="manager.statistics.statistics.subscriptions"}</h3>
+		
+		<dl>
+		{foreach from=$allSubscriptionStatistics key=type_id item=stats}		
+			<dt>{$stats.name}:</dt>
+			<dd>{translate key="manager.statistics.statistics.totalNewValue" numTotal=$stats.count|default:"0" numNew=$subscriptionStatistics.$type_id.count|default:"0"}</dd>
 		{/foreach}
+	    </dl>
 	{/if}
-</table>
+
+	<div class="pagination pagination-centered">
+    <ul>
+      <li><a href="{url statisticsYear=$statisticsYear-1}">{translate key="navigation.previousPage"}</a></li>
+      <li><a href="{url statisticsYear=$statisticsYear-3}">{$statisticsYear-3|escape}</a></li>  
+      <li><a href="{url statisticsYear=$statisticsYear-2}">{$statisticsYear-2|escape}</a></li>     
+      <li><a href="{url statisticsYear=$statisticsYear-1}">{$statisticsYear-1|escape}</a></li>  
+      <li><a href="{url statisticsYear=$statisticsYear}">{$statisticsYear|escape}</a></li>  
+      <li><a href="{url statisticsYear=$statisticsYear+1}">{$statisticsYear+1|escape}</a></li>  
+      <li><a href="{url statisticsYear=$statisticsYear+2}">{$statisticsYear+2|escape}</a></li>   
+      <li><a href="{url statisticsYear=$statisticsYear+3}">{$statisticsYear+3|escape}</a></li> 
+      <li><a href="{url statisticsYear=$statisticsYear+1}">{translate key="navigation.nextPage"}</a></li>
+    </ul>
+    </div>
 </div>
+
+
 {include file="common/footer.tpl"}
 

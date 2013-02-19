@@ -14,11 +14,11 @@
 {include file="common/header.tpl"}
 {/strip}
 <div id="siteMap">
-<ul class="plain">
+<ul>
 <li>
 	<a href="{url journal="index" page="index" op="index"}">{translate key="navigation.home"}</a><br/>
 	{if $isUserLoggedIn}<a href="{url journal="index" page="user"}">{translate key="navigation.userHome"}</a><br/>{/if}
-	<ul class="plain">
+	<ul>
 	{if $journals|@count>1 && !$currentJournal}
 		{foreach from=$journals item=journal}
 			<li><a href="{url journal=$journal->getPath() page="about" op="siteMap"}">{$journal->getLocalizedTitle()|escape}</a></li>
@@ -28,16 +28,16 @@
 			{assign var=currentJournal value=$journals[0]}
 		{else}
 			<li><a href="{url journal="index" page="about" op="siteMap"}">{translate key="journal.journals"}</a><br/>
-			<ul class="plain">
+			<ul>
 			{assign var=onlyOneJournal value=1}
 		{/if}
 
 		<li><a href="{url journal=$currentJournal->getPath()}">{$currentJournal->getLocalizedTitle()|escape}</a><br/>
-			<ul class="plain">
+			<ul>
 				<li><a href="{url journal=$currentJournal->getPath() page="about"}">{translate key="navigation.about"}</a></li>
 				<li>
 					{if $isUserLoggedIn}
-						<ul class="plain">
+						<ul>
 							{assign var=currentJournalId value=$currentJournal->getId()}
 							{foreach from=$rolesByJournal[$currentJournalId] item=role}
 								{translate|assign:"roleName" key=$role->getRoleName()}
@@ -45,7 +45,7 @@
 							{/foreach}
 						</ul>
 					{else}
-						<ul class="plain">
+						<ul>
 							<li><a href="{url journal=$currentJournal->getPath() page="login"}">{translate key="navigation.login"}</a></li>
 							<li><a href="{url journal=$currentJournal->getPath() page="user" op="register"}">{translate key="navigation.register"}</a></li>
 						</ul>
@@ -53,13 +53,13 @@
 				</li>
 				{if $currentJournal->getSetting('publishingMode') != $smarty.const.PUBLISHING_MODE_NONE}
 					<li><a href="{url journal=$currentJournal->getPath() page="search"}">{translate key="navigation.search"}</a><br />
-						<ul class="plain">
+						<ul>
 							<li><a href="{url journal=$currentJournal->getPath() page="search" op="authors"}">{translate key="navigation.browseByAuthor"}</a></li>
 							<li><a href="{url journal=$currentJournal->getPath() page="search" op="titles"}">{translate key="navigation.browseByTitle"}</a></li>
 						</ul>
 					</li>
 					<li>{translate key="issue.issues"}<br/>
-						<ul class="plain">
+						<ul>
 							<li><a href="{url journal=$currentJournal->getPath() page="issue" op="current"}">{translate key="journal.currentIssue"}</a></li>
 							<li><a href="{url journal=$currentJournal->getPath() page="issue" op="archive"}">{translate key="navigation.archives"}</a></li>
 						</ul>
