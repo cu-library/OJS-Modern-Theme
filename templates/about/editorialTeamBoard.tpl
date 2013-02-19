@@ -14,6 +14,15 @@
 
 {call_hook name="Templates::About::EditorialTeam::Information"}
 
+<!-- Modal -->
+<div id="modal" class="modal hide" tabindex="-1" role="dialog" >
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">Close</button>
+  </div>
+</div>
+
 {foreach from=$groups item=group}
 <div id="group">
 	<h4>{$group->getLocalizedTitle()}</h4>
@@ -23,7 +32,7 @@
 	<ol class="editorialTeam">
 		{foreach from=$members item=member}
 			{assign var=user value=$member->getUser()}
-			<div id="member"><li><a href="javascript:openRTWindow('{url op="editorialTeamBio" path=$user->getId()}')">{$user->getFullName()|escape}</a>{if $user->getLocalizedAffiliation()}, {$user->getLocalizedAffiliation()|escape}{/if}{if $user->getCountry()}{assign var=countryCode value=$user->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}</li></div>
+			<div id="member"><li><a data-toggle="modal" data-target="#modal" data-remote="{url op="editorialTeamBio" path=$user->getId()}">{$user->getFullName()|escape}</a>{if $user->getLocalizedAffiliation()}, {$user->getLocalizedAffiliation()|escape}{/if}{if $user->getCountry()}{assign var=countryCode value=$user->getCountry()}{assign var=country value=$countries.$countryCode}, {$country|escape}{/if}</li></div>
 		{/foreach}{* $members *}
 	</ol>
 </div>
