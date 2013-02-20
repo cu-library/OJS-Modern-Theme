@@ -27,7 +27,7 @@
 {iterate from=journals item=journal}
 	{if $site->getSetting('showThumbnail')}
 		{assign var="displayJournalThumbnail" value=$journal->getLocalizedSetting('journalThumbnail')}
-		<div style="clear:left;">
+		<div>
 		{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
 			{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
 			<div class="homepageImage"><a href="{url journal=$journal->getPath()}" class="action"><img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} /></a></div>
@@ -49,7 +49,7 @@
 {/if}
 
 <div id="journalListPageInfo">{page_info iterator=$journals}</div>
-<div id="journalListPageLinks">{page_links anchor="journals" name="journals" iterator=$journals}
+<div id="journalListPageLinks">{page_links anchor="journals" name="journals" iterator=$journals}</div>
 
 {include file="common/footer.tpl"}
 

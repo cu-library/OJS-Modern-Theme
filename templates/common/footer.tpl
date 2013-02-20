@@ -20,7 +20,6 @@
 {/if}
 {call_hook name="Templates::Common::Footer::PageFooter"}
 
-</div><!--content-->
 </div><!--main-->
 {call_hook|assign:"rightSidebarCode" name="Templates::Common::RightSidebar"}
       {if $rightSidebarCode}
@@ -31,7 +30,7 @@
          </div>
       {/if}
       </div> <!-- /body -->
-        </div> <!-- /content -->
+      </div> <!-- /content -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){literal}{var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

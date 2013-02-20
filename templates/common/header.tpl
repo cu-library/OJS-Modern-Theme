@@ -183,5 +183,3 @@
 {if $pageSubtitleTranslated}
 	<h3>{$pageSubtitleTranslated}</h3>
 {/if}
-
-<div id="content">
