@@ -14,43 +14,35 @@
 
 <br />
 <div id="sourceSettings">
-<form method="post" action="{url op="updateAuthSource" path=$authId}">
+<form method="post" class="form-horizontal" action="{url op="updateAuthSource" path=$authId}">
+  <div class="control-group">
+	{fieldLabel name="title" key="common.title" class="control-label"}
+	<div class="controls">
+      <input type="text" id="title" name="title" value="{$title|escape}" size="40" maxlength="120" class="textField" />
+	</div>
+  </div>
+  <h4>{translate key="common.options"}</h4>
+  
+  <div class="control-group">	
+    <div class="control-label">
+	  <input type="checkbox" name="settings[syncProfiles]" id="syncProfiles" value="1"{if $settings.syncProfiles} checked="checked"{/if} />
+    </div>
+	<label for="syncProfiles" class="controls">{translate key="admin.auth.enableSyncProfiles"}</label>	    
+  </div>
 
-<table class="data" width="100%">
-	<tr valign="top">
-		<td width="20%" class="label">{fieldLabel name="title" key="common.title"}</td>
-		<td width="80%" class="value"><input type="text" id="title" name="title" value="{$title|escape}" size="40" maxlength="120" class="textField" /></td>
-	</tr>
-	<tr valign="top">
-		<td class="label" colspan="2">
-			<h4>{translate key="common.options"}</h4>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td class="label" align="right">
-			<input type="checkbox" name="settings[syncProfiles]" id="syncProfiles" value="1"{if $settings.syncProfiles} checked="checked"{/if} />
-		</td>
-		<td class="value">
-			<label for="syncProfiles">{translate key="admin.auth.enableSyncProfiles"}</label>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td class="label" align="right">
-			<input type="checkbox" name="settings[syncPasswords]" id="syncPasswords" value="1"{if $settings.syncPasswords} checked="checked"{/if} />
-		</td>
-		<td class="value">
-			<label for="syncPasswords">{translate key="admin.auth.enableSyncPasswords"}</label>
-		</td>
-	</tr>
-	<tr valign="top">
-		<td class="label" align="right">
-			<input type="checkbox" name="settings[createUsers]" id="createUsers" value="1"{if $settings.createUsers} checked="checked"{/if} />
-		</td>
-		<td class="value">
-			<label for="createUsers">{translate key="admin.auth.enableCreateUsers"}</label>
-		</td>
-	</tr>
-</table>
+  <div class="control-group">	
+    <div class="control-label">
+	  <input type="checkbox" name="settings[syncPasswords]" id="syncPasswords" value="1"{if $settings.syncPasswords} checked="checked"{/if} />
+	</div>
+	<label for="syncPasswords" class="controls">{translate key="admin.auth.enableSyncPasswords"}</label>
+  </div>
+
+  <div class="control-group">	
+    <div class="control-label">
+	  <input type="checkbox" name="settings[createUsers]" id="createUsers" value="1"{if $settings.createUsers} checked="checked"{/if} />
+	</div>
+	  <label for="createUsers" class="controls">{translate key="admin.auth.enableCreateUsers"}</label>
+  </div>
 
 {if $pluginTemplate}{include file=$pluginTemplate}{/if}
 
