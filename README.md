@@ -1,3 +1,11 @@
+#ON HOLD UNTIL OJS 3
+
+Unforunately, much of what would need to be changed to properly support Boostrap is hardcoded in OJS 2. The plan is to continue development of this theme after OJS 3 is released. 
+
+This theme does not work with the latest versions of OJS 2. 
+
+-----
+
 BETA RELEASE, please report bugs to the issue tracker on github. 
 Still MANY css issues to be dealt with. 
 
